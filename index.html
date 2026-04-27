@@ -1046,12 +1046,25 @@ tbody tr:hover{background:var(--bg3)}
 
   <!-- ─── FUNDAMENTALS: Color ─── -->
   <div class="page has-rightnav" id="fund-colors">
-    <div class="page-cols">
-    <div><!-- left col -->
     <div class="pg-eyebrow">Fundamentals</div>
     <h1 class="pg-title">Color</h1>
-    <p class="pg-desc">Color, used strategically and accessibly, reinforces the brand and creates clear and consistent digital experiences. Updated Apr 2026.</p>
+    <p style="font-size:14px;color:var(--t2);line-height:1.75;max-width:560px;margin-bottom:24px">Color, used strategically and accessibly, reinforces the brand and creates clear and consistent digital experiences. Updated Apr 2026.</p>
 
+    <!-- Color inner tabs -->
+    <div class="inner-tabs" style="margin-bottom:32px">
+      <button class="inner-tab active" data-inner="clr-overview">Overview</button>
+      <button class="inner-tab" data-inner="clr-surface">Surface element</button>
+      <button class="inner-tab" data-inner="clr-feedback">Feedback</button>
+      <button class="inner-tab" data-inner="clr-avatar">Avatar token</button>
+      <button class="inner-tab" data-inner="clr-access">Accessibility</button>
+    </div>
+
+    <!-- ── Overview panel ── -->
+    <div class="inner-panel active" id="clr-overview">
+    <div class="page-cols">
+    <div><!-- left col -->
+
+    <!-- Introduction -->
     <!-- Introduction -->
     <div class="anc" id="anc-intro" data-anchor="anc-intro">
       <h2 class="anc-title">Introduction</h2>
@@ -1352,7 +1365,372 @@ tbody tr:hover{background:var(--bg3)}
       <a href="#anc-avatar" class="sub">Avatar</a>
     </aside>
     </div><!-- /page-cols -->
-  </div>
+    </div><!-- /clr-overview -->
+
+    <!-- ── Surface element panel ── -->
+    <div class="inner-panel" id="clr-surface">
+      <div class="page-cols">
+      <div>
+        <!-- Surfaces -->
+        <div class="anc" id="se-surfaces" data-anchor="se-surfaces">
+          <h2 class="anc-title">Surfaces</h2>
+          <p class="anc-desc">A surface is a canvas or container assigned to a layer. Components nested inside inherit the surface's background. Examples include pages, sections, and tile backgrounds.</p>
+          <table class="token-table">
+            <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tok-swatch" style="background:#000000"></span><span class="tok-name">--bg</span></td><td><span class="tok-hex">#000000</span></td><td>Primary page background</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#0a0a0a"></span><span class="tok-name">--bg2</span></td><td><span class="tok-hex">#0A0A0A</span></td><td>Secondary surface (cards, panels)</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#111111"></span><span class="tok-name">--bg3</span></td><td><span class="tok-hex">#111111</span></td><td>Tertiary / hover state background</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#1a1a1a"></span><span class="tok-name">--bg4</span></td><td><span class="tok-hex">#1A1A1A</span></td><td>Elevated surface (modals, dropdowns)</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#111827"></span><span class="tok-name">--bg-overlay</span></td><td><span class="tok-hex">#111827</span></td><td>Overlay / scrim behind modals</td></tr>
+            </tbody>
+          </table>
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:24px">
+            <div style="background:#000000;border:1px solid var(--b2);border-radius:8px;padding:20px 16px;text-align:center">
+              <div style="font-size:11px;color:var(--t2);margin-bottom:6px">--bg</div>
+              <div style="font-size:12px;font-family:var(--mono);color:var(--t1)">#000000</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:4px">Page</div>
+            </div>
+            <div style="background:#0a0a0a;border:1px solid var(--b2);border-radius:8px;padding:20px 16px;text-align:center">
+              <div style="font-size:11px;color:var(--t2);margin-bottom:6px">--bg2</div>
+              <div style="font-size:12px;font-family:var(--mono);color:var(--t1)">#0A0A0A</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:4px">Card</div>
+            </div>
+            <div style="background:#111111;border:1px solid var(--b2);border-radius:8px;padding:20px 16px;text-align:center">
+              <div style="font-size:11px;color:var(--t2);margin-bottom:6px">--bg3</div>
+              <div style="font-size:12px;font-family:var(--mono);color:var(--t1)">#111111</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:4px">Hover</div>
+            </div>
+            <div style="background:#1a1a1a;border:1px solid var(--b2);border-radius:8px;padding:20px 16px;text-align:center">
+              <div style="font-size:11px;color:var(--t2);margin-bottom:6px">--bg4</div>
+              <div style="font-size:12px;font-family:var(--mono);color:var(--t1)">#1A1A1A</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:4px">Elevated</div>
+            </div>
+            <div style="background:#111827;border:1px solid var(--b2);border-radius:8px;padding:20px 16px;text-align:center">
+              <div style="font-size:11px;color:var(--t2);margin-bottom:6px">--bg-overlay</div>
+              <div style="font-size:12px;font-family:var(--mono);color:var(--t1)">#111827</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:4px">Overlay</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Elements -->
+        <div class="anc" id="se-elements" data-anchor="se-elements" style="margin-top:48px">
+          <h2 class="anc-title">Elements</h2>
+          <p class="anc-desc">Element tokens cover text, icon, and border colors. They inherit the surface mode and ensure consistent contrast, readability, and hierarchy across the system.</p>
+          <table class="token-table">
+            <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tok-swatch" style="background:#ededed"></span><span class="tok-name">--t1</span></td><td><span class="tok-hex">#EDEDED</span></td><td>Primary text, headings, labels</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#888888"></span><span class="tok-name">--t2</span></td><td><span class="tok-hex">#888888</span></td><td>Secondary text, descriptions</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#444444"></span><span class="tok-name">--t3</span></td><td><span class="tok-hex">#444444</span></td><td>Tertiary text, placeholders, disabled</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#0070f3"></span><span class="tok-name">--accent</span></td><td><span class="tok-hex">#0070F3</span></td><td>Primary interactive / link color</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#1f1f1f;border-color:var(--b2)"></span><span class="tok-name">--b1</span></td><td><span class="tok-hex">#1F1F1F</span></td><td>Subtle border (dividers)</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#2d2d2d;border-color:var(--b2)"></span><span class="tok-name">--b2</span></td><td><span class="tok-hex">#2D2D2D</span></td><td>Default border (inputs, cards)</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#404040;border-color:var(--b2)"></span><span class="tok-name">--b3</span></td><td><span class="tok-hex">#404040</span></td><td>Strong border (focused states)</td></tr>
+            </tbody>
+          </table>
+          <div style="margin-top:24px;padding:24px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px">
+            <div style="font-size:13px;color:var(--t2);margin-bottom:16px">Text hierarchy preview</div>
+            <div style="font-size:18px;font-weight:600;color:var(--t1);margin-bottom:6px">Primary heading (--t1)</div>
+            <div style="font-size:14px;color:var(--t2);margin-bottom:6px">Secondary description text for additional context and supporting information. (--t2)</div>
+            <div style="font-size:12px;color:var(--t3)">Tertiary / placeholder / disabled text (--t3)</div>
+          </div>
+        </div>
+      </div>
+      <aside class="right-nav">
+        <div class="right-nav-label">On this page</div>
+        <a href="#se-surfaces">Surfaces</a>
+        <a href="#se-elements">Elements</a>
+      </aside>
+      </div><!-- /page-cols -->
+    </div><!-- /clr-surface -->
+
+    <!-- ── Feedback panel ── -->
+    <div class="inner-panel" id="clr-feedback">
+      <div class="page-cols">
+      <div>
+        <div class="anc" id="fb-states" data-anchor="fb-states">
+          <h2 class="anc-title">Feedback states</h2>
+          <p class="anc-desc">The system supports four sets of feedback colors — each defining element and background color configurations for a specific messaging type: information, success, warning, and error.</p>
+          <div class="feedback-grid" style="margin-top:24px">
+            <div class="fb-card fb-info">
+              <div class="fb-label">Information</div>
+              <div style="font-size:12px;color:var(--t2);margin-bottom:10px">Neutral, informational messages and guidance.</div>
+              <div class="fb-swatches">
+                <div class="fb-sw" style="background:#0070f3" title="#0070F3"></div>
+                <div class="fb-sw" style="background:#3b9eff" title="#3B9EFF"></div>
+                <div class="fb-sw" style="background:rgba(0,112,243,.12)" title="bg alpha"></div>
+              </div>
+              <div style="margin-top:10px;padding:10px 12px;background:rgba(0,112,243,.1);border-radius:6px;border:1px solid rgba(0,112,243,.25);font-size:12px;color:#3b9eff">ℹ Your settings have been saved and will take effect shortly.</div>
+            </div>
+            <div class="fb-card fb-success">
+              <div class="fb-label">Success</div>
+              <div style="font-size:12px;color:var(--t2);margin-bottom:10px">Confirms a completed or positive action.</div>
+              <div class="fb-swatches">
+                <div class="fb-sw" style="background:#00d26a" title="#00D26A"></div>
+                <div class="fb-sw" style="background:#4ade80" title="#4ADE80"></div>
+                <div class="fb-sw" style="background:rgba(0,210,106,.12)" title="bg alpha"></div>
+              </div>
+              <div style="margin-top:10px;padding:10px 12px;background:rgba(0,210,106,.1);border-radius:6px;border:1px solid rgba(0,210,106,.25);font-size:12px;color:#00d26a">✓ Your changes have been published successfully.</div>
+            </div>
+            <div class="fb-card fb-warning">
+              <div class="fb-label">Warning</div>
+              <div style="font-size:12px;color:var(--t2);margin-bottom:10px">Alerts users to potential issues before proceeding.</div>
+              <div class="fb-swatches">
+                <div class="fb-sw" style="background:#f97316" title="#F97316"></div>
+                <div class="fb-sw" style="background:#fb923c" title="#FB923C"></div>
+                <div class="fb-sw" style="background:rgba(249,115,22,.12)" title="bg alpha"></div>
+              </div>
+              <div style="margin-top:10px;padding:10px 12px;background:rgba(249,115,22,.1);border-radius:6px;border:1px solid rgba(249,115,22,.25);font-size:12px;color:#fb923c">⚠ This action may affect other users in your team.</div>
+            </div>
+            <div class="fb-card fb-error">
+              <div class="fb-label">Error</div>
+              <div style="font-size:12px;color:var(--t2);margin-bottom:10px">Signals destructive actions or validation failures.</div>
+              <div class="fb-swatches">
+                <div class="fb-sw" style="background:#f44336" title="#F44336"></div>
+                <div class="fb-sw" style="background:#f87171" title="#F87171"></div>
+                <div class="fb-sw" style="background:rgba(244,67,54,.12)" title="bg alpha"></div>
+              </div>
+              <div style="margin-top:10px;padding:10px 12px;background:rgba(244,67,54,.1);border-radius:6px;border:1px solid rgba(244,67,54,.25);font-size:12px;color:#f87171">✕ Unable to save. Please check the highlighted fields.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feedback tokens table -->
+        <div class="anc" id="fb-tokens" data-anchor="fb-tokens" style="margin-top:48px">
+          <h2 class="anc-title">Feedback tokens</h2>
+          <p class="anc-desc">Named CSS custom properties for every feedback color — foreground, background tint, and border alpha variants.</p>
+          <table class="token-table">
+            <thead><tr><th>Token</th><th>Value</th><th>State</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tok-swatch" style="background:#0070f3"></span><span class="tok-name">--info</span></td><td><span class="tok-hex">#0070F3</span></td><td>Information — foreground</td></tr>
+              <tr><td><span class="tok-swatch" style="background:rgba(0,112,243,.12);border-color:var(--b2)"></span><span class="tok-name">--info-bg</span></td><td><span class="tok-hex">rgba(0,112,243,.12)</span></td><td>Information — background tint</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#00d26a"></span><span class="tok-name">--success</span></td><td><span class="tok-hex">#00D26A</span></td><td>Success — foreground</td></tr>
+              <tr><td><span class="tok-swatch" style="background:rgba(0,210,106,.12);border-color:var(--b2)"></span><span class="tok-name">--success-bg</span></td><td><span class="tok-hex">rgba(0,210,106,.12)</span></td><td>Success — background tint</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#f97316"></span><span class="tok-name">--warning</span></td><td><span class="tok-hex">#F97316</span></td><td>Warning — foreground</td></tr>
+              <tr><td><span class="tok-swatch" style="background:rgba(249,115,22,.12);border-color:var(--b2)"></span><span class="tok-name">--warning-bg</span></td><td><span class="tok-hex">rgba(249,115,22,.12)</span></td><td>Warning — background tint</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#f44336"></span><span class="tok-name">--error</span></td><td><span class="tok-hex">#F44336</span></td><td>Error — foreground</td></tr>
+              <tr><td><span class="tok-swatch" style="background:rgba(244,67,54,.12);border-color:var(--b2)"></span><span class="tok-name">--error-bg</span></td><td><span class="tok-hex">rgba(244,67,54,.12)</span></td><td>Error — background tint</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <aside class="right-nav">
+        <div class="right-nav-label">On this page</div>
+        <a href="#fb-states">Feedback states</a>
+        <a href="#fb-tokens">Feedback tokens</a>
+      </aside>
+      </div><!-- /page-cols -->
+    </div><!-- /clr-feedback -->
+
+    <!-- ── Avatar token panel ── -->
+    <div class="inner-panel" id="clr-avatar">
+      <div class="page-cols">
+      <div>
+        <div class="anc" id="av-colors" data-anchor="av-colors">
+          <h2 class="anc-title">Avatar colors</h2>
+          <p class="anc-desc">Avatars represent users or teams, typically displaying an image or an auto-generated color with initials. Each avatar color is designed to meet contrast requirements against dark backgrounds.</p>
+          <div class="avatar-grid" style="margin-top:24px;grid-template-columns:repeat(6,1fr);gap:16px">
+            <div style="text-align:center">
+              <div class="av-circle" style="background:#0070f3;color:#fff;margin:0 auto 8px">Aa</div>
+              <div style="font-size:11px;font-family:var(--mono);color:var(--t2)">#0070F3</div>
+            </div>
+            <div style="text-align:center">
+              <div class="av-circle" style="background:#00d26a;color:#052e16;margin:0 auto 8px">Bb</div>
+              <div style="font-size:11px;font-family:var(--mono);color:var(--t2)">#00D26A</div>
+            </div>
+            <div style="text-align:center">
+              <div class="av-circle" style="background:#f97316;color:#fff;margin:0 auto 8px">Cc</div>
+              <div style="font-size:11px;font-family:var(--mono);color:var(--t2)">#F97316</div>
+            </div>
+            <div style="text-align:center">
+              <div class="av-circle" style="background:#8b5cf6;color:#fff;margin:0 auto 8px">Dd</div>
+              <div style="font-size:11px;font-family:var(--mono);color:var(--t2)">#8B5CF6</div>
+            </div>
+            <div style="text-align:center">
+              <div class="av-circle" style="background:#f44336;color:#fff;margin:0 auto 8px">Ee</div>
+              <div style="font-size:11px;font-family:var(--mono);color:var(--t2)">#F44336</div>
+            </div>
+            <div style="text-align:center">
+              <div class="av-circle" style="background:#06b6d4;color:#042f2e;margin:0 auto 8px">Ff</div>
+              <div style="font-size:11px;font-family:var(--mono);color:var(--t2)">#06B6D4</div>
+            </div>
+            <div style="text-align:center">
+              <div class="av-circle" style="background:#fde047;color:#422006;margin:0 auto 8px">Gg</div>
+              <div style="font-size:11px;font-family:var(--mono);color:var(--t2)">#FDE047</div>
+            </div>
+            <div style="text-align:center">
+              <div class="av-circle" style="background:#ec4899;color:#fff;margin:0 auto 8px">Hh</div>
+              <div style="font-size:11px;font-family:var(--mono);color:var(--t2)">#EC4899</div>
+            </div>
+            <div style="text-align:center">
+              <div class="av-circle" style="background:#64748b;color:#fff;margin:0 auto 8px">Ii</div>
+              <div style="font-size:11px;font-family:var(--mono);color:var(--t2)">#64748B</div>
+            </div>
+            <div style="text-align:center">
+              <div class="av-circle" style="background:#a16207;color:#fff;margin:0 auto 8px">Jj</div>
+              <div style="font-size:11px;font-family:var(--mono);color:var(--t2)">#A16207</div>
+            </div>
+            <div style="text-align:center">
+              <div class="av-circle" style="background:#0891b2;color:#fff;margin:0 auto 8px">Kk</div>
+              <div style="font-size:11px;font-family:var(--mono);color:var(--t2)">#0891B2</div>
+            </div>
+            <div style="text-align:center">
+              <div class="av-circle" style="background:#16a34a;color:#fff;margin:0 auto 8px">Ll</div>
+              <div style="font-size:11px;font-family:var(--mono);color:var(--t2)">#16A34A</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avatar token table -->
+        <div class="anc" id="av-tokens" data-anchor="av-tokens" style="margin-top:48px">
+          <h2 class="anc-title">Avatar tokens</h2>
+          <p class="anc-desc">Avatar tokens map each color slot to a named variable so the palette can be expanded or swapped without updating component code.</p>
+          <table class="token-table">
+            <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tok-swatch" style="background:#0070f3"></span><span class="tok-name">--av-1</span></td><td><span class="tok-hex">#0070F3</span></td><td>Avatar slot 1 — Signal Blue</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#00d26a"></span><span class="tok-name">--av-2</span></td><td><span class="tok-hex">#00D26A</span></td><td>Avatar slot 2 — Vivid Green</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#f97316"></span><span class="tok-name">--av-3</span></td><td><span class="tok-hex">#F97316</span></td><td>Avatar slot 3 — Orange</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#8b5cf6"></span><span class="tok-name">--av-4</span></td><td><span class="tok-hex">#8B5CF6</span></td><td>Avatar slot 4 — Violet</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#f44336"></span><span class="tok-name">--av-5</span></td><td><span class="tok-hex">#F44336</span></td><td>Avatar slot 5 — Red</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#06b6d4"></span><span class="tok-name">--av-6</span></td><td><span class="tok-hex">#06B6D4</span></td><td>Avatar slot 6 — Cyan</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#fde047"></span><span class="tok-name">--av-7</span></td><td><span class="tok-hex">#FDE047</span></td><td>Avatar slot 7 — Yellow</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#ec4899"></span><span class="tok-name">--av-8</span></td><td><span class="tok-hex">#EC4899</span></td><td>Avatar slot 8 — Pink</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <aside class="right-nav">
+        <div class="right-nav-label">On this page</div>
+        <a href="#av-colors">Avatar colors</a>
+        <a href="#av-tokens">Avatar tokens</a>
+      </aside>
+      </div><!-- /page-cols -->
+    </div><!-- /clr-avatar -->
+
+    <!-- ── Accessibility panel ── -->
+    <div class="inner-panel" id="clr-access">
+      <div class="page-cols">
+      <div>
+        <div class="anc" id="acc-contrast" data-anchor="acc-contrast">
+          <h2 class="anc-title">Contrast ratios</h2>
+          <p class="anc-desc">All text and interactive elements must meet WCAG 2.1 minimum contrast requirements. The system's semantic tokens are pre-validated against the dark background palette.</p>
+          <table class="token-table" style="margin-top:24px">
+            <thead><tr><th>Pair</th><th>Ratio</th><th>WCAG AA</th><th>WCAG AAA</th></tr></thead>
+            <tbody>
+              <tr>
+                <td style="display:flex;align-items:center;gap:8px">
+                  <span style="width:32px;height:20px;border-radius:4px;background:#EDEDED;display:inline-block"></span>
+                  <span style="font-size:12px;color:var(--t2)">#EDEDED on #000000</span>
+                </td>
+                <td style="font-family:var(--mono);font-size:12px">18.1:1</td>
+                <td><span style="color:#00d26a;font-size:12px">✓ Pass</span></td>
+                <td><span style="color:#00d26a;font-size:12px">✓ Pass</span></td>
+              </tr>
+              <tr>
+                <td style="display:flex;align-items:center;gap:8px">
+                  <span style="width:32px;height:20px;border-radius:4px;background:#888888;display:inline-block"></span>
+                  <span style="font-size:12px;color:var(--t2)">#888888 on #000000</span>
+                </td>
+                <td style="font-family:var(--mono);font-size:12px">4.8:1</td>
+                <td><span style="color:#00d26a;font-size:12px">✓ Pass</span></td>
+                <td><span style="color:#f44336;font-size:12px">✕ Fail</span></td>
+              </tr>
+              <tr>
+                <td style="display:flex;align-items:center;gap:8px">
+                  <span style="width:32px;height:20px;border-radius:4px;background:#0070f3;display:inline-block"></span>
+                  <span style="font-size:12px;color:var(--t2)">#0070F3 on #000000</span>
+                </td>
+                <td style="font-family:var(--mono);font-size:12px">5.8:1</td>
+                <td><span style="color:#00d26a;font-size:12px">✓ Pass</span></td>
+                <td><span style="color:#f44336;font-size:12px">✕ Fail</span></td>
+              </tr>
+              <tr>
+                <td style="display:flex;align-items:center;gap:8px">
+                  <span style="width:32px;height:20px;border-radius:4px;background:#00d26a;display:inline-block"></span>
+                  <span style="font-size:12px;color:var(--t2)">#00D26A on #000000</span>
+                </td>
+                <td style="font-family:var(--mono);font-size:12px">8.2:1</td>
+                <td><span style="color:#00d26a;font-size:12px">✓ Pass</span></td>
+                <td><span style="color:#00d26a;font-size:12px">✓ Pass</span></td>
+              </tr>
+              <tr>
+                <td style="display:flex;align-items:center;gap:8px">
+                  <span style="width:32px;height:20px;border-radius:4px;background:#444444;display:inline-block"></span>
+                  <span style="font-size:12px;color:var(--t2)">#444444 on #000000</span>
+                </td>
+                <td style="font-family:var(--mono);font-size:12px">2.3:1</td>
+                <td><span style="color:#f44336;font-size:12px">✕ Fail</span></td>
+                <td><span style="color:#f44336;font-size:12px">✕ Fail</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="margin-top:12px;padding:10px 14px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);border-radius:6px;font-size:12px;color:#fb923c">
+            ⚠ --t3 (#444444) is intentionally low contrast — use only for disabled or decorative text, never for meaningful content.
+          </div>
+        </div>
+
+        <!-- WCAG rules -->
+        <div class="anc" id="acc-wcag" data-anchor="acc-wcag" style="margin-top:48px">
+          <h2 class="anc-title">WCAG guidelines</h2>
+          <p class="anc-desc">These rules govern when each contrast level is required based on text size and UI element type.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px">
+            <div style="padding:20px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px">
+              <div style="font-size:13px;font-weight:600;color:var(--t1);margin-bottom:8px">AA — 4.5:1</div>
+              <div style="font-size:12px;color:var(--t2);line-height:1.7">Required for normal text (below 18pt / 14pt bold). This is the minimum for most body copy and labels.</div>
+            </div>
+            <div style="padding:20px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px">
+              <div style="font-size:13px;font-weight:600;color:var(--t1);margin-bottom:8px">AA Large — 3:1</div>
+              <div style="font-size:12px;color:var(--t2);line-height:1.7">Required for large text (18pt+ / 14pt+ bold) and non-text UI elements like icons and borders.</div>
+            </div>
+            <div style="padding:20px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px">
+              <div style="font-size:13px;font-weight:600;color:var(--t1);margin-bottom:8px">AAA — 7:1</div>
+              <div style="font-size:12px;color:var(--t2);line-height:1.7">Enhanced contrast for normal text. Recommended for extended reading, accessibility-critical flows, or users with low vision.</div>
+            </div>
+            <div style="padding:20px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px">
+              <div style="font-size:13px;font-weight:600;color:var(--t1);margin-bottom:8px">Decorative — exempt</div>
+              <div style="font-size:12px;color:var(--t2);line-height:1.7">Purely decorative elements, disabled UI, or logotype content are exempt from contrast requirements per WCAG 2.1.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Do / Don't -->
+        <div class="anc" id="acc-rules" data-anchor="acc-rules" style="margin-top:48px">
+          <h2 class="anc-title">Do's and Don'ts</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px">
+            <div style="padding:20px;background:rgba(0,210,106,.06);border:1px solid rgba(0,210,106,.2);border-radius:8px">
+              <div style="font-size:12px;font-weight:600;color:#00d26a;margin-bottom:12px;letter-spacing:.05em">DO</div>
+              <ul style="font-size:12px;color:var(--t2);line-height:1.8;padding-left:16px;margin:0">
+                <li>Use --t1 for body text on all dark backgrounds</li>
+                <li>Use semantic feedback tokens for status messages</li>
+                <li>Test color choices with a contrast checker before shipping</li>
+                <li>Supplement color with icons or text labels for colorblind users</li>
+              </ul>
+            </div>
+            <div style="padding:20px;background:rgba(244,67,54,.06);border:1px solid rgba(244,67,54,.2);border-radius:8px">
+              <div style="font-size:12px;font-weight:600;color:#f87171;margin-bottom:12px;letter-spacing:.05em">DON'T</div>
+              <ul style="font-size:12px;color:var(--t2);line-height:1.8;padding-left:16px;margin:0">
+                <li>Use --t3 for any meaningful text or interactive labels</li>
+                <li>Rely on color alone to convey status or meaning</li>
+                <li>Use supplemental colors for primary actions or branding</li>
+                <li>Override semantic tokens with raw hex values in components</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="right-nav">
+        <div class="right-nav-label">On this page</div>
+        <a href="#acc-contrast">Contrast ratios</a>
+        <a href="#acc-wcag">WCAG guidelines</a>
+        <a href="#acc-rules">Do's and Don'ts</a>
+      </aside>
+      </div><!-- /page-cols -->
+    </div><!-- /clr-access -->
+
+  </div><!-- /fund-colors -->
 
   <!-- ─── FUNDAMENTALS: Data visualization ─── -->
   <div class="page" id="fund-dataviz">
