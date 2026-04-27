@@ -346,6 +346,130 @@ tbody tr:hover{background:var(--bg3)}
   .hero-title{font-size:32px}
   .page{padding:28px}
 }
+
+/* ══════════════════════════════
+   FUNDAMENTALS — Color Page
+══════════════════════════════ */
+
+/* Page with right-side anchor nav */
+.page.has-rightnav{max-width:100%;padding:48px 40px 80px}
+.page-cols{display:grid;grid-template-columns:1fr 188px;gap:56px;max-width:980px}
+
+/* Right anchor nav */
+.right-nav{position:sticky;top:24px;align-self:start}
+.right-nav-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:10px}
+.right-nav a{
+  display:block;padding:5px 0 5px 10px;
+  font-size:12px;color:var(--t2);text-decoration:none;
+  border-left:1px solid var(--b1);transition:color .1s,border-color .1s;line-height:1.4;
+}
+.right-nav a.sub{padding-left:18px;font-size:11px}
+.right-nav a:hover{color:var(--t1)}
+.right-nav a.rn-active{color:var(--t1);border-left-color:var(--t1);font-weight:500}
+
+/* Anchor sections */
+.anc{scroll-margin-top:80px;margin-bottom:52px}
+.anc-title{font-size:22px;font-weight:700;letter-spacing:-.025em;margin-bottom:10px}
+.anc-desc{font-size:14px;color:var(--t2);line-height:1.75;max-width:600px;margin-bottom:24px}
+.anc-sub{font-size:16px;font-weight:600;letter-spacing:-.015em;margin-bottom:10px;margin-top:32px;scroll-margin-top:80px}
+
+/* Brand swatch card (large) */
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.brand-card{border:1px solid var(--b1);border-radius:8px;overflow:hidden;cursor:pointer;transition:border-color .12s}
+.brand-card:hover{border-color:var(--b2)}
+.brand-swatch{height:100px}
+.brand-info{padding:12px 14px;background:var(--bg2)}
+.brand-name{font-size:14px;font-weight:600;margin-bottom:2px}
+.brand-hex{font-size:11px;font-family:var(--mono);color:var(--t3);margin-bottom:6px}
+.brand-desc{font-size:12px;color:var(--t2);line-height:1.55}
+
+/* Neutral scale bar */
+.neutral-bar{display:flex;border-radius:8px;overflow:hidden;margin-bottom:20px;border:1px solid var(--b1)}
+.n-stop{flex:1;height:72px;position:relative;cursor:pointer;transition:flex .15s}
+.n-stop:hover{flex:2}
+.n-stop-tip{
+  position:absolute;bottom:6px;left:50%;transform:translateX(-50%);
+  font-size:9px;font-family:var(--mono);white-space:nowrap;
+  background:rgba(0,0,0,.7);color:#fff;padding:2px 5px;border-radius:3px;
+  opacity:0;transition:opacity .15s;pointer-events:none;
+}
+.n-stop:hover .n-stop-tip{opacity:1}
+
+/* Neutral table */
+.neutral-table{width:100%;border-collapse:collapse;font-size:12px;border:1px solid var(--b1);border-radius:8px;overflow:hidden}
+.neutral-table th{padding:8px 12px;text-align:left;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);background:var(--bg3);border-bottom:1px solid var(--b1)}
+.neutral-table td{padding:9px 12px;border-bottom:1px solid var(--b1);color:var(--t2)}
+.neutral-table tr:last-child td{border-bottom:none}
+.neutral-table tbody tr:hover{background:var(--bg3)}
+.n-swatch-sm{width:20px;height:20px;border-radius:3px;border:1px solid rgba(255,255,255,.06);display:inline-block;vertical-align:middle;margin-right:8px}
+
+/* Supplemental grid */
+.supp-wrap{border:1px solid var(--b1);border-radius:8px;overflow:hidden}
+.supp-head{display:grid;grid-template-columns:repeat(7,1fr);border-bottom:1px solid var(--b1);background:var(--bg3)}
+.supp-head-cell{padding:8px 0;text-align:center;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--t3)}
+.supp-grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.supp-col{display:flex;flex-direction:column}
+.supp-cell{padding:10px 8px;cursor:pointer;transition:filter .1s;border-bottom:1px solid rgba(0,0,0,.1)}
+.supp-cell:hover{filter:brightness(1.12)}
+.supp-cell:last-child{border-bottom:none}
+.supp-name{font-size:10px;font-weight:600;line-height:1.3;margin-bottom:1px}
+.supp-hex{font-size:9px;font-family:var(--mono);opacity:.7}
+
+/* Semantic token rows */
+.token-table{width:100%;border-collapse:collapse;font-size:13px;border:1px solid var(--b1);border-radius:8px;overflow:hidden}
+.token-table th{padding:8px 14px;text-align:left;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);background:var(--bg3);border-bottom:1px solid var(--b1)}
+.token-table td{padding:10px 14px;border-bottom:1px solid var(--b1);color:var(--t2);vertical-align:middle}
+.token-table tr:last-child td{border-bottom:none}
+.token-table tbody tr:hover{background:var(--bg3)}
+.tok-swatch{width:22px;height:22px;border-radius:4px;border:1px solid rgba(255,255,255,.08);display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0}
+.tok-name{font-family:var(--mono);font-size:11px;color:var(--t1)}
+.tok-hex{font-family:var(--mono);font-size:11px;color:var(--t3)}
+
+/* Feedback cards */
+.feedback-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.fb-card{padding:20px;border-radius:8px;border:1px solid}
+.fb-info{background:rgba(0,112,243,.07);border-color:rgba(0,112,243,.18)}
+.fb-success{background:rgba(0,210,106,.07);border-color:rgba(0,210,106,.18)}
+.fb-warning{background:rgba(249,115,22,.07);border-color:rgba(249,115,22,.18)}
+.fb-error{background:rgba(244,67,54,.07);border-color:rgba(244,67,54,.18)}
+.fb-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.fb-info .fb-label{color:#3b9eff}
+.fb-success .fb-label{color:var(--green)}
+.fb-warning .fb-label{color:var(--orange)}
+.fb-error .fb-label{color:var(--red)}
+.fb-swatches{display:flex;gap:6px;margin-top:8px}
+.fb-sw{width:32px;height:32px;border-radius:6px;border:1px solid rgba(255,255,255,.08)}
+
+/* Avatar circles */
+.avatar-grid{display:flex;gap:8px;flex-wrap:wrap}
+.av-circle{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;cursor:pointer;
+  transition:transform .12s;
+}
+.av-circle:hover{transform:scale(1.1)}
+
+/* Data viz palette */
+.dataviz-grid{display:flex;gap:8px;flex-wrap:wrap}
+.dv-swatch{
+  display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;
+}
+.dv-bar{width:40px;border-radius:4px}
+.dv-label{font-size:10px;font-family:var(--mono);color:var(--t3)}
+
+/* Fundamentals overview cards (larger thumbnails) */
+.fund-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.fund-card{
+  border:1px solid var(--b1);border-radius:8px;background:var(--bg2);
+  overflow:hidden;cursor:pointer;text-decoration:none;display:block;
+  transition:border-color .12s,background .12s;
+}
+.fund-card:hover{border-color:var(--b2);background:var(--bg3)}
+.fund-thumb{height:120px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--b1);padding:20px;overflow:hidden}
+.fund-card-body{padding:16px}
+.fund-card-title{font-size:14px;font-weight:600;margin-bottom:4px}
+.fund-card-desc{font-size:12px;color:var(--t3);line-height:1.6}
 </style>
 </head>
 <body>
@@ -410,10 +534,24 @@ tbody tr:hover{background:var(--bg3)}
 
   <!-- Fundamentals -->
   <nav class="sidebar-panel" data-sidebar="fundamentals">
-    <div class="nav-section-label">Foundations</div>
-    <a class="nav-link" data-page="fund-colors">Colors</a>
-    <a class="nav-link" data-page="fund-typography">Typography</a>
+    <a class="nav-link" data-page="fund-overview">Overview</a>
+    <a class="nav-link" data-page="fund-colors">Color</a>
+    <a class="nav-link" data-page="fund-dataviz">Data visualization</a>
+    <div class="nav-group" id="grp-tokens">
+      <a class="nav-link nav-expandable" data-page="fund-tokens" data-group="grp-tokens">
+        Design tokens
+        <svg class="chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div class="nav-group-children">
+        <a class="nav-link sub" data-page="fund-tokens-color">Color tokens</a>
+        <a class="nav-link sub" data-page="fund-tokens-type">Typography tokens</a>
+        <a class="nav-link sub" data-page="fund-tokens-spacing">Spacing tokens</a>
+      </div>
+    </div>
+    <a class="nav-link" data-page="fund-grid">Grid</a>
+    <a class="nav-link" data-page="fund-iconography">Iconography</a>
     <a class="nav-link" data-page="fund-spacing">Spacing</a>
+    <a class="nav-link" data-page="fund-typography">Typography</a>
   </nav>
 
   <!-- Components -->
@@ -818,42 +956,478 @@ tbody tr:hover{background:var(--bg3)}
     </div>
   </div>
 
-  <!-- ─── FUNDAMENTALS: Colors ─── -->
-  <div class="page" id="fund-colors">
+  <!-- ─── FUNDAMENTALS: Overview ─── -->
+  <div class="page" id="fund-overview">
     <div class="pg-eyebrow">Fundamentals</div>
-    <h1 class="pg-title">Colors</h1>
-    <p class="pg-desc">A dark-first palette with semantic tokens for backgrounds, text, borders, and accents. Click any swatch to copy the hex.</p>
-    <div class="sub"><div class="sub-title">Background</div>
-      <div class="color-grid">
-        <div class="color-card" onclick="copyHex('#000000',this)"><div class="swatch" style="background:#000"></div><div class="color-info"><div class="color-name">Primary</div><div class="color-hex">#000000</div></div></div>
-        <div class="color-card" onclick="copyHex('#0a0a0a',this)"><div class="swatch" style="background:#0a0a0a"></div><div class="color-info"><div class="color-name">Secondary</div><div class="color-hex">#0a0a0a</div></div></div>
-        <div class="color-card" onclick="copyHex('#111111',this)"><div class="swatch" style="background:#111"></div><div class="color-info"><div class="color-name">Tertiary</div><div class="color-hex">#111111</div></div></div>
-        <div class="color-card" onclick="copyHex('#1a1a1a',this)"><div class="swatch" style="background:#1a1a1a"></div><div class="color-info"><div class="color-name">Elevated</div><div class="color-hex">#1a1a1a</div></div></div>
+    <h1 class="pg-title">Fundamentals</h1>
+    <p class="pg-desc">Fundamentals are the overarching design elements of the system — color, iconography, typography — that inform the full digital experience.</p>
+    <div class="fund-grid">
+      <div class="fund-card" onclick="navigate('fundamentals','fund-colors')">
+        <div class="fund-thumb" style="background:var(--bg3)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;width:100px;height:80px">
+            <div style="background:#0070f3;border-radius:4px"></div>
+            <div style="background:#ededed;border-radius:4px"></div>
+            <div style="background:#f44336;border-radius:4px"></div>
+            <div style="background:#00d26a;border-radius:4px"></div>
+          </div>
+        </div>
+        <div class="fund-card-body">
+          <div class="fund-card-title">Color</div>
+          <div class="fund-card-desc">A critical tool for reinforcing brand, communicating hierarchy, and establishing consistent visual experiences.</div>
+        </div>
       </div>
-    </div>
-    <div class="sub"><div class="sub-title">Text</div>
-      <div class="color-grid">
-        <div class="color-card" onclick="copyHex('#ededed',this)"><div class="swatch" style="background:#ededed"></div><div class="color-info"><div class="color-name">Primary</div><div class="color-hex">#ededed</div></div></div>
-        <div class="color-card" onclick="copyHex('#888888',this)"><div class="swatch" style="background:#888"></div><div class="color-info"><div class="color-name">Secondary</div><div class="color-hex">#888888</div></div></div>
-        <div class="color-card" onclick="copyHex('#444444',this)"><div class="swatch" style="background:#444"></div><div class="color-info"><div class="color-name">Tertiary</div><div class="color-hex">#444444</div></div></div>
+      <div class="fund-card" onclick="navigate('fundamentals','fund-typography')">
+        <div class="fund-thumb" style="background:var(--bg3)">
+          <div style="font-size:52px;font-weight:700;letter-spacing:-.05em;color:var(--t1);line-height:1;font-family:var(--sans)">Aa</div>
+        </div>
+        <div class="fund-card-body">
+          <div class="fund-card-title">Typography</div>
+          <div class="fund-card-desc">Styles and guidelines promoting visual consistency across all text elements, using size and weight to establish hierarchy.</div>
+        </div>
       </div>
-    </div>
-    <div class="sub"><div class="sub-title">Border</div>
-      <div class="color-grid">
-        <div class="color-card" onclick="copyHex('#1f1f1f',this)"><div class="swatch" style="background:#1f1f1f;border:1px solid #333"></div><div class="color-info"><div class="color-name">Subtle</div><div class="color-hex">#1f1f1f</div></div></div>
-        <div class="color-card" onclick="copyHex('#2d2d2d',this)"><div class="swatch" style="background:#2d2d2d;border:1px solid #333"></div><div class="color-info"><div class="color-name">Default</div><div class="color-hex">#2d2d2d</div></div></div>
+      <div class="fund-card" onclick="navigate('fundamentals','fund-spacing')">
+        <div class="fund-thumb" style="background:var(--bg3);flex-direction:column;gap:6px;align-items:flex-start;padding:24px">
+          <div style="height:10px;width:100%;border:1px solid var(--b2);border-radius:3px"></div>
+          <div style="height:14px;width:80%;border:1px solid var(--b2);border-radius:3px;margin-left:16px"></div>
+          <div style="height:18px;width:60%;border:1px solid var(--b2);border-radius:3px;margin-left:32px"></div>
+          <div style="height:24px;width:40%;border:1px solid var(--b2);border-radius:3px;margin-left:48px"></div>
+        </div>
+        <div class="fund-card-body">
+          <div class="fund-card-title">Spacing</div>
+          <div class="fund-card-desc">Incorporates vertical and horizontal areas within and between all components to establish clear visual hierarchies.</div>
+        </div>
       </div>
-    </div>
-    <div class="sub"><div class="sub-title">Accent</div>
-      <div class="color-grid">
-        <div class="color-card" onclick="copyHex('#0070f3',this)"><div class="swatch" style="background:#0070f3"></div><div class="color-info"><div class="color-name">Blue</div><div class="color-hex">#0070f3</div></div></div>
-        <div class="color-card" onclick="copyHex('#00d26a',this)"><div class="swatch" style="background:#00d26a"></div><div class="color-info"><div class="color-name">Green</div><div class="color-hex">#00d26a</div></div></div>
-        <div class="color-card" onclick="copyHex('#f44336',this)"><div class="swatch" style="background:#f44336"></div><div class="color-info"><div class="color-name">Red</div><div class="color-hex">#f44336</div></div></div>
-        <div class="color-card" onclick="copyHex('#f97316',this)"><div class="swatch" style="background:#f97316"></div><div class="color-info"><div class="color-name">Orange</div><div class="color-hex">#f97316</div></div></div>
-        <div class="color-card" onclick="copyHex('#8b5cf6',this)"><div class="swatch" style="background:#8b5cf6"></div><div class="color-info"><div class="color-name">Purple</div><div class="color-hex">#8b5cf6</div></div></div>
+      <div class="fund-card" onclick="navigate('fundamentals','fund-dataviz')">
+        <div class="fund-thumb" style="background:var(--bg3);align-items:flex-end;gap:5px;padding:24px 28px">
+          <div style="width:18px;background:#0070f3;border-radius:3px 3px 0 0;height:45%"></div>
+          <div style="width:18px;background:#00d26a;border-radius:3px 3px 0 0;height:70%"></div>
+          <div style="width:18px;background:#f97316;border-radius:3px 3px 0 0;height:55%"></div>
+          <div style="width:18px;background:#8b5cf6;border-radius:3px 3px 0 0;height:85%"></div>
+          <div style="width:18px;background:#f44336;border-radius:3px 3px 0 0;height:40%"></div>
+          <div style="width:18px;background:#06b6d4;border-radius:3px 3px 0 0;height:62%"></div>
+        </div>
+        <div class="fund-card-body">
+          <div class="fund-card-title">Data visualization</div>
+          <div class="fund-card-desc">Graphic presentations of information using a defined palette for charts, graphs, and data-heavy surfaces.</div>
+        </div>
+      </div>
+      <div class="fund-card" onclick="navigate('fundamentals','fund-grid')">
+        <div class="fund-thumb" style="background:var(--bg3);padding:16px">
+          <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:4px;width:100%;height:80px">
+            <div style="background:rgba(0,112,243,.15);border-radius:2px"></div>
+            <div style="background:rgba(0,112,243,.15);border-radius:2px"></div>
+            <div style="background:rgba(0,112,243,.15);border-radius:2px"></div>
+            <div style="background:rgba(0,112,243,.15);border-radius:2px"></div>
+            <div style="background:rgba(0,112,243,.15);border-radius:2px"></div>
+            <div style="background:rgba(0,112,243,.15);border-radius:2px"></div>
+            <div style="background:rgba(0,112,243,.15);border-radius:2px"></div>
+            <div style="background:rgba(0,112,243,.15);border-radius:2px"></div>
+          </div>
+        </div>
+        <div class="fund-card-body">
+          <div class="fund-card-title">Grid</div>
+          <div class="fund-card-desc">An adaptable layout framework used to organise and arrange content cohesively across all viewport widths.</div>
+        </div>
+      </div>
+      <div class="fund-card" onclick="navigate('fundamentals','fund-iconography')">
+        <div class="fund-thumb" style="background:var(--bg3)">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:8px">
+            <div style="font-size:18px;text-align:center;color:var(--t2)">◎</div><div style="font-size:18px;text-align:center;color:var(--t2)">△</div><div style="font-size:18px;text-align:center;color:var(--t2)">◇</div><div style="font-size:18px;text-align:center;color:var(--t2)">☆</div>
+            <div style="font-size:18px;text-align:center;color:var(--t2)">□</div><div style="font-size:18px;text-align:center;color:var(--t2)">⬡</div><div style="font-size:18px;text-align:center;color:var(--t2)">⊕</div><div style="font-size:18px;text-align:center;color:var(--t2)">⊞</div>
+          </div>
+        </div>
+        <div class="fund-card-body">
+          <div class="fund-card-title">Iconography</div>
+          <div class="fund-card-desc">A consistent icon set that provides clear, recognisable visual cues and reinforces meaning in the UI.</div>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- ─── FUNDAMENTALS: Color ─── -->
+  <div class="page has-rightnav" id="fund-colors">
+    <div class="page-cols">
+    <div><!-- left col -->
+    <div class="pg-eyebrow">Fundamentals</div>
+    <h1 class="pg-title">Color</h1>
+    <p class="pg-desc">Color, used strategically and accessibly, reinforces the brand and creates clear and consistent digital experiences. Updated Apr 2026.</p>
+
+    <!-- Introduction -->
+    <div class="anc" id="anc-intro" data-anchor="anc-intro">
+      <h2 class="anc-title">Introduction</h2>
+      <p class="anc-desc">Color is a core part of the system. It creates cohesive, accessible and balanced visual experiences. The color palette combines brand, neutral and supplemental colors to support a wide range of scenarios, including both light and dark themes and surfaces.</p>
+      <p class="anc-desc" style="margin-top:-12px">The system includes both primitive colors and semantic collections. Primitive colors serve as base building blocks. Semantic collections are purpose-driven, such as "primary element", and adjust automatically based on context and background.</p>
+      <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:3px;border-radius:8px;overflow:hidden;border:1px solid var(--b1);margin-top:20px">
+        <div style="height:56px;background:#BAE6FD"></div><div style="height:56px;background:#38BDF8"></div><div style="height:56px;background:#0284C7"></div>
+        <div style="height:56px;background:#BBF7D0"></div><div style="height:56px;background:#4ADE80"></div><div style="height:56px;background:#16A34A"></div>
+        <div style="height:56px;background:#FED7AA"></div><div style="height:56px;background:#FB923C"></div><div style="height:56px;background:#EA580C"></div>
+        <div style="height:56px;background:#E9D5FF"></div><div style="height:56px;background:#C084FC"></div><div style="height:56px;background:#9333EA"></div>
+        <div style="height:56px;background:#FAFAFA"></div><div style="height:56px;background:#A1A1AA"></div><div style="height:56px;background:#27272A"></div>
+        <div style="height:56px;background:#0070f3"></div><div style="height:56px;background:#ededed"></div><div style="height:56px;background:#000000"></div>
+        <div style="height:56px;background:#99F6E4"></div><div style="height:56px;background:#2DD4BF"></div><div style="height:56px;background:#0D9488"></div>
+        <div style="height:56px;background:#FECACA"></div><div style="height:56px;background:#F87171"></div><div style="height:56px;background:#DC2626"></div>
+      </div>
+    </div>
+
+    <!-- Primitive colors -->
+    <div class="anc" id="anc-primitive" data-anchor="anc-primitive">
+      <h2 class="anc-title">Primitive colors</h2>
+      <p class="anc-desc">Primitive colors are the foundation of the color system. They serve as the core building blocks for creating consistent palettes and scaling the system, but do not carry an assigned purpose.</p>
+      <p class="anc-desc" style="margin-top:-12px">Primitive colors are grouped into three categories: brand, neutral and supplemental.</p>
+
+      <!-- Brand -->
+      <div id="anc-brand" data-anchor="anc-brand" style="scroll-margin-top:80px">
+        <h3 class="anc-sub">Brand</h3>
+        <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:20px">Brand colors represent the core identity of the system. They are the most recognisable colors in the palette, helping create a consistent and familiar presence across all touchpoints.</p>
+        <div class="brand-grid">
+          <div class="brand-card" onclick="copyHex('#000000',this)">
+            <div class="brand-swatch" style="background:#000000;border-bottom:1px solid var(--b1)"></div>
+            <div class="brand-info"><div class="brand-name">Pitch Black</div><div class="brand-hex">#000000</div><div class="brand-desc">The foundational dark surface. Used for all primary backgrounds and base layers.</div></div>
+          </div>
+          <div class="brand-card" onclick="copyHex('#EDEDED',this)">
+            <div class="brand-swatch" style="background:#EDEDED"></div>
+            <div class="brand-info"><div class="brand-name">Off White</div><div class="brand-hex">#EDEDED</div><div class="brand-desc">Primary text and light surface color. Used wherever content reads on dark.</div></div>
+          </div>
+          <div class="brand-card" onclick="copyHex('#0070F3',this)">
+            <div class="brand-swatch" style="background:#0070F3"></div>
+            <div class="brand-info"><div class="brand-name">Signal Blue</div><div class="brand-hex">#0070F3</div><div class="brand-desc">The signature interactive accent. Communicates action, focus, and primary emphasis.</div></div>
+          </div>
+          <div class="brand-card" onclick="copyHex('#00D26A',this)">
+            <div class="brand-swatch" style="background:#00D26A"></div>
+            <div class="brand-info"><div class="brand-name">Vivid Green</div><div class="brand-hex">#00D26A</div><div class="brand-desc">Success and positive feedback states. Adds energy and contrast with a bright, readable tone.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Neutral -->
+      <div id="anc-neutral" data-anchor="anc-neutral" style="scroll-margin-top:80px">
+        <h3 class="anc-sub">Neutral</h3>
+        <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">A 12-step neutral scale from pure black to near-white. Hover any stop to see its value.</p>
+        <div class="neutral-bar">
+          <div class="n-stop" style="background:#000000"><span class="n-stop-tip">#000000</span></div>
+          <div class="n-stop" style="background:#0a0a0a"><span class="n-stop-tip">#0A0A0A</span></div>
+          <div class="n-stop" style="background:#111111"><span class="n-stop-tip">#111111</span></div>
+          <div class="n-stop" style="background:#1a1a1a"><span class="n-stop-tip">#1A1A1A</span></div>
+          <div class="n-stop" style="background:#2d2d2d"><span class="n-stop-tip">#2D2D2D</span></div>
+          <div class="n-stop" style="background:#404040"><span class="n-stop-tip">#404040</span></div>
+          <div class="n-stop" style="background:#555555"><span class="n-stop-tip">#555555</span></div>
+          <div class="n-stop" style="background:#737373"><span class="n-stop-tip">#737373</span></div>
+          <div class="n-stop" style="background:#888888"><span class="n-stop-tip">#888888</span></div>
+          <div class="n-stop" style="background:#A1A1AA"><span class="n-stop-tip">#A1A1AA</span></div>
+          <div class="n-stop" style="background:#D4D4D8"><span class="n-stop-tip">#D4D4D8</span></div>
+          <div class="n-stop" style="background:#EDEDED"><span class="n-stop-tip">#EDEDED</span></div>
+        </div>
+        <table class="neutral-table">
+          <thead><tr><th>Swatch</th><th>Name</th><th>Hex</th><th>Usage</th></tr></thead>
+          <tbody>
+            <tr><td><span class="n-swatch-sm" style="background:#000000"></span></td><td style="color:var(--t1);font-family:var(--mono);font-size:11px">Neutral 1000</td><td style="font-family:var(--mono);font-size:11px">#000000</td><td>Primary background</td></tr>
+            <tr><td><span class="n-swatch-sm" style="background:#0a0a0a"></span></td><td style="color:var(--t1);font-family:var(--mono);font-size:11px">Neutral 950</td><td style="font-family:var(--mono);font-size:11px">#0A0A0A</td><td>Secondary background</td></tr>
+            <tr><td><span class="n-swatch-sm" style="background:#111111"></span></td><td style="color:var(--t1);font-family:var(--mono);font-size:11px">Neutral 900</td><td style="font-family:var(--mono);font-size:11px">#111111</td><td>Tertiary background</td></tr>
+            <tr><td><span class="n-swatch-sm" style="background:#1a1a1a"></span></td><td style="color:var(--t1);font-family:var(--mono);font-size:11px">Neutral 800</td><td style="font-family:var(--mono);font-size:11px">#1A1A1A</td><td>Elevated surface</td></tr>
+            <tr><td><span class="n-swatch-sm" style="background:#2d2d2d"></span></td><td style="color:var(--t1);font-family:var(--mono);font-size:11px">Neutral 700</td><td style="font-family:var(--mono);font-size:11px">#2D2D2D</td><td>Default border</td></tr>
+            <tr><td><span class="n-swatch-sm" style="background:#404040"></span></td><td style="color:var(--t1);font-family:var(--mono);font-size:11px">Neutral 600</td><td style="font-family:var(--mono);font-size:11px">#404040</td><td>Strong border</td></tr>
+            <tr><td><span class="n-swatch-sm" style="background:#555555"></span></td><td style="color:var(--t1);font-family:var(--mono);font-size:11px">Neutral 500</td><td style="font-family:var(--mono);font-size:11px">#555555</td><td>Disabled text</td></tr>
+            <tr><td><span class="n-swatch-sm" style="background:#888888"></span></td><td style="color:var(--t1);font-family:var(--mono);font-size:11px">Neutral 400</td><td style="font-family:var(--mono);font-size:11px">#888888</td><td>Secondary text</td></tr>
+            <tr><td><span class="n-swatch-sm" style="background:#A1A1AA"></span></td><td style="color:var(--t1);font-family:var(--mono);font-size:11px">Neutral 300</td><td style="font-family:var(--mono);font-size:11px">#A1A1AA</td><td>Tertiary text</td></tr>
+            <tr><td><span class="n-swatch-sm" style="background:#D4D4D8;border-color:var(--b2)"></span></td><td style="color:var(--t1);font-family:var(--mono);font-size:11px">Neutral 200</td><td style="font-family:var(--mono);font-size:11px">#D4D4D8</td><td>Light surface border</td></tr>
+            <tr><td><span class="n-swatch-sm" style="background:#EDEDED;border-color:var(--b2)"></span></td><td style="color:var(--t1);font-family:var(--mono);font-size:11px">Neutral 100</td><td style="font-family:var(--mono);font-size:11px">#EDEDED</td><td>Primary text / light bg</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Supplemental -->
+      <div id="anc-supplemental" data-anchor="anc-supplemental" style="scroll-margin-top:80px">
+        <h3 class="anc-sub">Supplemental</h3>
+        <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">In addition to brand and neutral colors, supplemental colors can serve each specific, named use-case. Supplemental colors are available to support specific, contextual needs — such as data visualisations or tagging — without compromising parity.</p>
+        <div class="supp-wrap">
+          <div class="supp-head">
+            <div class="supp-head-cell">Blue</div>
+            <div class="supp-head-cell">Green</div>
+            <div class="supp-head-cell">Orange</div>
+            <div class="supp-head-cell">Yellow</div>
+            <div class="supp-head-cell">Red</div>
+            <div class="supp-head-cell">Purple</div>
+            <div class="supp-head-cell">Teal</div>
+          </div>
+          <div class="supp-grid">
+            <!-- Blue -->
+            <div class="supp-col">
+              <div class="supp-cell" style="background:#BAE6FD;color:#0c4a6e" onclick="copySupp('#BAE6FD',this)"><div class="supp-name">Blue 200</div><div class="supp-hex">#BAE6FD</div></div>
+              <div class="supp-cell" style="background:#38BDF8;color:#0c4a6e" onclick="copySupp('#38BDF8',this)"><div class="supp-name">Blue 400</div><div class="supp-hex">#38BDF8</div></div>
+              <div class="supp-cell" style="background:#0284C7;color:#fff" onclick="copySupp('#0284C7',this)"><div class="supp-name">Blue 600</div><div class="supp-hex">#0284C7</div></div>
+              <div class="supp-cell" style="background:#075985;color:#fff" onclick="copySupp('#075985',this)"><div class="supp-name">Blue 800</div><div class="supp-hex">#075985</div></div>
+              <div class="supp-cell" style="background:#0C4A6E;color:#fff" onclick="copySupp('#0C4A6E',this)"><div class="supp-name">Blue 900</div><div class="supp-hex">#0C4A6E</div></div>
+              <div class="supp-cell" style="background:#082F49;color:#fff" onclick="copySupp('#082F49',this)"><div class="supp-name">Blue 1000</div><div class="supp-hex">#082F49</div></div>
+            </div>
+            <!-- Green -->
+            <div class="supp-col">
+              <div class="supp-cell" style="background:#BBF7D0;color:#052e16" onclick="copySupp('#BBF7D0',this)"><div class="supp-name">Green 200</div><div class="supp-hex">#BBF7D0</div></div>
+              <div class="supp-cell" style="background:#4ADE80;color:#052e16" onclick="copySupp('#4ADE80',this)"><div class="supp-name">Green 400</div><div class="supp-hex">#4ADE80</div></div>
+              <div class="supp-cell" style="background:#16A34A;color:#fff" onclick="copySupp('#16A34A',this)"><div class="supp-name">Green 600</div><div class="supp-hex">#16A34A</div></div>
+              <div class="supp-cell" style="background:#166534;color:#fff" onclick="copySupp('#166534',this)"><div class="supp-name">Green 800</div><div class="supp-hex">#166534</div></div>
+              <div class="supp-cell" style="background:#14532D;color:#fff" onclick="copySupp('#14532D',this)"><div class="supp-name">Green 900</div><div class="supp-hex">#14532D</div></div>
+              <div class="supp-cell" style="background:#052E16;color:#fff" onclick="copySupp('#052E16',this)"><div class="supp-name">Green 1000</div><div class="supp-hex">#052E16</div></div>
+            </div>
+            <!-- Orange -->
+            <div class="supp-col">
+              <div class="supp-cell" style="background:#FED7AA;color:#431407" onclick="copySupp('#FED7AA',this)"><div class="supp-name">Orange 200</div><div class="supp-hex">#FED7AA</div></div>
+              <div class="supp-cell" style="background:#FB923C;color:#431407" onclick="copySupp('#FB923C',this)"><div class="supp-name">Orange 400</div><div class="supp-hex">#FB923C</div></div>
+              <div class="supp-cell" style="background:#EA580C;color:#fff" onclick="copySupp('#EA580C',this)"><div class="supp-name">Orange 600</div><div class="supp-hex">#EA580C</div></div>
+              <div class="supp-cell" style="background:#9A3412;color:#fff" onclick="copySupp('#9A3412',this)"><div class="supp-name">Orange 800</div><div class="supp-hex">#9A3412</div></div>
+              <div class="supp-cell" style="background:#7C2D12;color:#fff" onclick="copySupp('#7C2D12',this)"><div class="supp-name">Orange 900</div><div class="supp-hex">#7C2D12</div></div>
+              <div class="supp-cell" style="background:#431407;color:#fff" onclick="copySupp('#431407',this)"><div class="supp-name">Orange 1000</div><div class="supp-hex">#431407</div></div>
+            </div>
+            <!-- Yellow -->
+            <div class="supp-col">
+              <div class="supp-cell" style="background:#FEF9C3;color:#422006" onclick="copySupp('#FEF9C3',this)"><div class="supp-name">Yellow 200</div><div class="supp-hex">#FEF9C3</div></div>
+              <div class="supp-cell" style="background:#FDE047;color:#422006" onclick="copySupp('#FDE047',this)"><div class="supp-name">Yellow 400</div><div class="supp-hex">#FDE047</div></div>
+              <div class="supp-cell" style="background:#CA8A04;color:#fff" onclick="copySupp('#CA8A04',this)"><div class="supp-name">Yellow 600</div><div class="supp-hex">#CA8A04</div></div>
+              <div class="supp-cell" style="background:#854D0E;color:#fff" onclick="copySupp('#854D0E',this)"><div class="supp-name">Yellow 800</div><div class="supp-hex">#854D0E</div></div>
+              <div class="supp-cell" style="background:#713F12;color:#fff" onclick="copySupp('#713F12',this)"><div class="supp-name">Yellow 900</div><div class="supp-hex">#713F12</div></div>
+              <div class="supp-cell" style="background:#422006;color:#fff" onclick="copySupp('#422006',this)"><div class="supp-name">Yellow 1000</div><div class="supp-hex">#422006</div></div>
+            </div>
+            <!-- Red -->
+            <div class="supp-col">
+              <div class="supp-cell" style="background:#FECACA;color:#450a0a" onclick="copySupp('#FECACA',this)"><div class="supp-name">Red 200</div><div class="supp-hex">#FECACA</div></div>
+              <div class="supp-cell" style="background:#F87171;color:#450a0a" onclick="copySupp('#F87171',this)"><div class="supp-name">Red 400</div><div class="supp-hex">#F87171</div></div>
+              <div class="supp-cell" style="background:#DC2626;color:#fff" onclick="copySupp('#DC2626',this)"><div class="supp-name">Red 600</div><div class="supp-hex">#DC2626</div></div>
+              <div class="supp-cell" style="background:#991B1B;color:#fff" onclick="copySupp('#991B1B',this)"><div class="supp-name">Red 800</div><div class="supp-hex">#991B1B</div></div>
+              <div class="supp-cell" style="background:#7F1D1D;color:#fff" onclick="copySupp('#7F1D1D',this)"><div class="supp-name">Red 900</div><div class="supp-hex">#7F1D1D</div></div>
+              <div class="supp-cell" style="background:#450A0A;color:#fff" onclick="copySupp('#450A0A',this)"><div class="supp-name">Red 1000</div><div class="supp-hex">#450A0A</div></div>
+            </div>
+            <!-- Purple -->
+            <div class="supp-col">
+              <div class="supp-cell" style="background:#E9D5FF;color:#3b0764" onclick="copySupp('#E9D5FF',this)"><div class="supp-name">Purple 200</div><div class="supp-hex">#E9D5FF</div></div>
+              <div class="supp-cell" style="background:#C084FC;color:#3b0764" onclick="copySupp('#C084FC',this)"><div class="supp-name">Purple 400</div><div class="supp-hex">#C084FC</div></div>
+              <div class="supp-cell" style="background:#9333EA;color:#fff" onclick="copySupp('#9333EA',this)"><div class="supp-name">Purple 600</div><div class="supp-hex">#9333EA</div></div>
+              <div class="supp-cell" style="background:#6B21A8;color:#fff" onclick="copySupp('#6B21A8',this)"><div class="supp-name">Purple 800</div><div class="supp-hex">#6B21A8</div></div>
+              <div class="supp-cell" style="background:#581C87;color:#fff" onclick="copySupp('#581C87',this)"><div class="supp-name">Purple 900</div><div class="supp-hex">#581C87</div></div>
+              <div class="supp-cell" style="background:#3B0764;color:#fff" onclick="copySupp('#3B0764',this)"><div class="supp-name">Purple 1000</div><div class="supp-hex">#3B0764</div></div>
+            </div>
+            <!-- Teal -->
+            <div class="supp-col">
+              <div class="supp-cell" style="background:#99F6E4;color:#042f2e" onclick="copySupp('#99F6E4',this)"><div class="supp-name">Teal 200</div><div class="supp-hex">#99F6E4</div></div>
+              <div class="supp-cell" style="background:#2DD4BF;color:#042f2e" onclick="copySupp('#2DD4BF',this)"><div class="supp-name">Teal 400</div><div class="supp-hex">#2DD4BF</div></div>
+              <div class="supp-cell" style="background:#0D9488;color:#fff" onclick="copySupp('#0D9488',this)"><div class="supp-name">Teal 600</div><div class="supp-hex">#0D9488</div></div>
+              <div class="supp-cell" style="background:#0F766E;color:#fff" onclick="copySupp('#0F766E',this)"><div class="supp-name">Teal 800</div><div class="supp-hex">#0F766E</div></div>
+              <div class="supp-cell" style="background:#134E4A;color:#fff" onclick="copySupp('#134E4A',this)"><div class="supp-name">Teal 900</div><div class="supp-hex">#134E4A</div></div>
+              <div class="supp-cell" style="background:#042F2E;color:#fff" onclick="copySupp('#042F2E',this)"><div class="supp-name">Teal 1000</div><div class="supp-hex">#042F2E</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Semantic collections -->
+    <div class="anc" id="anc-semantic" data-anchor="anc-semantic">
+      <h2 class="anc-title">Semantic collections</h2>
+      <p class="anc-desc">The system organises primitive colors into collections based on specific use cases. Use these collections whenever possible — they ensure colors are applied correctly for their intended purpose and accessibility requirements are always met.</p>
+
+      <!-- Surfaces -->
+      <div id="anc-surfaces" data-anchor="anc-surfaces" style="scroll-margin-top:80px">
+        <h3 class="anc-sub">Surfaces</h3>
+        <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">A surface is a canvas or container assigned to a layer. Components nested inside inherit the surface's background. Examples of surfaces include pages, sections, and tile backgrounds.</p>
+        <table class="token-table">
+          <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tok-swatch" style="background:#000000"></span><span class="tok-name">--bg</span></td><td><span class="tok-hex">#000000</span></td><td>Primary page background</td></tr>
+            <tr><td><span class="tok-swatch" style="background:#0a0a0a"></span><span class="tok-name">--bg2</span></td><td><span class="tok-hex">#0A0A0A</span></td><td>Secondary surface (cards, panels)</td></tr>
+            <tr><td><span class="tok-swatch" style="background:#111111"></span><span class="tok-name">--bg3</span></td><td><span class="tok-hex">#111111</span></td><td>Tertiary / hover state background</td></tr>
+            <tr><td><span class="tok-swatch" style="background:#1a1a1a"></span><span class="tok-name">--bg4</span></td><td><span class="tok-hex">#1A1A1A</span></td><td>Elevated surface (modals, dropdowns)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Elements -->
+      <div id="anc-elements" data-anchor="anc-elements" style="scroll-margin-top:80px">
+        <h3 class="anc-sub">Elements</h3>
+        <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">Element tokens include text, icons and borders. They inherit the surface mode and ensure consistent contrast, readability and hierarchy across the system.</p>
+        <table class="token-table">
+          <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tok-swatch" style="background:#ededed"></span><span class="tok-name">--t1</span></td><td><span class="tok-hex">#EDEDED</span></td><td>Primary text, headings, labels</td></tr>
+            <tr><td><span class="tok-swatch" style="background:#888888"></span><span class="tok-name">--t2</span></td><td><span class="tok-hex">#888888</span></td><td>Secondary text, descriptions</td></tr>
+            <tr><td><span class="tok-swatch" style="background:#444444"></span><span class="tok-name">--t3</span></td><td><span class="tok-hex">#444444</span></td><td>Tertiary text, placeholders, disabled</td></tr>
+            <tr><td><span class="tok-swatch" style="background:#1f1f1f;border-color:var(--b2)"></span><span class="tok-name">--b1</span></td><td><span class="tok-hex">#1F1F1F</span></td><td>Subtle border (dividers, card outlines)</td></tr>
+            <tr><td><span class="tok-swatch" style="background:#2d2d2d;border-color:var(--b2)"></span><span class="tok-name">--b2</span></td><td><span class="tok-hex">#2D2D2D</span></td><td>Default border (inputs, interactive elements)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Feedback -->
+      <div id="anc-feedback" data-anchor="anc-feedback" style="scroll-margin-top:80px">
+        <h3 class="anc-sub">Feedback</h3>
+        <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">The system supports four sets of feedback colors defining element and background color configurations for each of four key messaging types: information, success, error and warning.</p>
+        <div class="feedback-grid">
+          <div class="fb-card fb-info">
+            <div class="fb-label">Information</div>
+            <div style="font-size:12px;color:var(--t2);margin-bottom:10px">Used for neutral, informational messages.</div>
+            <div class="fb-swatches">
+              <div class="fb-sw" style="background:#0070f3" title="#0070F3"></div>
+              <div class="fb-sw" style="background:#3b9eff" title="#3B9EFF"></div>
+              <div class="fb-sw" style="background:rgba(0,112,243,.1)" title="bg"></div>
+            </div>
+          </div>
+          <div class="fb-card fb-success">
+            <div class="fb-label">Success</div>
+            <div style="font-size:12px;color:var(--t2);margin-bottom:10px">Confirms a completed or positive action.</div>
+            <div class="fb-swatches">
+              <div class="fb-sw" style="background:#00d26a" title="#00D26A"></div>
+              <div class="fb-sw" style="background:#4ade80" title="#4ADE80"></div>
+              <div class="fb-sw" style="background:rgba(0,210,106,.1)" title="bg"></div>
+            </div>
+          </div>
+          <div class="fb-card fb-warning">
+            <div class="fb-label">Warning</div>
+            <div style="font-size:12px;color:var(--t2);margin-bottom:10px">Alerts user to potential issues before proceeding.</div>
+            <div class="fb-swatches">
+              <div class="fb-sw" style="background:#f97316" title="#F97316"></div>
+              <div class="fb-sw" style="background:#fb923c" title="#FB923C"></div>
+              <div class="fb-sw" style="background:rgba(249,115,22,.1)" title="bg"></div>
+            </div>
+          </div>
+          <div class="fb-card fb-error">
+            <div class="fb-label">Error</div>
+            <div style="font-size:12px;color:var(--t2);margin-bottom:10px">Signals destructive actions or validation failures.</div>
+            <div class="fb-swatches">
+              <div class="fb-sw" style="background:#f44336" title="#F44336"></div>
+              <div class="fb-sw" style="background:#f87171" title="#F87171"></div>
+              <div class="fb-sw" style="background:rgba(244,67,54,.1)" title="bg"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data visualization -->
+      <div id="anc-dataviz" data-anchor="anc-dataviz" style="scroll-margin-top:80px">
+        <h3 class="anc-sub">Data visualization</h3>
+        <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">Data visualisation colors are graphic presentations of information. Use them to illustrate complex data relationships. They are used so far this month or how that compares to last month.</p>
+        <div class="dataviz-grid">
+          <div class="dv-swatch" onclick="copySupp('#0070F3',this)"><div class="dv-bar" style="background:#0070F3;height:40px"></div><div class="dv-label">#0070F3</div></div>
+          <div class="dv-swatch" onclick="copySupp('#00D26A',this)"><div class="dv-bar" style="background:#00D26A;height:40px"></div><div class="dv-label">#00D26A</div></div>
+          <div class="dv-swatch" onclick="copySupp('#F97316',this)"><div class="dv-bar" style="background:#F97316;height:40px"></div><div class="dv-label">#F97316</div></div>
+          <div class="dv-swatch" onclick="copySupp('#8B5CF6',this)"><div class="dv-bar" style="background:#8B5CF6;height:40px"></div><div class="dv-label">#8B5CF6</div></div>
+          <div class="dv-swatch" onclick="copySupp('#06B6D4',this)"><div class="dv-bar" style="background:#06B6D4;height:40px"></div><div class="dv-label">#06B6D4</div></div>
+          <div class="dv-swatch" onclick="copySupp('#FDE047',this)"><div class="dv-bar" style="background:#FDE047;height:40px"></div><div class="dv-label">#FDE047</div></div>
+          <div class="dv-swatch" onclick="copySupp('#F87171',this)"><div class="dv-bar" style="background:#F87171;height:40px"></div><div class="dv-label">#F87171</div></div>
+          <div class="dv-swatch" onclick="copySupp('#2DD4BF',this)"><div class="dv-bar" style="background:#2DD4BF;height:40px"></div><div class="dv-label">#2DD4BF</div></div>
+        </div>
+      </div>
+
+      <!-- Avatar -->
+      <div id="anc-avatar" data-anchor="anc-avatar" style="scroll-margin-top:80px">
+        <h3 class="anc-sub">Avatar</h3>
+        <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">Avatars are a representation of users or teams, typically displaying either an image or an automatically generated color + initials combination.</p>
+        <div class="avatar-grid">
+          <div class="av-circle" style="background:#0070f3;color:#fff">Aa</div>
+          <div class="av-circle" style="background:#00d26a;color:#052e16">Bb</div>
+          <div class="av-circle" style="background:#f97316;color:#fff">Cc</div>
+          <div class="av-circle" style="background:#8b5cf6;color:#fff">Dd</div>
+          <div class="av-circle" style="background:#f44336;color:#fff">Ee</div>
+          <div class="av-circle" style="background:#06b6d4;color:#042f2e">Ff</div>
+          <div class="av-circle" style="background:#fde047;color:#422006">Gg</div>
+          <div class="av-circle" style="background:#ec4899;color:#fff">Hh</div>
+          <div class="av-circle" style="background:#64748b;color:#fff">Ii</div>
+          <div class="av-circle" style="background:#a16207;color:#fff">Jj</div>
+          <div class="av-circle" style="background:#0891b2;color:#fff">Kk</div>
+          <div class="av-circle" style="background:#16a34a;color:#fff">Ll</div>
+        </div>
+      </div>
+    </div>
+    </div><!-- /left col -->
+
+    <!-- Right anchor nav -->
+    <aside class="right-nav" id="color-rightnav">
+      <div class="right-nav-label">On this page</div>
+      <a href="#anc-intro">Introduction</a>
+      <a href="#anc-primitive">Primitive colors</a>
+      <a href="#anc-brand" class="sub">Brand</a>
+      <a href="#anc-neutral" class="sub">Neutral</a>
+      <a href="#anc-supplemental" class="sub">Supplemental</a>
+      <a href="#anc-semantic">Semantic collections</a>
+      <a href="#anc-surfaces" class="sub">Surfaces</a>
+      <a href="#anc-elements" class="sub">Elements</a>
+      <a href="#anc-feedback" class="sub">Feedback</a>
+      <a href="#anc-dataviz" class="sub">Data visualization</a>
+      <a href="#anc-avatar" class="sub">Avatar</a>
+    </aside>
+    </div><!-- /page-cols -->
+  </div>
+
+  <!-- ─── FUNDAMENTALS: Data visualization ─── -->
+  <div class="page" id="fund-dataviz">
+    <div class="pg-eyebrow">Fundamentals</div>
+    <h1 class="pg-title">Data visualization</h1>
+    <p class="pg-desc">Guidelines for using color, form, and layout to represent data clearly and accessibly in charts, graphs, and dashboards.</p>
+    <div class="sub"><div class="sub-title">Coming soon</div>
+      <div class="alert al-info"><span>ℹ</span> This section is being documented. Check back after the next release.</div>
+    </div>
+  </div>
+
+  <!-- ─── FUNDAMENTALS: Design Tokens ─── -->
+  <div class="page" id="fund-tokens">
+    <div class="pg-eyebrow">Fundamentals</div>
+    <h1 class="pg-title">Design tokens</h1>
+    <p class="pg-desc">Design tokens are the named variables that store all visual decisions — color, typography, spacing — in a single, shareable format.</p>
+    <div class="sub"><div class="sub-title">Categories</div>
+      <div class="resource-grid">
+        <div class="res-card" style="cursor:pointer" onclick="navigate('fundamentals','fund-tokens-color')"><div class="res-icon">🎨</div><div class="res-name">Color tokens</div><div class="res-desc">All color primitives and semantic aliases</div></div>
+        <div class="res-card" style="cursor:pointer" onclick="navigate('fundamentals','fund-tokens-type')"><div class="res-icon">Aa</div><div class="res-name">Typography tokens</div><div class="res-desc">Font size, weight, line-height, and family</div></div>
+        <div class="res-card" style="cursor:pointer" onclick="navigate('fundamentals','fund-tokens-spacing')"><div class="res-icon">⊞</div><div class="res-name">Spacing tokens</div><div class="res-desc">Margin, padding, gap, and radius values</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FUNDAMENTALS: Design Tokens — Color ─── -->
+  <div class="page" id="fund-tokens-color">
+    <div class="pg-eyebrow">Design tokens</div>
+    <h1 class="pg-title">Color tokens</h1>
+    <p class="pg-desc">All color decisions expressed as CSS custom properties. Import once at the root and use anywhere.</p>
+    <div class="sub"><div class="sub-title">CSS variables</div>
+      <div class="code-block"><span class="cm">/* Root color tokens */</span><br><span class="kw">:root</span> {<br>  <span class="cm">/* Backgrounds */</span><br>  <span class="fn">--bg</span>:  <span class="str">#000000</span>;<br>  <span class="fn">--bg2</span>: <span class="str">#0A0A0A</span>;<br>  <span class="fn">--bg3</span>: <span class="str">#111111</span>;<br>  <span class="fn">--bg4</span>: <span class="str">#1A1A1A</span>;<br>  <span class="cm">/* Text */</span><br>  <span class="fn">--t1</span>:  <span class="str">#EDEDED</span>;<br>  <span class="fn">--t2</span>:  <span class="str">#888888</span>;<br>  <span class="fn">--t3</span>:  <span class="str">#444444</span>;<br>  <span class="cm">/* Borders */</span><br>  <span class="fn">--b1</span>:  <span class="str">#1F1F1F</span>;<br>  <span class="fn">--b2</span>:  <span class="str">#2D2D2D</span>;<br>  <span class="cm">/* Accents */</span><br>  <span class="fn">--blue</span>:   <span class="str">#0070F3</span>;<br>  <span class="fn">--green</span>:  <span class="str">#00D26A</span>;<br>  <span class="fn">--red</span>:    <span class="str">#F44336</span>;<br>  <span class="fn">--orange</span>: <span class="str">#F97316</span>;<br>  <span class="fn">--purple</span>: <span class="str">#8B5CF6</span>;<br>}</div>
+    </div>
+  </div>
+
+  <!-- ─── FUNDAMENTALS: Design Tokens — Typography ─── -->
+  <div class="page" id="fund-tokens-type">
+    <div class="pg-eyebrow">Design tokens</div>
+    <h1 class="pg-title">Typography tokens</h1>
+    <p class="pg-desc">Named variables for all typographic decisions — font families, sizes, weights, and line-heights.</p>
+    <div class="sub"><div class="sub-title">CSS variables</div>
+      <div class="code-block"><span class="kw">:root</span> {<br>  <span class="fn">--font-sans</span>: <span class="str">'Inter', -apple-system, sans-serif</span>;<br>  <span class="fn">--font-mono</span>: <span class="str">'JetBrains Mono', monospace</span>;<br><br>  <span class="fn">--text-display</span>: <span class="str">52px</span>;<br>  <span class="fn">--text-h1</span>:      <span class="str">36px</span>;<br>  <span class="fn">--text-h2</span>:      <span class="str">26px</span>;<br>  <span class="fn">--text-h3</span>:      <span class="str">20px</span>;<br>  <span class="fn">--text-body-lg</span>: <span class="str">16px</span>;<br>  <span class="fn">--text-body</span>:    <span class="str">14px</span>;<br>  <span class="fn">--text-sm</span>:      <span class="str">12px</span>;<br>  <span class="fn">--text-label</span>:   <span class="str">10px</span>;<br>}</div>
+    </div>
+  </div>
+
+  <!-- ─── FUNDAMENTALS: Design Tokens — Spacing ─── -->
+  <div class="page" id="fund-tokens-spacing">
+    <div class="pg-eyebrow">Design tokens</div>
+    <h1 class="pg-title">Spacing tokens</h1>
+    <p class="pg-desc">All spacing, sizing, and radius values as CSS custom properties based on a 4px grid.</p>
+    <div class="sub"><div class="sub-title">CSS variables</div>
+      <div class="code-block"><span class="kw">:root</span> {<br>  <span class="fn">--space-1</span>:  <span class="str">4px</span>;<br>  <span class="fn">--space-2</span>:  <span class="str">8px</span>;<br>  <span class="fn">--space-3</span>:  <span class="str">12px</span>;<br>  <span class="fn">--space-4</span>:  <span class="str">16px</span>;<br>  <span class="fn">--space-5</span>:  <span class="str">20px</span>;<br>  <span class="fn">--space-6</span>:  <span class="str">24px</span>;<br>  <span class="fn">--space-8</span>:  <span class="str">32px</span>;<br>  <span class="fn">--space-10</span>: <span class="str">40px</span>;<br>  <span class="fn">--space-12</span>: <span class="str">48px</span>;<br>  <span class="fn">--space-16</span>: <span class="str">64px</span>;<br><br>  <span class="fn">--r-sm</span>:   <span class="str">4px</span>;<br>  <span class="fn">--r-md</span>:   <span class="str">8px</span>;<br>  <span class="fn">--r-lg</span>:   <span class="str">12px</span>;<br>  <span class="fn">--r-full</span>: <span class="str">9999px</span>;<br>}</div>
+    </div>
+  </div>
+
+  <!-- ─── FUNDAMENTALS: Grid ─── -->
+  <div class="page" id="fund-grid">
+    <div class="pg-eyebrow">Fundamentals</div>
+    <h1 class="pg-title">Grid</h1>
+    <p class="pg-desc">An adaptable layout framework used to organise and arrange content cohesively across all viewport widths.</p>
+    <div class="sub"><div class="sub-title">Coming soon</div>
+      <div class="alert al-info"><span>ℹ</span> Grid documentation is being prepared. Check back after the next release.</div>
+    </div>
+  </div>
+
+  <!-- ─── FUNDAMENTALS: Iconography ─── -->
+  <div class="page" id="fund-iconography">
+    <div class="pg-eyebrow">Fundamentals</div>
+    <h1 class="pg-title">Iconography</h1>
+    <p class="pg-desc">A consistent icon set providing clear, recognisable visual cues that reinforce meaning throughout the UI.</p>
+    <div class="sub"><div class="sub-title">Coming soon</div>
+      <div class="alert al-info"><span>ℹ</span> The full icon library documentation is coming in the next release.</div>
+    </div>
+  </div>
+
 
   <!-- ─── FUNDAMENTALS: Typography ─── -->
   <div class="page" id="fund-typography">
@@ -1107,7 +1681,7 @@ let activePage = 'wn-release';
 const tabDefaults = {
   'whats-new':       'wn-release',
   'getting-started': 'gs-overview',
-  'fundamentals':    'fund-colors',
+  'fundamentals':    'fund-overview',
   'components':      'comp-buttons',
   'content':         'cnt-writing',
   'support':         'sup-faq'
@@ -1210,6 +1784,50 @@ function copyHex(hex, el) {
     setTimeout(() => nm.textContent = orig, 1200);
   });
 }
+
+// ── Copy supplemental swatch ──
+function copySupp(hex, el) {
+  navigator.clipboard.writeText(hex).then(() => {
+    const nm = el.querySelector('.supp-name');
+    if (!nm) return;
+    const orig = nm.textContent;
+    nm.textContent = 'Copied!';
+    setTimeout(() => nm.textContent = orig, 1000);
+  });
+}
+
+// ── Right-side anchor nav (Color page) ──
+const mainEl = document.querySelector('.main');
+
+// Click: smooth scroll within .main
+document.querySelectorAll('.right-nav a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (!target) return;
+    const mainRect = mainEl.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+    mainEl.scrollBy({ top: targetRect.top - mainRect.top - 24, behavior: 'smooth' });
+  });
+});
+
+// Scroll: highlight active anchor
+mainEl.addEventListener('scroll', () => {
+  const colorPage = document.getElementById('fund-colors');
+  if (!colorPage || !colorPage.classList.contains('active')) return;
+  const anchors = colorPage.querySelectorAll('[data-anchor]');
+  const scrollTop = mainEl.scrollTop;
+  let current = null;
+  anchors.forEach(a => {
+    const top = a.getBoundingClientRect().top - mainEl.getBoundingClientRect().top;
+    if (top <= 100) current = a.dataset.anchor;
+  });
+  document.querySelectorAll('.right-nav a').forEach(a => {
+    const id = a.getAttribute('href')?.slice(1);
+    a.classList.toggle('rn-active', id === current);
+  });
+});
 </script>
 </body>
 </html>
