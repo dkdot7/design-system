@@ -1371,77 +1371,880 @@ tbody tr:hover{background:var(--bg3)}
     <div class="inner-panel" id="clr-surface">
       <div class="page-cols">
       <div>
-        <!-- Surfaces -->
-        <div class="anc" id="se-surfaces" data-anchor="se-surfaces">
-          <h2 class="anc-title">Surfaces</h2>
-          <p class="anc-desc">A surface is a canvas or container assigned to a layer. Components nested inside inherit the surface's background. Examples include pages, sections, and tile backgrounds.</p>
-          <table class="token-table">
-            <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
-            <tbody>
-              <tr><td><span class="tok-swatch" style="background:#000000"></span><span class="tok-name">--bg</span></td><td><span class="tok-hex">#000000</span></td><td>Primary page background</td></tr>
-              <tr><td><span class="tok-swatch" style="background:#0a0a0a"></span><span class="tok-name">--bg2</span></td><td><span class="tok-hex">#0A0A0A</span></td><td>Secondary surface (cards, panels)</td></tr>
-              <tr><td><span class="tok-swatch" style="background:#111111"></span><span class="tok-name">--bg3</span></td><td><span class="tok-hex">#111111</span></td><td>Tertiary / hover state background</td></tr>
-              <tr><td><span class="tok-swatch" style="background:#1a1a1a"></span><span class="tok-name">--bg4</span></td><td><span class="tok-hex">#1A1A1A</span></td><td>Elevated surface (modals, dropdowns)</td></tr>
-              <tr><td><span class="tok-swatch" style="background:#111827"></span><span class="tok-name">--bg-overlay</span></td><td><span class="tok-hex">#111827</span></td><td>Overlay / scrim behind modals</td></tr>
-            </tbody>
-          </table>
-          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:24px">
-            <div style="background:#000000;border:1px solid var(--b2);border-radius:8px;padding:20px 16px;text-align:center">
-              <div style="font-size:11px;color:var(--t2);margin-bottom:6px">--bg</div>
-              <div style="font-size:12px;font-family:var(--mono);color:var(--t1)">#000000</div>
-              <div style="font-size:10px;color:var(--t2);margin-top:4px">Page</div>
+
+        <!-- ── What is a surface? ── -->
+        <div class="anc" id="se-what" data-anchor="se-what">
+          <h2 class="anc-title">What is a surface?</h2>
+          <p class="anc-desc">A surface is a special background that controls the color presentation of its child components. In code, a similar process sets backgrounds and configures the surface properties of components placed on top to match.</p>
+          <p class="anc-desc" style="margin-top:-8px">Surfaces exist at different levels within a layout:</p>
+          <ol style="font-size:13px;color:var(--t2);line-height:2;padding-left:20px;margin:0 0 24px">
+            <li><strong style="color:var(--t1)">Pages</strong> provide the foundational background for all other surfaces, elements and components.</li>
+            <li><strong style="color:var(--t1)">Heroes</strong> are usually the most prominent surface on a page, used to introduce the page's content.</li>
+            <li><strong style="color:var(--t1)">Sections</strong> divide content into meaningful parts and group related information.</li>
+            <li><strong style="color:var(--t1)">Tiles</strong> are contained areas of color that organise smaller pieces of information.</li>
+          </ol>
+          <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:24px">Components, such as Buttons and Notifications, are <em>not</em> surfaces. They aren't directly assigned a surface mode; instead, they inherit and adapt to the surfaces they sit on.</p>
+
+          <!-- Surface hierarchy diagram -->
+          <div style="background:var(--bg2);border:1px solid var(--b1);border-radius:10px;padding:28px;margin-bottom:8px">
+            <div style="font-size:11px;color:var(--t2);margin-bottom:16px;letter-spacing:.06em;text-transform:uppercase">Surface hierarchy</div>
+            <!-- Page -->
+            <div style="background:#0a0a0a;border:1px solid var(--b2);border-radius:8px;padding:16px;position:relative">
+              <div style="font-size:10px;color:var(--t2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px">Page</div>
+              <!-- Hero -->
+              <div style="background:#0070f3;border-radius:6px;padding:14px 16px;margin-bottom:10px">
+                <div style="font-size:10px;color:rgba(255,255,255,.7);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px">Hero</div>
+                <div style="font-size:13px;font-weight:600;color:#fff">Making the digital life work for you</div>
+              </div>
+              <!-- Sections row -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                <div style="background:#111111;border:1px solid var(--b2);border-radius:6px;padding:12px">
+                  <div style="font-size:10px;color:var(--t2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">Section</div>
+                  <!-- Tiles -->
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                    <div style="background:#1a1a1a;border:1px solid var(--b1);border-radius:4px;padding:8px;font-size:10px;color:var(--t2)">Tile</div>
+                    <div style="background:#1a1a1a;border:1px solid var(--b1);border-radius:4px;padding:8px;font-size:10px;color:var(--t2)">Tile</div>
+                  </div>
+                </div>
+                <div style="background:#111111;border:1px solid var(--b2);border-radius:6px;padding:12px">
+                  <div style="font-size:10px;color:var(--t2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">Section</div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                    <div style="background:#1a1a1a;border:1px solid var(--b1);border-radius:4px;padding:8px;font-size:10px;color:var(--t2)">Tile</div>
+                    <div style="background:#1a1a1a;border:1px solid var(--b1);border-radius:4px;padding:8px;font-size:10px;color:var(--t2)">Tile</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div style="background:#0a0a0a;border:1px solid var(--b2);border-radius:8px;padding:20px 16px;text-align:center">
-              <div style="font-size:11px;color:var(--t2);margin-bottom:6px">--bg2</div>
-              <div style="font-size:12px;font-family:var(--mono);color:var(--t1)">#0A0A0A</div>
-              <div style="font-size:10px;color:var(--t2);margin-top:4px">Card</div>
-            </div>
-            <div style="background:#111111;border:1px solid var(--b2);border-radius:8px;padding:20px 16px;text-align:center">
-              <div style="font-size:11px;color:var(--t2);margin-bottom:6px">--bg3</div>
-              <div style="font-size:12px;font-family:var(--mono);color:var(--t1)">#111111</div>
-              <div style="font-size:10px;color:var(--t2);margin-top:4px">Hover</div>
-            </div>
-            <div style="background:#1a1a1a;border:1px solid var(--b2);border-radius:8px;padding:20px 16px;text-align:center">
-              <div style="font-size:11px;color:var(--t2);margin-bottom:6px">--bg4</div>
-              <div style="font-size:12px;font-family:var(--mono);color:var(--t1)">#1A1A1A</div>
-              <div style="font-size:10px;color:var(--t2);margin-top:4px">Elevated</div>
-            </div>
-            <div style="background:#111827;border:1px solid var(--b2);border-radius:8px;padding:20px 16px;text-align:center">
-              <div style="font-size:11px;color:var(--t2);margin-bottom:6px">--bg-overlay</div>
-              <div style="font-size:12px;font-family:var(--mono);color:var(--t1)">#111827</div>
-              <div style="font-size:10px;color:var(--t2);margin-top:4px">Overlay</div>
+            <!-- Not a surface note -->
+            <div style="margin-top:16px;padding:10px 14px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);border-radius:6px;font-size:12px;color:#fb923c">
+              ⚠ Buttons, inputs, and notifications are <strong>not surfaces</strong> — they inherit the surface mode of their parent.
             </div>
           </div>
         </div>
 
-        <!-- Elements -->
-        <div class="anc" id="se-elements" data-anchor="se-elements" style="margin-top:48px">
-          <h2 class="anc-title">Elements</h2>
-          <p class="anc-desc">Element tokens cover text, icon, and border colors. They inherit the surface mode and ensure consistent contrast, readability, and hierarchy across the system.</p>
-          <table class="token-table">
-            <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
-            <tbody>
-              <tr><td><span class="tok-swatch" style="background:#ededed"></span><span class="tok-name">--t1</span></td><td><span class="tok-hex">#EDEDED</span></td><td>Primary text, headings, labels</td></tr>
-              <tr><td><span class="tok-swatch" style="background:#888888"></span><span class="tok-name">--t2</span></td><td><span class="tok-hex">#888888</span></td><td>Secondary text, descriptions</td></tr>
-              <tr><td><span class="tok-swatch" style="background:#444444"></span><span class="tok-name">--t3</span></td><td><span class="tok-hex">#444444</span></td><td>Tertiary text, placeholders, disabled</td></tr>
-              <tr><td><span class="tok-swatch" style="background:#0070f3"></span><span class="tok-name">--accent</span></td><td><span class="tok-hex">#0070F3</span></td><td>Primary interactive / link color</td></tr>
-              <tr><td><span class="tok-swatch" style="background:#1f1f1f;border-color:var(--b2)"></span><span class="tok-name">--b1</span></td><td><span class="tok-hex">#1F1F1F</span></td><td>Subtle border (dividers)</td></tr>
-              <tr><td><span class="tok-swatch" style="background:#2d2d2d;border-color:var(--b2)"></span><span class="tok-name">--b2</span></td><td><span class="tok-hex">#2D2D2D</span></td><td>Default border (inputs, cards)</td></tr>
-              <tr><td><span class="tok-swatch" style="background:#404040;border-color:var(--b2)"></span><span class="tok-name">--b3</span></td><td><span class="tok-hex">#404040</span></td><td>Strong border (focused states)</td></tr>
-            </tbody>
-          </table>
-          <div style="margin-top:24px;padding:24px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px">
-            <div style="font-size:13px;color:var(--t2);margin-bottom:16px">Text hierarchy preview</div>
-            <div style="font-size:18px;font-weight:600;color:var(--t1);margin-bottom:6px">Primary heading (--t1)</div>
-            <div style="font-size:14px;color:var(--t2);margin-bottom:6px">Secondary description text for additional context and supporting information. (--t2)</div>
-            <div style="font-size:12px;color:var(--t3)">Tertiary / placeholder / disabled text (--t3)</div>
+        <!-- ── The 8 surfaces ── -->
+        <div class="anc" id="se-eight" data-anchor="se-eight" style="margin-top:48px">
+          <h2 class="anc-title">The system has eight surfaces — six with defined purposes and two custom special cases</h2>
+          <p class="anc-desc">While each surface is linked to a primitive color, we recommend using the semantic surface token wherever possible. They allow elements and components within them to adjust automatically, making them easier to use and ensuring accessibility requirements are met.</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px">
+            <!-- Light surfaces -->
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--t2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px">Light surfaces</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                  <div style="height:80px;background:#FFFFFF"></div>
+                  <div style="padding:10px 12px;background:#fafafa">
+                    <div style="font-size:11px;font-weight:600;color:#111">Light Primary</div>
+                    <div style="font-size:10px;color:#666;font-family:var(--mono)">White · #FFFFFF</div>
+                  </div>
+                </div>
+                <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                  <div style="height:80px;background:#F5F5F5"></div>
+                  <div style="padding:10px 12px;background:#fafafa">
+                    <div style="font-size:11px;font-weight:600;color:#111">Light Secondary</div>
+                    <div style="font-size:10px;color:#666;font-family:var(--mono)">Gray 50 · #F5F5F5</div>
+                  </div>
+                </div>
+                <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                  <div style="height:80px;background:#F0EDE8"></div>
+                  <div style="padding:10px 12px;background:#fafafa">
+                    <div style="font-size:11px;font-weight:600;color:#111">Light Brand Neutral</div>
+                    <div style="font-size:10px;color:#666;font-family:var(--mono)">Stone · #F0EDE8</div>
+                  </div>
+                </div>
+                <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                  <div style="height:80px;background:linear-gradient(135deg,#e0e0e0 25%,#ccc 25%,#ccc 50%,#e0e0e0 50%,#e0e0e0 75%,#ccc 75%);background-size:8px 8px"></div>
+                  <div style="padding:10px 12px;background:#fafafa">
+                    <div style="font-size:11px;font-weight:600;color:#111">Light Custom</div>
+                    <div style="font-size:10px;color:#666;font-family:var(--mono)">Media / Custom Hex</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Dark surfaces -->
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--t2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px">Dark surfaces</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                  <div style="height:80px;background:#000000"></div>
+                  <div style="padding:10px 12px;background:#0a0a0a">
+                    <div style="font-size:11px;font-weight:600;color:var(--t1)">Dark Primary</div>
+                    <div style="font-size:10px;color:var(--t2);font-family:var(--mono)">Black · #000000</div>
+                  </div>
+                </div>
+                <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                  <div style="height:80px;background:#111111"></div>
+                  <div style="padding:10px 12px;background:#0a0a0a">
+                    <div style="font-size:11px;font-weight:600;color:var(--t1)">Dark Secondary</div>
+                    <div style="font-size:10px;color:var(--t2);font-family:var(--mono)">Gray 900 · #111111</div>
+                  </div>
+                </div>
+                <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                  <div style="height:80px;background:#0070F3"></div>
+                  <div style="padding:10px 12px;background:#0a0a0a">
+                    <div style="font-size:11px;font-weight:600;color:var(--t1)">Dark Brand Highlight</div>
+                    <div style="font-size:10px;color:var(--t2);font-family:var(--mono)">Signal Blue · #0070F3</div>
+                  </div>
+                </div>
+                <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                  <div style="height:80px;background:linear-gradient(135deg,#1a1a1a 25%,#222 25%,#222 50%,#1a1a1a 50%,#1a1a1a 75%,#222 75%);background-size:8px 8px"></div>
+                  <div style="padding:10px 12px;background:#0a0a0a">
+                    <div style="font-size:11px;font-weight:600;color:var(--t1)">Dark Custom</div>
+                    <div style="font-size:10px;color:var(--t2);font-family:var(--mono)">Media / Custom Hex</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tokens table -->
+          <div style="margin-top:28px">
+            <div style="font-size:12px;color:var(--t2);margin-bottom:12px">Go to the <strong style="color:var(--t1)">Tokens</strong> table for a complete list of surface tokens.</div>
+            <table class="token-table">
+              <thead><tr><th>Surface</th><th>Token</th><th>Value</th><th>Mode</th></tr></thead>
+              <tbody>
+                <tr><td>Light Primary</td><td><span class="tok-name">--surf-light-1</span></td><td><span class="tok-hex">#FFFFFF</span></td><td style="color:var(--t2);font-size:12px">Light</td></tr>
+                <tr><td>Light Secondary</td><td><span class="tok-name">--surf-light-2</span></td><td><span class="tok-hex">#F5F5F5</span></td><td style="color:var(--t2);font-size:12px">Light</td></tr>
+                <tr><td>Light Brand Neutral</td><td><span class="tok-name">--surf-light-neutral</span></td><td><span class="tok-hex">#F0EDE8</span></td><td style="color:var(--t2);font-size:12px">Light</td></tr>
+                <tr><td>Light Custom</td><td><span class="tok-name">--surf-light-custom</span></td><td><span class="tok-hex">Media / Hex</span></td><td style="color:var(--t2);font-size:12px">Light</td></tr>
+                <tr><td>Dark Primary</td><td><span class="tok-name">--surf-dark-1</span></td><td><span class="tok-hex">#000000</span></td><td style="color:var(--t2);font-size:12px">Dark</td></tr>
+                <tr><td>Dark Secondary</td><td><span class="tok-name">--surf-dark-2</span></td><td><span class="tok-hex">#111111</span></td><td style="color:var(--t2);font-size:12px">Dark</td></tr>
+                <tr><td>Dark Brand Highlight</td><td><span class="tok-name">--surf-dark-brand</span></td><td><span class="tok-hex">#0070F3</span></td><td style="color:var(--t2);font-size:12px">Dark</td></tr>
+                <tr><td>Dark Custom</td><td><span class="tok-name">--surf-dark-custom</span></td><td><span class="tok-hex">Media / Hex</span></td><td style="color:var(--t2);font-size:12px">Dark</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
-      </div>
+
+        <!-- ── Page colors ── -->
+        <div class="anc" id="se-page-colors" data-anchor="se-page-colors" style="margin-top:48px">
+          <h2 class="anc-title">Page colors</h2>
+          <p class="anc-desc">Page surfaces define the overall environment of a page. There are two light page surfaces and one dark page surface to choose from.</p>
+          <ul style="font-size:13px;color:var(--t2);line-height:2;padding-left:20px;margin:0 0 24px">
+            <li>There are two light page surfaces and one dark page surface.</li>
+            <li>Use light pages in most cases.</li>
+          </ul>
+        </div>
+
+        <!-- ── Light pages ── -->
+        <div class="anc" id="se-light-pages" data-anchor="se-light-pages" style="margin-top:40px">
+          <h3 class="anc-sub">Light pages</h3>
+
+          <!-- Light Primary -->
+          <div style="margin-bottom:28px">
+            <div style="font-size:13px;font-weight:600;color:var(--t1);margin-bottom:4px">Light Primary</div>
+            <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">Use Light Primary (#FFFFFF) on standard or transactional pages because it has a cleaner, less distinctive surface appearance. It is the default page surface for most cases.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <!-- Do -->
+              <div>
+                <div style="font-size:11px;font-weight:700;color:#00d26a;letter-spacing:.06em;margin-bottom:8px">DO</div>
+                <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                  <div style="background:#FFFFFF;padding:16px;min-height:120px">
+                    <div style="font-size:10px;color:#999;margin-bottom:8px">Standard page · Light Primary</div>
+                    <div style="background:#000;color:#fff;font-size:11px;padding:10px 12px;border-radius:6px;margin-bottom:6px">
+                      <div style="font-size:10px;color:#888">Account</div>
+                      <div style="font-weight:600">Welcome back, Alex</div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                      <div style="background:#f5f5f5;border:1px solid #e5e5e5;border-radius:4px;padding:8px">
+                        <div style="font-size:9px;color:#888">Plan</div>
+                        <div style="font-size:11px;font-weight:600;color:#111">Pro</div>
+                      </div>
+                      <div style="background:#f5f5f5;border:1px solid #e5e5e5;border-radius:4px;padding:8px">
+                        <div style="font-size:9px;color:#888">Billing</div>
+                        <div style="font-size:11px;font-weight:600;color:#111">$49/mo</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding:8px 12px;background:#f5f5f5;border-top:1px solid #e5e5e5;font-size:11px;color:#666">Use Light Primary for standard pages</div>
+                </div>
+              </div>
+              <!-- Don't -->
+              <div>
+                <div style="font-size:11px;font-weight:700;color:#f44336;letter-spacing:.06em;margin-bottom:8px">DON'T</div>
+                <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                  <div style="background:#F5F5F5;padding:16px;min-height:120px;position:relative">
+                    <div style="position:absolute;top:8px;right:8px;width:20px;height:20px;background:#f44336;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff">✕</div>
+                    <div style="font-size:10px;color:#999;margin-bottom:8px">Standard page · Light Secondary ✕</div>
+                    <div style="background:#000;color:#fff;font-size:11px;padding:10px 12px;border-radius:6px;margin-bottom:6px">
+                      <div style="font-size:10px;color:#888">Account</div>
+                      <div style="font-weight:600">Welcome back, Alex</div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                      <div style="background:#fff;border:1px solid #ddd;border-radius:4px;padding:8px">
+                        <div style="font-size:9px;color:#888">Plan</div>
+                        <div style="font-size:11px;font-weight:600;color:#111">Pro</div>
+                      </div>
+                      <div style="background:#fff;border:1px solid #ddd;border-radius:4px;padding:8px">
+                        <div style="font-size:9px;color:#888">Billing</div>
+                        <div style="font-size:11px;font-weight:600;color:#111">$49/mo</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding:8px 12px;background:#f5f5f5;border-top:1px solid #e5e5e5;font-size:11px;color:#666">Don't use Light Secondary on a standard page</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Light Secondary -->
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--t1);margin-bottom:4px">Light Secondary</div>
+            <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">A unique Light Secondary page surface is used only when a secondary page surface is needed — for example, a settings panel or utility tool that should feel visually distinct from the primary content.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div>
+                <div style="font-size:11px;font-weight:700;color:#00d26a;letter-spacing:.06em;margin-bottom:8px">DO</div>
+                <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                  <div style="background:#F5F5F5;padding:16px;min-height:100px">
+                    <div style="font-size:10px;color:#999;margin-bottom:8px">Utility page · Light Secondary</div>
+                    <div style="background:#fff;border:1px solid #e5e5e5;border-radius:6px;padding:10px;font-size:11px;color:#333">
+                      <div style="font-weight:600;margin-bottom:4px">Settings</div>
+                      <div style="color:#888;font-size:10px">Resolve common issues</div>
+                    </div>
+                  </div>
+                  <div style="padding:8px 12px;background:#efefef;border-top:1px solid #e5e5e5;font-size:11px;color:#666">Use only for utility-focused experiences</div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px;font-weight:700;color:#f44336;letter-spacing:.06em;margin-bottom:8px">DON'T</div>
+                <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                  <div style="background:#F5F5F5;padding:16px;min-height:100px;position:relative">
+                    <div style="position:absolute;top:8px;right:8px;width:20px;height:20px;background:#f44336;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff">✕</div>
+                    <div style="font-size:10px;color:#999;margin-bottom:8px">Marketing page · Light Secondary ✕</div>
+                    <div style="background:#0070f3;border-radius:6px;padding:10px;font-size:11px;color:#fff">
+                      <div style="font-weight:600">Choose your plan</div>
+                      <div style="font-size:10px;opacity:.8">Get started today</div>
+                    </div>
+                  </div>
+                  <div style="padding:8px 12px;background:#efefef;border-top:1px solid #e5e5e5;font-size:11px;color:#666">Don't use Light Secondary for marketing content</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Dark pages ── -->
+        <div class="anc" id="se-dark-pages" data-anchor="se-dark-pages" style="margin-top:48px">
+          <h3 class="anc-sub">Dark pages</h3>
+          <div style="font-size:13px;font-weight:600;color:var(--t1);margin-bottom:4px">Dark Primary</div>
+          <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:8px">Use Dark Primary (#000000) — it is the default page surface for all dark experiences. Use it for dashboard UIs, creative tools, entertainment and streaming contexts, or anywhere a focused, high-contrast environment is needed.</p>
+          <ul style="font-size:13px;color:var(--t2);line-height:2;padding-left:20px;margin:0 0 16px">
+            <li>Optimise for dark mode media (e.g. TV streaming apps).</li>
+            <li>Allow for fully immersive dark experiences.</li>
+            <li>Differentiate product lines, e.g. dashboards.</li>
+          </ul>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#00d26a;letter-spacing:.06em;margin-bottom:8px">DO</div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                <div style="background:#000;padding:16px;min-height:120px">
+                  <div style="font-size:10px;color:#555;margin-bottom:8px">Dashboard · Dark Primary</div>
+                  <div style="background:#0070f3;border-radius:6px;padding:12px;margin-bottom:8px">
+                    <div style="font-size:12px;font-weight:700;color:#fff">Analytics</div>
+                    <div style="font-size:10px;color:rgba(255,255,255,.7)">Real-time data overview</div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                    <div style="background:#111;border:1px solid #222;border-radius:4px;padding:8px">
+                      <div style="font-size:9px;color:#666">Sessions</div>
+                      <div style="font-size:13px;font-weight:700;color:#ededed">24.8k</div>
+                    </div>
+                    <div style="background:#111;border:1px solid #222;border-radius:4px;padding:8px">
+                      <div style="font-size:9px;color:#666">Conversion</div>
+                      <div style="font-size:13px;font-weight:700;color:#00d26a">4.2%</div>
+                    </div>
+                  </div>
+                </div>
+                <div style="padding:8px 12px;background:#0a0a0a;border-top:1px solid var(--b2);font-size:11px;color:var(--t2)">Use Dark Primary for dashboards and dark experiences</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#f44336;letter-spacing:.06em;margin-bottom:8px">DON'T</div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                <div style="background:#000;padding:16px;min-height:120px;position:relative">
+                  <div style="position:absolute;top:8px;right:8px;width:20px;height:20px;background:#f44336;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff">✕</div>
+                  <div style="font-size:10px;color:#555;margin-bottom:8px">Help page · Dark Primary ✕</div>
+                  <div style="background:#111;border:1px solid #222;border-radius:6px;padding:12px">
+                    <div style="font-size:12px;font-weight:600;color:#ededed">Help &amp; support</div>
+                    <div style="font-size:10px;color:#666;margin-top:4px">Frequently asked questions</div>
+                  </div>
+                </div>
+                <div style="padding:8px 12px;background:#0a0a0a;border-top:1px solid var(--b2);font-size:11px;color:var(--t2)">Don't use Dark Primary for standard utility or help pages</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Hero & section colors ── -->
+        <div class="anc" id="se-hero" data-anchor="se-hero" style="margin-top:48px">
+          <h2 class="anc-title">Hero and section colors</h2>
+          <p class="anc-desc">Heroes and sections are large fields of colour that organise and establish hierarchy on a page. Make sections the same colour as the page by default, introducing the page's context of the top, while sections group related content.</p>
+          <ul style="font-size:13px;color:var(--t2);line-height:2;padding-left:20px;margin:0 0 24px">
+            <li>Make sections the same colour as their underlying page in most cases.</li>
+            <li>Maintain visual nesting and elevation hierarchy by layer.</li>
+            <li>Use a hero to highlight the top of the page but avoid overusing it.</li>
+          </ul>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#00d26a;letter-spacing:.06em;margin-bottom:8px">DO</div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                <div style="background:#000;padding:16px">
+                  <div style="background:#0070f3;border-radius:6px;padding:14px;margin-bottom:8px">
+                    <div style="font-size:13px;font-weight:700;color:#fff">Making the digital life<br>work for your business</div>
+                  </div>
+                  <div style="background:#111;border-radius:6px;padding:12px;margin-bottom:6px">
+                    <div style="font-size:10px;color:#666;margin-bottom:4px">Section</div>
+                    <div style="font-size:11px;color:#ededed">Connecting companies and everything</div>
+                  </div>
+                  <div style="background:#111;border-radius:6px;padding:12px">
+                    <div style="font-size:10px;color:#666;margin-bottom:4px">Section</div>
+                    <div style="font-size:11px;color:#ededed">Smart billing, tables and more</div>
+                  </div>
+                </div>
+                <div style="padding:8px 12px;background:#0a0a0a;border-top:1px solid var(--b2);font-size:11px;color:var(--t2)">Do use Dark Brand Highlight hero to highlight top of page</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#f44336;letter-spacing:.06em;margin-bottom:8px">DON'T</div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                <div style="background:#000;padding:16px;position:relative">
+                  <div style="position:absolute;top:8px;right:8px;width:20px;height:20px;background:#f44336;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff">✕</div>
+                  <div style="background:#0070f3;border-radius:6px;padding:10px;margin-bottom:6px">
+                    <div style="font-size:11px;font-weight:600;color:#fff">Hero</div>
+                  </div>
+                  <div style="background:#0070f3;border-radius:6px;padding:10px;margin-bottom:6px">
+                    <div style="font-size:11px;color:#fff;opacity:.8">Section (same as hero) ✕</div>
+                  </div>
+                  <div style="background:#0070f3;border-radius:6px;padding:10px">
+                    <div style="font-size:11px;color:#fff;opacity:.6">Section (same again) ✕</div>
+                  </div>
+                </div>
+                <div style="padding:8px 12px;background:#0a0a0a;border-top:1px solid var(--b2);font-size:11px;color:var(--t2)">Don't create a header when it doesn't require visual prominence</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── On light pages ── -->
+        <div class="anc" id="se-on-light" data-anchor="se-on-light" style="margin-top:48px">
+          <h3 class="anc-sub">On light pages</h3>
+          <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:20px">The following surfaces should be used for heroes and sections on a light page. Numbers indicate preference order — use lower-numbered surfaces first before reaching for higher ones.</p>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px">
+            <!-- 1 -->
+            <div>
+              <div style="width:20px;height:20px;background:var(--b2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--t2);margin-bottom:8px">1</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+                <div style="border-radius:4px;overflow:hidden;border:1px solid var(--b2)">
+                  <div style="height:48px;background:#000000"></div>
+                  <div style="padding:4px 6px;background:#0a0a0a;font-size:9px;color:var(--t2)">Dark Primary</div>
+                </div>
+                <div style="border-radius:4px;overflow:hidden;border:1px solid var(--b2)">
+                  <div style="height:48px;background:#111111"></div>
+                  <div style="padding:4px 6px;background:#0a0a0a;font-size:9px;color:var(--t2)">Dark Secondary</div>
+                </div>
+              </div>
+            </div>
+            <!-- 2 -->
+            <div>
+              <div style="width:20px;height:20px;background:var(--b2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--t2);margin-bottom:8px">2</div>
+              <div style="border-radius:4px;overflow:hidden;border:1px solid var(--b2)">
+                <div style="height:48px;background:#0070F3"></div>
+                <div style="padding:4px 6px;background:#0a0a0a;font-size:9px;color:var(--t2)">Dark Brand Highlight</div>
+              </div>
+            </div>
+            <!-- 3 -->
+            <div>
+              <div style="width:20px;height:20px;background:var(--b2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--t2);margin-bottom:8px">3</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+                <div style="border-radius:4px;overflow:hidden;border:1px solid #e5e5e5">
+                  <div style="height:48px;background:#F0EDE8"></div>
+                  <div style="padding:4px 6px;background:#f5f5f5;font-size:9px;color:#666">Light Brand Neutral</div>
+                </div>
+                <div style="border-radius:4px;overflow:hidden;border:1px solid #e5e5e5">
+                  <div style="height:48px;background:#F5F5F5"></div>
+                  <div style="padding:4px 6px;background:#f5f5f5;font-size:9px;color:#666">Light Secondary</div>
+                </div>
+              </div>
+            </div>
+            <!-- 4 -->
+            <div>
+              <div style="width:20px;height:20px;background:var(--b2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--t2);margin-bottom:8px">4</div>
+              <div style="border-radius:4px;overflow:hidden;border:1px solid #e5e5e5">
+                <div style="height:48px;background:#FFFFFF;border-bottom:1px solid #e5e5e5"></div>
+                <div style="padding:4px 6px;background:#f5f5f5;font-size:9px;color:#666">Light Primary</div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:10px 14px;background:rgba(0,112,243,.08);border:1px solid rgba(0,112,243,.2);border-radius:6px;font-size:12px;color:#3b9eff">
+            ℹ Use Light Primary (#FFFFFF) hero on Light Secondary page surfaces only — and only for standard or transactional pages.
+          </div>
+        </div>
+
+        <!-- ── On dark pages ── -->
+        <div class="anc" id="se-on-dark" data-anchor="se-on-dark" style="margin-top:48px">
+          <h3 class="anc-sub">On dark pages</h3>
+          <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:20px">The following surfaces are valid for heroes and sections on dark pages. Dark pages have fewer valid combinations to maintain the high-contrast aesthetic.</p>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px">
+            <div>
+              <div style="width:20px;height:20px;background:var(--b2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--t2);margin-bottom:8px">1</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+                <div style="border-radius:4px;overflow:hidden;border:1px solid var(--b2)">
+                  <div style="height:48px;background:#111111"></div>
+                  <div style="padding:4px 6px;background:#0a0a0a;font-size:9px;color:var(--t2)">Dark Secondary</div>
+                </div>
+                <div style="border-radius:4px;overflow:hidden;border:1px solid var(--b2)">
+                  <div style="height:48px;background:#1a1a1a"></div>
+                  <div style="padding:4px 6px;background:#0a0a0a;font-size:9px;color:var(--t2)">Gray 800</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div style="width:20px;height:20px;background:var(--b2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--t2);margin-bottom:8px">2</div>
+              <div style="border-radius:4px;overflow:hidden;border:1px solid var(--b2)">
+                <div style="height:48px;background:#0070F3"></div>
+                <div style="padding:4px 6px;background:#0a0a0a;font-size:9px;color:var(--t2)">Dark Brand Highlight</div>
+              </div>
+            </div>
+            <div>
+              <div style="width:20px;height:20px;background:var(--b2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--t2);margin-bottom:8px">3</div>
+              <div style="border-radius:4px;overflow:hidden;border:1px solid #e5e5e5">
+                <div style="height:48px;background:#FFFFFF;border-bottom:1px solid #e5e5e5"></div>
+                <div style="padding:4px 6px;background:#f5f5f5;font-size:9px;color:#666">Light Primary</div>
+              </div>
+            </div>
+            <div>
+              <div style="width:20px;height:20px;background:var(--b2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--t2);margin-bottom:8px">4</div>
+              <div style="border-radius:4px;overflow:hidden;border:1px solid #e5e5e5">
+                <div style="height:48px;background:#F0EDE8"></div>
+                <div style="padding:4px 6px;background:#f5f5f5;font-size:9px;color:#666">Light Brand Neutral</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#00d26a;letter-spacing:.06em;margin-bottom:8px">DO</div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                <div style="background:#000;padding:16px">
+                  <div style="background:#0070f3;border-radius:6px;padding:12px;margin-bottom:8px">
+                    <div style="font-size:12px;font-weight:700;color:#fff">Hi, Alex</div>
+                    <div style="font-size:10px;color:rgba(255,255,255,.7)">Thanks for being a loyal customer for 3 years.</div>
+                  </div>
+                  <div style="background:#111;border-radius:6px;padding:10px">
+                    <div style="font-size:10px;color:#666">Important interactions</div>
+                  </div>
+                </div>
+                <div style="padding:8px 12px;background:#0a0a0a;border-top:1px solid var(--b2);font-size:11px;color:var(--t2)">Do use a Dark Brand Highlight hero for key marketing pages</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#f44336;letter-spacing:.06em;margin-bottom:8px">DON'T</div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                <div style="background:#000;padding:16px;position:relative">
+                  <div style="position:absolute;top:8px;right:8px;width:20px;height:20px;background:#f44336;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff">✕</div>
+                  <div style="background:#fff;border-radius:6px;padding:12px;margin-bottom:8px">
+                    <div style="font-size:12px;font-weight:700;color:#111">Bill &amp; payment history ✕</div>
+                  </div>
+                  <div style="background:#fff;border-radius:6px;padding:10px">
+                    <div style="font-size:10px;color:#666">Light section on Dark page ✕</div>
+                  </div>
+                </div>
+                <div style="padding:8px 12px;background:#0a0a0a;border-top:1px solid var(--b2);font-size:11px;color:var(--t2)">Don't use a Dark Brand Highlight hero on standard transactional pages</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Custom surfaces ── -->
+        <div class="anc" id="se-custom" data-anchor="se-custom" style="margin-top:48px">
+          <h3 class="anc-sub">Custom surfaces</h3>
+          <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">You can also apply custom surfaces to display media backgrounds or solid colour fills when an existing primitive or token does not meet your needs.</p>
+          <ul style="font-size:13px;color:var(--t2);line-height:2;padding-left:20px;margin:0 0 16px">
+            <li>Allowed only at the hero level, not the page level.</li>
+            <li>In Figma, use the Light Custom or Dark Custom surface variant.</li>
+            <li>Only use custom colour fills in very limited situations — they bypass system semantics.</li>
+          </ul>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+              <div style="height:80px;background:linear-gradient(135deg,#1a1a1a,#0070f3,#00d26a);display:flex;align-items:center;justify-content:center">
+                <div style="font-size:11px;color:#fff;font-weight:600">Custom media background</div>
+              </div>
+              <div style="padding:10px 12px;background:#0a0a0a">
+                <div style="font-size:11px;font-weight:600;color:var(--t1)">Dark Custom</div>
+                <div style="font-size:10px;color:var(--t2)">Media / gradient / custom hex — hero only</div>
+              </div>
+            </div>
+            <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+              <div style="height:80px;background:linear-gradient(135deg,#f5f5f5,#e0e7ff,#fce7f3);display:flex;align-items:center;justify-content:center">
+                <div style="font-size:11px;color:#333;font-weight:600">Custom light media background</div>
+              </div>
+              <div style="padding:10px 12px;background:#f9f9f9">
+                <div style="font-size:11px;font-weight:600;color:#111">Light Custom</div>
+                <div style="font-size:10px;color:#666">Media / gradient / custom hex — hero only</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Tile colors ── -->
+        <div class="anc" id="se-tile-colors" data-anchor="se-tile-colors" style="margin-top:48px">
+          <h2 class="anc-title">Tile colors</h2>
+          <p class="anc-desc">Tiles are the smallest surface type. They organise smaller pieces of content within sections. Tile colours are contextual — they depend on the surface they sit on.</p>
+          <ul style="font-size:13px;color:var(--t2);line-height:2;padding-left:20px;margin:0 0 24px">
+            <li>Take care to use properly elevated surface colours for tiles to create hierarchy.</li>
+            <li>Tiles should always use a colour that has additional elevation compared to their parent section.</li>
+          </ul>
+        </div>
+
+        <!-- ── Tile colors on light surfaces ── -->
+        <div class="anc" id="se-tile-light" data-anchor="se-tile-light" style="margin-top:32px">
+          <h3 class="anc-sub">On light surfaces</h3>
+          <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">Use Light Primary & Light Secondary when nesting tiles on a light background to create visual depth through subtle elevation.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
+            <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+              <div style="background:#F5F5F5;padding:12px">
+                <div style="background:#FFFFFF;border:1px solid #e5e5e5;border-radius:5px;padding:10px">
+                  <div style="font-size:10px;color:#999;margin-bottom:4px">Tile · Light Primary</div>
+                  <div style="font-size:12px;font-weight:600;color:#111">White tile</div>
+                </div>
+              </div>
+              <div style="padding:8px 12px;background:#f9f9f9;border-top:1px solid #e5e5e5">
+                <div style="font-size:11px;font-weight:600;color:#111">Light Primary & Light Secondary</div>
+                <div style="font-size:10px;color:#666">Use when nesting on light backgrounds</div>
+              </div>
+            </div>
+            <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+              <div style="background:#FFFFFF;padding:12px">
+                <div style="background:#000;border-radius:5px;padding:10px">
+                  <div style="font-size:10px;color:#555;margin-bottom:4px">Tile · Dark Primary</div>
+                  <div style="font-size:12px;font-weight:600;color:#ededed">Dark tile</div>
+                </div>
+              </div>
+              <div style="padding:8px 12px;background:#f9f9f9;border-top:1px solid #e5e5e5">
+                <div style="font-size:11px;font-weight:600;color:#111">Dark Primary & Dark Secondary</div>
+                <div style="font-size:10px;color:#666">High-contrast tile on light page</div>
+              </div>
+            </div>
+            <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+              <div style="background:#FFFFFF;padding:12px">
+                <div style="background:#0070f3;border-radius:5px;padding:10px">
+                  <div style="font-size:10px;color:rgba(255,255,255,.7);margin-bottom:4px">Tile · Brand Highlight</div>
+                  <div style="font-size:12px;font-weight:600;color:#fff">Brand tile</div>
+                </div>
+              </div>
+              <div style="padding:8px 12px;background:#f9f9f9;border-top:1px solid #e5e5e5">
+                <div style="font-size:11px;font-weight:600;color:#111">Dark Brand Highlight</div>
+                <div style="font-size:10px;color:#666">Emphasis tile using brand colour</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#00d26a;letter-spacing:.06em;margin-bottom:8px">DO</div>
+              <div style="background:#F5F5F5;border:1px solid #e5e5e5;border-radius:8px;padding:16px">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                  <div style="background:#fff;border:1px solid #e5e5e5;border-radius:4px;padding:8px">
+                    <div style="font-size:10px;color:#999">Tile A</div>
+                    <div style="font-size:12px;font-weight:600;color:#111">White</div>
+                  </div>
+                  <div style="background:#000;border-radius:4px;padding:8px">
+                    <div style="font-size:10px;color:#555">Tile B</div>
+                    <div style="font-size:12px;font-weight:600;color:#ededed">Black</div>
+                  </div>
+                </div>
+                <div style="font-size:10px;color:#999;margin-top:8px">Do use elevated surfaces for tiles</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#f44336;letter-spacing:.06em;margin-bottom:8px">DON'T</div>
+              <div style="background:#F5F5F5;border:1px solid #e5e5e5;border-radius:8px;padding:16px;position:relative">
+                <div style="position:absolute;top:8px;right:8px;width:18px;height:18px;background:#f44336;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff">✕</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                  <div style="background:#F5F5F5;border:1px solid #e5e5e5;border-radius:4px;padding:8px">
+                    <div style="font-size:10px;color:#bbb">Tile A</div>
+                    <div style="font-size:12px;font-weight:600;color:#ccc">Same surface ✕</div>
+                  </div>
+                  <div style="background:#F5F5F5;border:1px solid #e5e5e5;border-radius:4px;padding:8px">
+                    <div style="font-size:10px;color:#bbb">Tile B</div>
+                    <div style="font-size:12px;font-weight:600;color:#ccc">Same surface ✕</div>
+                  </div>
+                </div>
+                <div style="font-size:10px;color:#999;margin-top:8px">Don't use same surface for tiles as background</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Tile colors on dark surfaces ── -->
+        <div class="anc" id="se-tile-dark" data-anchor="se-tile-dark" style="margin-top:40px">
+          <h3 class="anc-sub">On dark surfaces</h3>
+          <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">Dark page elevation depth is summarised as: the lighter the surface, the higher the elevation. Use surfaces in this order from the base upward:</p>
+          <ol style="font-size:13px;color:var(--t2);line-height:2;padding-left:20px;margin:0 0 16px">
+            <li>Dark Primary & Dark Secondary (base)</li>
+            <li>Dark Brand Highlight</li>
+            <li>Light Primary</li>
+          </ol>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
+            <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+              <div style="background:#000;padding:12px">
+                <div style="background:#111;border:1px solid var(--b2);border-radius:5px;padding:10px">
+                  <div style="font-size:10px;color:#555;margin-bottom:4px">Tile</div>
+                  <div style="font-size:11px;font-weight:600;color:#ededed">Dark Secondary</div>
+                </div>
+              </div>
+              <div style="padding:6px 10px;background:#0a0a0a;border-top:1px solid var(--b2)">
+                <div style="font-size:10px;color:var(--t2)">Dark Primary → Dark Secondary</div>
+              </div>
+            </div>
+            <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+              <div style="background:#000;padding:12px">
+                <div style="background:#0070f3;border-radius:5px;padding:10px">
+                  <div style="font-size:10px;color:rgba(255,255,255,.6);margin-bottom:4px">Tile</div>
+                  <div style="font-size:11px;font-weight:600;color:#fff">Brand Highlight</div>
+                </div>
+              </div>
+              <div style="padding:6px 10px;background:#0a0a0a;border-top:1px solid var(--b2)">
+                <div style="font-size:10px;color:var(--t2)">Dark Brand Highlight</div>
+              </div>
+            </div>
+            <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+              <div style="background:#000;padding:12px">
+                <div style="background:#fff;border-radius:5px;padding:10px">
+                  <div style="font-size:10px;color:#999;margin-bottom:4px">Tile</div>
+                  <div style="font-size:11px;font-weight:600;color:#111">Light Primary</div>
+                </div>
+              </div>
+              <div style="padding:6px 10px;background:#0a0a0a;border-top:1px solid var(--b2)">
+                <div style="font-size:10px;color:var(--t2)">Light Primary on Dark</div>
+              </div>
+            </div>
+            <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+              <div style="background:#000;padding:12px">
+                <div style="background:#F0EDE8;border-radius:5px;padding:10px">
+                  <div style="font-size:10px;color:#999;margin-bottom:4px">Tile</div>
+                  <div style="font-size:11px;font-weight:600;color:#333">Light Brand Neutral</div>
+                </div>
+              </div>
+              <div style="padding:6px 10px;background:#0a0a0a;border-top:1px solid var(--b2)">
+                <div style="font-size:10px;color:var(--t2)">Light Brand Neutral on Dark</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#00d26a;letter-spacing:.06em;margin-bottom:8px">DO</div>
+              <div style="background:#000;border:1px solid var(--b2);border-radius:8px;padding:16px">
+                <div style="background:#111;border:1px solid var(--b2);border-radius:6px;padding:10px;margin-bottom:6px">
+                  <div style="font-size:10px;color:#555">Service address</div>
+                  <div style="font-size:11px;font-weight:600;color:#ededed">123 Main St</div>
+                  <div style="font-size:10px;color:#555">New York, NY 10001</div>
+                </div>
+                <div style="font-size:10px;color:#555;margin-top:4px">Do use elevated tiles — Dark Secondary on Dark Primary</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#f44336;letter-spacing:.06em;margin-bottom:8px">DON'T</div>
+              <div style="background:#000;border:1px solid var(--b2);border-radius:8px;padding:16px;position:relative">
+                <div style="position:absolute;top:8px;right:8px;width:18px;height:18px;background:#f44336;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff">✕</div>
+                <div style="background:#000;border:1px solid var(--b2);border-radius:6px;padding:10px;margin-bottom:6px">
+                  <div style="font-size:10px;color:#555">Service address</div>
+                  <div style="font-size:11px;font-weight:600;color:#333">Same surface ✕</div>
+                  <div style="font-size:10px;color:#555">New York, NY 10001</div>
+                </div>
+                <div style="font-size:10px;color:#555;margin-top:4px">Don't use the same colour for tiles and background</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Custom tile backgrounds ── -->
+        <div class="anc" id="se-tile-custom" data-anchor="se-tile-custom" style="margin-top:40px">
+          <h3 class="anc-sub">Custom tile backgrounds</h3>
+          <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">There are special situations where you can also use custom surfaces to display media backgrounds or solid colour fills on tiles. Use them only when an existing primitive or token doesn't meet your needs:</p>
+          <ol style="font-size:13px;color:var(--t2);line-height:2;padding-left:20px;margin:0 0 20px">
+            <li><strong style="color:var(--t1)">Media</strong> — when a tile needs a photograph or video thumbnail.</li>
+            <li><strong style="color:var(--t1)">Primitive colors</strong> — can be used in limited situations.</li>
+            <li><strong style="color:var(--t1)">Custom hex colors</strong> — for specific seasonal, partner, or campaign use.</li>
+          </ol>
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px">
+            <div style="border-radius:6px;overflow:hidden;border:1px solid var(--b2)">
+              <div style="height:56px;background:linear-gradient(135deg,#1a1a1a,#333);display:flex;align-items:center;justify-content:center;font-size:9px;color:#888">Media</div>
+              <div style="padding:6px 8px;background:#0a0a0a;font-size:9px;color:var(--t2)">Custom Dark</div>
+            </div>
+            <div style="border-radius:6px;overflow:hidden;border:1px solid var(--b2)">
+              <div style="height:56px;background:#000;display:flex;align-items:center;justify-content:center;font-size:9px;color:#555">Black</div>
+              <div style="padding:6px 8px;background:#0a0a0a;font-size:9px;color:var(--t2)">Black</div>
+            </div>
+            <div style="border-radius:6px;overflow:hidden;border:1px solid var(--b2)">
+              <div style="height:56px;background:#0070f3;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff">Signal Blue</div>
+              <div style="padding:6px 8px;background:#0a0a0a;font-size:9px;color:var(--t2)">Brand Blue</div>
+            </div>
+            <div style="border-radius:6px;overflow:hidden;border:1px solid #e5e5e5">
+              <div style="height:56px;background:#FFFFFF;border-bottom:1px solid #e5e5e5;display:flex;align-items:center;justify-content:center;font-size:9px;color:#bbb">White</div>
+              <div style="padding:6px 8px;background:#f9f9f9;font-size:9px;color:#888">White</div>
+            </div>
+            <div style="border-radius:6px;overflow:hidden;border:1px solid #e5e5e5">
+              <div style="height:56px;background:#00d26a;display:flex;align-items:center;justify-content:center;font-size:9px;color:#052e16">Vivid Green</div>
+              <div style="padding:6px 8px;background:#f9f9f9;font-size:9px;color:#888">Custom</div>
+            </div>
+          </div>
+          <div style="margin-top:16px;padding:10px 14px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);border-radius:6px;font-size:12px;color:#fb923c">
+            ⚠ Caution: Use custom colours sparingly. They may not guarantee accessibility and should always allow content to stand out visually.
+          </div>
+        </div>
+
+        <!-- ── Page examples ── -->
+        <div class="anc" id="se-page-examples" data-anchor="se-page-examples" style="margin-top:48px">
+          <h2 class="anc-title">Page examples</h2>
+          <p class="anc-desc">The general surface combination at the individual page level, as well as at an example tile or hero level, will vary considerably. The greatest variation in surface combinations is within utility-focused experiences.</p>
+
+          <div style="margin-top:4px;padding:10px 14px;background:var(--bg2);border:1px solid var(--b1);border-radius:6px;font-size:12px;color:var(--t2);margin-bottom:20px">
+            🔗 When building page templates, reference this section for valid surface combinations at each layout level.
+          </div>
+
+          <!-- Upper funnel -->
+          <div style="margin-bottom:24px">
+            <div style="font-size:13px;font-weight:600;color:var(--t1);margin-bottom:4px">Upper funnel pages</div>
+            <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:12px">Upper funnel pages aim to attract, inspire, and move the user toward a decision. Use the full range of hero surfaces including Dark Brand Highlight for impactful brand moments.</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                <div style="background:#000;padding:12px">
+                  <div style="background:#0070f3;border-radius:5px;padding:10px;margin-bottom:6px">
+                    <div style="font-size:11px;font-weight:700;color:#fff">Choose your internet plan</div>
+                    <div style="font-size:9px;color:rgba(255,255,255,.7)">Dark Brand Highlight hero</div>
+                  </div>
+                  <div style="background:#111;border-radius:5px;padding:8px">
+                    <div style="font-size:9px;color:#555">Section content</div>
+                  </div>
+                </div>
+                <div style="padding:6px 10px;background:#0a0a0a;border-top:1px solid var(--b2);font-size:10px;color:var(--t2)">Marketing · Upper funnel</div>
+              </div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                <div style="background:#000;padding:12px">
+                  <div style="background:#111;border:1px solid var(--b2);border-radius:5px;padding:10px;margin-bottom:6px">
+                    <div style="font-size:11px;font-weight:700;color:#ededed">Find a store</div>
+                    <div style="font-size:9px;color:#555">Dark Secondary hero</div>
+                  </div>
+                  <div style="background:#111;border-radius:5px;padding:8px">
+                    <div style="font-size:9px;color:#555">Store locator</div>
+                  </div>
+                </div>
+                <div style="padding:6px 10px;background:#0a0a0a;border-top:1px solid var(--b2);font-size:10px;color:var(--t2)">Store locator · Dark page</div>
+              </div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                <div style="background:#FFFFFF;padding:12px">
+                  <div style="background:#000;border-radius:5px;padding:10px;margin-bottom:6px">
+                    <div style="font-size:11px;font-weight:700;color:#fff">Help when you need it most</div>
+                    <div style="font-size:9px;color:#555">Dark Primary hero on light page</div>
+                  </div>
+                  <div style="background:#f5f5f5;border:1px solid #e5e5e5;border-radius:5px;padding:8px">
+                    <div style="font-size:9px;color:#bbb">Section content</div>
+                  </div>
+                </div>
+                <div style="padding:6px 10px;background:#f9f9f9;border-top:1px solid #e5e5e5;font-size:10px;color:#888">Awareness · Light page</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lower funnel -->
+          <div style="margin-bottom:24px">
+            <div style="font-size:13px;font-weight:600;color:var(--t1);margin-bottom:4px">Lower funnel pages</div>
+            <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:12px">Lower funnel pages focus on conversion — comparison, selection, and checkout. Use Light Primary to maintain clarity and reduce visual distraction during decision-making.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                <div style="background:#FFFFFF;padding:12px">
+                  <div style="background:#000;border-radius:5px;padding:10px;margin-bottom:6px">
+                    <div style="font-size:11px;font-weight:700;color:#fff">Compare plans</div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px">
+                    <div style="background:#f5f5f5;border:1px solid #e5e5e5;border-radius:4px;padding:7px">
+                      <div style="font-size:9px;color:#888">Pro</div>
+                      <div style="font-size:11px;font-weight:600;color:#111">$49</div>
+                    </div>
+                    <div style="background:#0070f3;border-radius:4px;padding:7px">
+                      <div style="font-size:9px;color:rgba(255,255,255,.7)">Business</div>
+                      <div style="font-size:11px;font-weight:600;color:#fff">$99</div>
+                    </div>
+                  </div>
+                </div>
+                <div style="padding:6px 10px;background:#f9f9f9;border-top:1px solid #e5e5e5;font-size:10px;color:#888">Plan comparison · Light Primary</div>
+              </div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                <div style="background:#FFFFFF;padding:12px">
+                  <div style="background:#f5f5f5;border:1px solid #e5e5e5;border-radius:5px;padding:10px;margin-bottom:6px">
+                    <div style="font-size:11px;font-weight:700;color:#111">Billing & savings</div>
+                    <div style="font-size:9px;color:#888">Your current balance: $240.48</div>
+                  </div>
+                  <div style="background:#fff;border:1px solid #e5e5e5;border-radius:5px;padding:8px">
+                    <div style="font-size:9px;color:#bbb">Transaction history</div>
+                  </div>
+                </div>
+                <div style="padding:6px 10px;background:#f9f9f9;border-top:1px solid #e5e5e5;font-size:10px;color:#888">Account billing · Light Primary</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Utility -->
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--t1);margin-bottom:4px">Utility-focused pages</div>
+            <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:12px">Utility pages (support, settings, dashboards) support the broadest range of surface combinations. Use Light Secondary surfaces to establish hierarchy within complex layouts.</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+              <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                <div style="background:#F5F5F5;padding:12px">
+                  <div style="background:#fff;border:1px solid #e5e5e5;border-radius:5px;padding:10px;margin-bottom:6px">
+                    <div style="font-size:11px;font-weight:600;color:#111">Support</div>
+                    <div style="font-size:9px;color:#888">Resolve common issues</div>
+                  </div>
+                  <div style="background:#f0ede8;border-radius:5px;padding:8px">
+                    <div style="font-size:9px;color:#888">More ways to engage</div>
+                  </div>
+                </div>
+                <div style="padding:6px 10px;background:#f9f9f9;border-top:1px solid #e5e5e5;font-size:10px;color:#888">Support · Light Secondary</div>
+              </div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                <div style="background:#000;padding:12px">
+                  <div style="background:#111;border:1px solid var(--b2);border-radius:5px;padding:10px;margin-bottom:6px">
+                    <div style="font-size:11px;font-weight:600;color:#ededed">Dashboard</div>
+                    <div style="font-size:9px;color:#555">Overview</div>
+                  </div>
+                  <div style="background:#1a1a1a;border-radius:5px;padding:8px">
+                    <div style="font-size:9px;color:#555">Show data</div>
+                  </div>
+                </div>
+                <div style="padding:6px 10px;background:#0a0a0a;border-top:1px solid var(--b2);font-size:10px;color:var(--t2)">Dashboard · Dark Primary</div>
+              </div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                <div style="background:#FFFFFF;padding:12px">
+                  <div style="background:#f5f5f5;border:1px solid #e5e5e5;border-radius:5px;padding:10px;margin-bottom:6px">
+                    <div style="font-size:11px;font-weight:600;color:#111">Smart billing</div>
+                  </div>
+                  <div style="background:#f0ede8;border-radius:5px;padding:8px">
+                    <div style="font-size:9px;color:#888">Tables and more</div>
+                  </div>
+                </div>
+                <div style="padding:6px 10px;background:#f9f9f9;border-top:1px solid #e5e5e5;font-size:10px;color:#888">Billing · Light Primary</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /left col -->
+
       <aside class="right-nav">
         <div class="right-nav-label">On this page</div>
-        <a href="#se-surfaces">Surfaces</a>
-        <a href="#se-elements">Elements</a>
+        <a href="#se-what">What is a surface?</a>
+        <a href="#se-eight">8 surfaces</a>
+        <a href="#se-page-colors">Page colors</a>
+        <a href="#se-light-pages" class="sub">Light pages</a>
+        <a href="#se-dark-pages" class="sub">Dark pages</a>
+        <a href="#se-hero">Hero & section colors</a>
+        <a href="#se-on-light" class="sub">On light pages</a>
+        <a href="#se-on-dark" class="sub">On dark pages</a>
+        <a href="#se-custom" class="sub">Custom surfaces</a>
+        <a href="#se-tile-colors">Tile colors</a>
+        <a href="#se-tile-light" class="sub">On light surfaces</a>
+        <a href="#se-tile-dark" class="sub">On dark surfaces</a>
+        <a href="#se-tile-custom" class="sub">Custom tiles</a>
+        <a href="#se-page-examples">Page examples</a>
       </aside>
       </div><!-- /page-cols -->
     </div><!-- /clr-surface -->
