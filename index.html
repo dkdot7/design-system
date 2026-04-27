@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System — Deepak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#000;--bg2:#0a0a0a;--bg3:#111;--bg4:#1a1a1a;
+  --b1:#1f1f1f;--b2:#2d2d2d;--b3:#3a3a3a;
+  --t1:#ededed;--t2:#888;--t3:#444;
+  --blue:#0070f3;--green:#00d26a;--red:#f44336;--orange:#f97316;--purple:#8b5cf6;
+  --sans:'Inter',-apple-system,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --sw:240px;--hh:52px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--t1);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow:hidden}
+
+/* ── Header ── */
+.header{
+  position:fixed;top:0;left:0;right:0;height:var(--hh);
+  background:rgba(0,0,0,.9);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--b1);
+  display:flex;align-items:center;padding:0 24px;gap:0;z-index:300;
+}
+.logo{font-size:15px;font-weight:700;letter-spacing:-0.03em;white-space:nowrap;margin-right:24px}
+.top-nav{display:flex;align-items:stretch;height:100%;flex:1;gap:0}
+.top-tab{
+  display:flex;align-items:center;padding:0 16px;
+  font-size:13px;font-weight:500;color:var(--t2);
+  background:transparent;border:none;cursor:pointer;
+  font-family:var(--sans);white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:color .12s;height:100%;
+  position:relative;top:1px;
+}
+.top-tab:hover{color:var(--t1)}
+.top-tab.active{color:var(--t1);border-bottom-color:var(--t1)}
+.header-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.search-box{
+  display:flex;align-items:center;gap:8px;
+  background:var(--bg3);border:1px solid var(--b2);border-radius:6px;
+  padding:0 10px;height:30px;width:200px;
+}
+.search-box input{
+  background:transparent;border:none;outline:none;
+  font-family:var(--sans);font-size:12px;color:var(--t1);width:100%;
+}
+.search-box input::placeholder{color:var(--t3)}
+.search-icon{color:var(--t3);flex-shrink:0}
+.ver-badge{font-size:11px;font-weight:500;padding:2px 8px;border-radius:99px;background:var(--bg4);border:1px solid var(--b2);color:var(--t2);font-family:var(--mono)}
+
+/* ── Layout ── */
+.layout{display:flex;height:100vh;padding-top:var(--hh)}
+
+/* ── Sidebar ── */
+.sidebar{
+  width:var(--sw);flex-shrink:0;
+  height:calc(100vh - var(--hh));overflow-y:auto;
+  border-right:1px solid var(--b1);
+  background:var(--bg);padding:16px 0;
+}
+.sidebar-panel{display:none}
+.sidebar-panel.active{display:block}
+
+/* Section label */
+.nav-section-label{
+  font-size:10px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--t3);
+  padding:12px 16px 4px;margin-top:4px;
+}
+
+/* Nav link */
+.nav-link{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:6px 16px;color:var(--t2);text-decoration:none;
+  font-size:13px;font-weight:400;cursor:pointer;
+  border-left:2px solid transparent;
+  transition:color .1s,background .1s;
+  user-select:none;
+}
+.nav-link:hover{color:var(--t1);background:var(--bg3)}
+.nav-link.active{color:var(--t1);border-left-color:var(--t1);background:var(--bg3);font-weight:500}
+
+/* Sub links */
+.nav-link.sub{padding:5px 16px 5px 28px;font-size:12px}
+
+/* Expandable group */
+.nav-group-children{display:none}
+.nav-group.open .nav-group-children{display:block}
+.nav-group.open .chevron{transform:rotate(180deg)}
+.chevron{width:14px;height:14px;flex-shrink:0;transition:transform .2s;color:var(--t3)}
+
+/* ── Main ── */
+.main{flex:1;height:calc(100vh - var(--hh));overflow-y:auto;background:var(--bg)}
+
+/* ── Page ── */
+.page{display:none;padding:48px 56px 80px;max-width:900px}
+.page.active{display:block}
+
+/* Page header */
+.pg-eyebrow{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:10px}
+.pg-title{font-size:32px;font-weight:700;letter-spacing:-.04em;margin-bottom:12px}
+.pg-desc{font-size:15px;color:var(--t2);max-width:560px;line-height:1.75;margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid var(--b1)}
+
+/* Sub-section */
+.sub{margin-bottom:40px}
+.sub-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:14px}
+
+/* Preview box */
+.preview{padding:28px;border:1px solid var(--b1);border-radius:8px;background:var(--bg2);display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.preview.col{flex-direction:column;align-items:flex-start}
+
+/* Divider */
+hr{border:none;border-top:1px solid var(--b1);margin:0 0 40px}
+
+/* ── Inner tabs (What's New) ── */
+.inner-tabs{display:flex;gap:0;border-bottom:1px solid var(--b1);margin-bottom:32px}
+.inner-tab{
+  padding:8px 16px;font-size:13px;font-weight:500;color:var(--t2);
+  background:transparent;border:none;cursor:pointer;font-family:var(--sans);
+  border-bottom:2px solid transparent;position:relative;top:1px;
+  transition:color .12s;
+}
+.inner-tab:hover{color:var(--t1)}
+.inner-tab.active{color:var(--t1);border-bottom-color:var(--t1)}
+.inner-panel{display:none}
+.inner-panel.active{display:block}
+
+/* ── Timeline ── */
+.timeline{position:relative;padding-left:20px}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:var(--b2)}
+.tl-item{position:relative;margin-bottom:36px}
+.tl-dot{
+  position:absolute;left:-24px;top:6px;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--t3);border:2px solid var(--bg);
+  box-shadow:0 0 0 1px var(--b2);
+}
+.tl-dot.current{background:var(--green);box-shadow:0 0 0 1px var(--bg),0 0 8px var(--green)}
+.tl-ver{font-size:11px;font-weight:600;font-family:var(--mono);color:var(--t2);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.tl-date{font-size:11px;color:var(--t3)}
+.tl-title{font-size:16px;font-weight:600;margin-bottom:8px}
+.tl-list{list-style:none;padding:0}
+.tl-list li{font-size:13px;color:var(--t2);padding:3px 0 3px 14px;position:relative}
+.tl-list li::before{content:'—';position:absolute;left:0;color:var(--t3)}
+
+/* ── Release table ── */
+.release-table{width:100%;border-collapse:collapse;font-size:13px}
+.release-table th{text-align:left;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);padding:8px 12px;border-bottom:1px solid var(--b1)}
+.release-table td{padding:10px 12px;border-bottom:1px solid var(--b1);color:var(--t2);vertical-align:top}
+.release-table td:first-child{color:var(--t1);font-weight:500;white-space:nowrap}
+.release-table tr:hover td{background:var(--bg3)}
+.release-table tr:last-child td{border-bottom:none}
+
+/* ── Article cards ── */
+.article-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.article-card{padding:20px;border:1px solid var(--b1);border-radius:8px;background:var(--bg2);cursor:pointer;transition:border-color .12s,background .12s}
+.article-card:hover{border-color:var(--b2);background:var(--bg3)}
+.article-tag{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:8px}
+.article-title{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.4}
+.article-meta{font-size:12px;color:var(--t3)}
+
+/* ── Hero (overview) ── */
+.hero{padding:20px 0 48px}
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:18px}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-title{font-size:48px;font-weight:700;letter-spacing:-.045em;line-height:1.05;margin-bottom:18px}
+.hero-title em{font-style:normal;background:linear-gradient(135deg,#fff 0%,#444 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-desc{font-size:15px;color:var(--t2);max-width:480px;line-height:1.75;margin-bottom:28px}
+.hero-actions{display:flex;gap:10px}
+
+/* Path cards */
+.path-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.path-card{
+  padding:28px;border:1px solid var(--b1);border-radius:8px;background:var(--bg2);
+  cursor:pointer;transition:border-color .12s,background .12s;text-decoration:none;display:block;
+}
+.path-card:hover{border-color:var(--b2);background:var(--bg3)}
+.path-card-icon{width:48px;height:48px;border-radius:8px;background:var(--bg4);border:1px solid var(--b2);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.path-card-title{font-size:16px;font-weight:600;margin-bottom:6px}
+.path-card-desc{font-size:13px;color:var(--t2);line-height:1.6}
+
+/* ── Steps ── */
+.steps{counter-reset:step}
+.step{display:flex;gap:16px;margin-bottom:24px;counter-increment:step}
+.step-num{
+  width:28px;height:28px;border-radius:50%;background:var(--bg4);border:1px solid var(--b2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:600;flex-shrink:0;color:var(--t2);font-family:var(--mono);
+}
+.step-num::before{content:counter(step)}
+.step-body{flex:1;padding-top:4px}
+.step-title{font-size:14px;font-weight:600;margin-bottom:6px}
+.step-desc{font-size:13px;color:var(--t2);line-height:1.7}
+
+/* ── Code block ── */
+.code-block{
+  background:var(--bg3);border:1px solid var(--b1);border-radius:8px;
+  padding:16px 20px;font-family:var(--mono);font-size:12px;
+  color:var(--t2);overflow-x:auto;margin:12px 0;line-height:1.7;
+}
+.code-block .kw{color:#7dd3fc}
+.code-block .str{color:#86efac}
+.code-block .cm{color:var(--t3)}
+.code-block .fn{color:#c4b5fd}
+
+/* ── Checklist ── */
+.checklist{list-style:none;padding:0}
+.checklist li{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:10px 14px;border-bottom:1px solid var(--b1);font-size:13px;color:var(--t2);
+  cursor:pointer;transition:background .1s;
+}
+.checklist li:hover{background:var(--bg3)}
+.checklist li:last-child{border-bottom:none}
+.check-box{
+  width:16px;height:16px;border-radius:4px;border:1px solid var(--b2);
+  flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;
+  transition:background .12s,border-color .12s;
+}
+.checklist li.checked .check-box{background:var(--green);border-color:var(--green)}
+.checklist li.checked .check-label{color:var(--t3);text-decoration:line-through}
+
+/* ── Resource cards ── */
+.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.res-card{padding:20px;border:1px solid var(--b1);border-radius:8px;background:var(--bg2);text-decoration:none;display:block;transition:border-color .12s,background .12s}
+.res-card:hover{border-color:var(--b2);background:var(--bg3)}
+.res-icon{font-size:20px;margin-bottom:10px}
+.res-name{font-size:13px;font-weight:600;margin-bottom:4px}
+.res-desc{font-size:12px;color:var(--t3)}
+
+/* ── FAQ ── */
+.faq-item{border-bottom:1px solid var(--b1)}
+.faq-q{
+  width:100%;text-align:left;background:transparent;border:none;cursor:pointer;
+  padding:16px 0;font-family:var(--sans);font-size:14px;font-weight:500;
+  color:var(--t1);display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+.faq-q:hover{color:var(--t2)}
+.faq-a{display:none;padding:0 0 16px;font-size:13px;color:var(--t2);line-height:1.75}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-chevron{transform:rotate(180deg)}
+.faq-chevron{width:14px;height:14px;flex-shrink:0;transition:transform .2s;color:var(--t3)}
+
+/* ── Colors ── */
+.color-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.color-card{border:1px solid var(--b1);border-radius:8px;overflow:hidden;cursor:pointer;transition:border-color .12s}
+.color-card:hover{border-color:var(--b2)}
+.swatch{height:64px}
+.color-info{padding:8px 10px;background:var(--bg2)}
+.color-name{font-size:12px;font-weight:500;margin-bottom:2px}
+.color-hex{font-size:10px;color:var(--t3);font-family:var(--mono)}
+
+/* ── Typography ── */
+.type-row{display:flex;align-items:baseline;gap:24px;padding:14px 18px;border:1px solid var(--b1);border-radius:8px;background:var(--bg2);margin-bottom:8px}
+.type-meta{width:90px;flex-shrink:0;font-family:var(--mono);font-size:10px;color:var(--t3)}
+
+/* ── Spacing ── */
+.sp-row{display:flex;align-items:center;gap:16px;padding:9px 14px;border:1px solid var(--b1);border-radius:8px;background:var(--bg2);margin-bottom:6px}
+.sp-bar{height:6px;background:var(--blue);border-radius:2px;flex-shrink:0}
+.sp-name{font-family:var(--mono);font-size:11px;width:60px}
+.sp-val{font-size:12px;color:var(--t3)}
+
+/* ── Buttons ── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:0 14px;height:34px;border-radius:4px;font-size:13px;font-weight:500;font-family:var(--sans);cursor:pointer;border:1px solid transparent;transition:all .12s;text-decoration:none;white-space:nowrap}
+.btn-primary{background:var(--t1);color:var(--bg);border-color:var(--t1)}
+.btn-primary:hover{background:#c8c8c8;border-color:#c8c8c8}
+.btn-secondary{background:transparent;color:var(--t1);border-color:var(--b2)}
+.btn-secondary:hover{background:var(--bg4)}
+.btn-ghost{background:transparent;color:var(--t2);border-color:transparent}
+.btn-ghost:hover{color:var(--t1);background:var(--bg4)}
+.btn-danger{background:transparent;color:var(--red);border-color:rgba(244,67,54,.3)}
+.btn-danger:hover{background:rgba(244,67,54,.08)}
+.btn-sm{height:28px;padding:0 10px;font-size:12px}
+.btn-lg{height:42px;padding:0 20px;font-size:15px}
+
+/* ── Badges ── */
+.badge{display:inline-flex;align-items:center;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:500;line-height:1.6;border:1px solid}
+.bd-default{background:var(--bg4);color:var(--t1);border-color:var(--b2)}
+.bd-blue{background:rgba(0,112,243,.1);color:#3b9eff;border-color:rgba(0,112,243,.2)}
+.bd-green{background:rgba(0,210,106,.1);color:var(--green);border-color:rgba(0,210,106,.2)}
+.bd-red{background:rgba(244,67,54,.1);color:var(--red);border-color:rgba(244,67,54,.2)}
+.bd-orange{background:rgba(249,115,22,.1);color:var(--orange);border-color:rgba(249,115,22,.2)}
+.bd-purple{background:rgba(139,92,246,.1);color:#a78bfa;border-color:rgba(139,92,246,.2)}
+
+/* ── Inputs ── */
+.inp{width:100%;height:34px;background:var(--bg3);border:1px solid var(--b2);border-radius:4px;padding:0 12px;color:var(--t1);font-family:var(--sans);font-size:13px;outline:none;transition:border-color .12s,box-shadow .12s}
+.inp::placeholder{color:var(--t3)}
+.inp:focus{border-color:rgba(255,255,255,.35);box-shadow:0 0 0 3px rgba(255,255,255,.05)}
+.inp-err{border-color:rgba(244,67,54,.5)}
+.inp-err:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(244,67,54,.1)}
+.inp-group{display:flex;flex-direction:column;gap:6px;width:260px}
+.inp-label{font-size:12px;font-weight:500;color:var(--t2)}
+.inp-hint{font-size:11px;color:var(--t3)}
+.inp-err-msg{font-size:11px;color:var(--red)}
+
+/* ── Cards ── */
+.card{border:1px solid var(--b1);border-radius:8px;background:var(--bg2);overflow:hidden}
+.card-head{padding:14px 18px;border-bottom:1px solid var(--b1);display:flex;align-items:center;justify-content:space-between}
+.card-title-text{font-size:13px;font-weight:600}
+.card-body-text{padding:18px;font-size:13px;color:var(--t2);line-height:1.7}
+.card-foot{padding:12px 18px;border-top:1px solid var(--b1);display:flex;gap:8px;justify-content:flex-end}
+
+/* ── Alerts ── */
+.alert{display:flex;gap:10px;padding:12px 16px;border-radius:8px;border:1px solid;font-size:13px;line-height:1.6;margin-bottom:8px}
+.al-info{background:rgba(0,112,243,.07);border-color:rgba(0,112,243,.2);color:#3b9eff}
+.al-success{background:rgba(0,210,106,.07);border-color:rgba(0,210,106,.2);color:var(--green)}
+.al-warning{background:rgba(249,115,22,.07);border-color:rgba(249,115,22,.2);color:var(--orange)}
+.al-error{background:rgba(244,67,54,.07);border-color:rgba(244,67,54,.2);color:var(--red)}
+
+/* ── Tables ── */
+.table-wrap{border:1px solid var(--b1);border-radius:8px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead{background:var(--bg3)}
+th{padding:9px 14px;text-align:left;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);border-bottom:1px solid var(--b1)}
+td{padding:11px 14px;border-bottom:1px solid var(--b1);color:var(--t2)}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--bg3)}
+
+/* ── Do / Don't ── */
+.dd-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.dd-card{padding:16px;border-radius:8px;font-size:13px;line-height:1.6}
+.dd-do{background:rgba(0,210,106,.06);border:1px solid rgba(0,210,106,.15)}
+.dd-dont{background:rgba(244,67,54,.06);border:1px solid rgba(244,67,54,.15)}
+.dd-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.dd-do .dd-label{color:var(--green)}
+.dd-dont .dd-label{color:var(--red)}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .sidebar{display:none}
+  .main{width:100%}
+  .path-grid,.article-grid,.resource-grid{grid-template-columns:1fr}
+  .hero-title{font-size:32px}
+  .page{padding:28px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="header">
+  <div class="logo">Deepak</div>
+  <nav class="top-nav">
+    <button class="top-tab active" data-tab="whats-new">What's new</button>
+    <button class="top-tab" data-tab="getting-started">Getting started</button>
+    <button class="top-tab" data-tab="fundamentals">Fundamentals</button>
+    <button class="top-tab" data-tab="components">Components</button>
+    <button class="top-tab" data-tab="content">Content</button>
+    <button class="top-tab" data-tab="support">Support</button>
+  </nav>
+  <div class="header-right">
+    <div class="search-box">
+      <svg class="search-icon" width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input type="text" placeholder="Search…">
+    </div>
+    <span class="ver-badge">v1.0</span>
+  </div>
+</header>
+
+<div class="layout">
+
+<!-- ═══ SIDEBAR ═══ -->
+<aside class="sidebar">
+
+  <!-- What's New -->
+  <nav class="sidebar-panel active" data-sidebar="whats-new">
+    <a class="nav-link active" data-page="wn-release">Release history</a>
+    <a class="nav-link" data-page="wn-updates">Get updates</a>
+    <div class="nav-section-label">Activities and announcements</div>
+    <a class="nav-link" data-page="wn-newds">New design system</a>
+    <a class="nav-link" data-page="wn-articles">Articles</a>
+  </nav>
+
+  <!-- Getting Started -->
+  <nav class="sidebar-panel" data-sidebar="getting-started">
+    <a class="nav-link" data-page="gs-overview">Overview</a>
+    <div class="nav-section-label">For developers</div>
+    <div class="nav-group open" id="grp-dev-setup">
+      <a class="nav-link nav-expandable" data-page="gs-dev-setup" data-group="grp-dev-setup">
+        Setup guide
+        <svg class="chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div class="nav-group-children">
+        <a class="nav-link sub" data-page="gs-dev-need">What you need</a>
+        <a class="nav-link sub" data-page="gs-dev-comp">Using components</a>
+        <a class="nav-link sub" data-page="gs-dev-tokens">Using design tokens</a>
+      </div>
+    </div>
+    <a class="nav-link" data-page="gs-dev-versioning">Introduction to versioning</a>
+    <a class="nav-link" data-page="gs-dev-deprecation">Deprecation explained</a>
+    <div class="nav-section-label">For designers</div>
+    <a class="nav-link" data-page="gs-des-setup">Setup guide</a>
+    <a class="nav-link" data-page="gs-des-handoff">Design handoff checklist</a>
+    <a class="nav-link" data-page="gs-des-figma">Figma Make with VDS</a>
+    <a class="nav-link" data-page="gs-resources">Resources</a>
+  </nav>
+
+  <!-- Fundamentals -->
+  <nav class="sidebar-panel" data-sidebar="fundamentals">
+    <div class="nav-section-label">Foundations</div>
+    <a class="nav-link" data-page="fund-colors">Colors</a>
+    <a class="nav-link" data-page="fund-typography">Typography</a>
+    <a class="nav-link" data-page="fund-spacing">Spacing</a>
+  </nav>
+
+  <!-- Components -->
+  <nav class="sidebar-panel" data-sidebar="components">
+    <div class="nav-section-label">Components</div>
+    <a class="nav-link" data-page="comp-buttons">Buttons</a>
+    <a class="nav-link" data-page="comp-badges">Badges</a>
+    <a class="nav-link" data-page="comp-inputs">Inputs</a>
+    <a class="nav-link" data-page="comp-cards">Cards</a>
+    <a class="nav-link" data-page="comp-alerts">Alerts</a>
+    <a class="nav-link" data-page="comp-tables">Tables</a>
+  </nav>
+
+  <!-- Content -->
+  <nav class="sidebar-panel" data-sidebar="content">
+    <div class="nav-section-label">Content</div>
+    <a class="nav-link" data-page="cnt-writing">Writing guidelines</a>
+    <a class="nav-link" data-page="cnt-voice">Voice &amp; tone</a>
+    <a class="nav-link" data-page="cnt-terms">Terminology</a>
+  </nav>
+
+  <!-- Support -->
+  <nav class="sidebar-panel" data-sidebar="support">
+    <div class="nav-section-label">Support</div>
+    <a class="nav-link" data-page="sup-faq">FAQ</a>
+    <a class="nav-link" data-page="sup-contact">Contact</a>
+    <a class="nav-link" data-page="sup-report">Report an issue</a>
+  </nav>
+
+</aside>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<main class="main">
+
+  <!-- ─── WHAT'S NEW: Release History ─── -->
+  <div class="page active" id="wn-release">
+    <div class="pg-eyebrow">What's new</div>
+    <h1 class="pg-title">Release history</h1>
+    <p class="pg-desc">A full changelog of every design system release — new components, token updates, bug fixes, and breaking changes.</p>
+    <div class="inner-tabs">
+      <button class="inner-tab active" data-inner="rh-visual">Visual</button>
+      <button class="inner-tab" data-inner="rh-code">Code</button>
+      <button class="inner-tab" data-inner="rh-tokens">Tokens</button>
+    </div>
+    <div class="inner-panel active" id="rh-visual">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot current"></div>
+          <div class="tl-ver"><span>v1.0.0</span><span class="badge bd-green">Current</span><span class="tl-date">April 2026</span></div>
+          <div class="tl-title">Initial public release</div>
+          <ul class="tl-list">
+            <li>Core token system — colors, typography, spacing</li>
+            <li>8 foundational components shipped</li>
+            <li>Dark mode first, Vercel-inspired aesthetic</li>
+            <li>Figma library published and linked</li>
+            <li>Design system documentation site live</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-ver"><span>v0.9.0</span><span class="badge bd-default">Beta</span><span class="tl-date">March 2026</span></div>
+          <div class="tl-title">Beta — component stabilisation</div>
+          <ul class="tl-list">
+            <li>Buttons, badges, inputs, cards reviewed and finalised</li>
+            <li>Spacing scale locked at 4px base grid</li>
+            <li>Alert and table components added</li>
+            <li>Border radius tokens standardised</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-ver"><span>v0.5.0</span><span class="badge bd-default">Alpha</span><span class="tl-date">January 2026</span></div>
+          <div class="tl-title">Alpha — foundations only</div>
+          <ul class="tl-list">
+            <li>Color tokens defined (background, text, border, accent)</li>
+            <li>Inter + JetBrains Mono selected as type stack</li>
+            <li>Initial Figma file created</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="inner-panel" id="rh-code">
+      <div class="sub-title">Code changelog</div>
+      <div class="table-wrap">
+        <table class="release-table">
+          <thead><tr><th>Component</th><th>Change</th><th>Version</th></tr></thead>
+          <tbody>
+            <tr><td>Button</td><td>Added <code style="font-family:var(--mono);font-size:11px;background:var(--bg4);padding:1px 5px;border-radius:3px">btn-lg</code> size variant</td><td><span class="badge bd-green">v1.0</span></td></tr>
+            <tr><td>Badge</td><td>Purple variant added</td><td><span class="badge bd-green">v1.0</span></td></tr>
+            <tr><td>Input</td><td>Error state with red ring focus</td><td><span class="badge bd-default">v0.9</span></td></tr>
+            <tr><td>Card</td><td>Header / body / footer structure standardised</td><td><span class="badge bd-default">v0.9</span></td></tr>
+            <tr><td>Alert</td><td>Four variants: info, success, warning, error</td><td><span class="badge bd-default">v0.9</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="inner-panel" id="rh-tokens">
+      <div class="sub-title">Token changelog</div>
+      <div class="table-wrap">
+        <table class="release-table">
+          <thead><tr><th>Token</th><th>Value</th><th>Added in</th></tr></thead>
+          <tbody>
+            <tr><td>--bg</td><td style="font-family:var(--mono);font-size:12px">#000000</td><td>v0.5</td></tr>
+            <tr><td>--t1</td><td style="font-family:var(--mono);font-size:12px">#ededed</td><td>v0.5</td></tr>
+            <tr><td>--blue</td><td style="font-family:var(--mono);font-size:12px">#0070f3</td><td>v0.5</td></tr>
+            <tr><td>--green</td><td style="font-family:var(--mono);font-size:12px">#00d26a</td><td>v0.9</td></tr>
+            <tr><td>--purple</td><td style="font-family:var(--mono);font-size:12px">#8b5cf6</td><td>v1.0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WHAT'S NEW: Get Updates ─── -->
+  <div class="page" id="wn-updates">
+    <div class="pg-eyebrow">What's new</div>
+    <h1 class="pg-title">Get updates</h1>
+    <p class="pg-desc">Stay in sync with every release. Choose how you want to be notified when components, tokens, or guidelines change.</p>
+    <div class="sub">
+      <div class="sub-title">Subscribe to digest</div>
+      <div class="preview col" style="max-width:420px;gap:16px;">
+        <div class="inp-group" style="width:100%">
+          <label class="inp-label">Email address</label>
+          <input class="inp" type="email" placeholder="you@example.com">
+        </div>
+        <div class="inp-group" style="width:100%">
+          <label class="inp-label">Frequency</label>
+          <select class="inp" style="cursor:pointer">
+            <option>Every release</option>
+            <option>Weekly digest</option>
+            <option>Monthly summary</option>
+          </select>
+        </div>
+        <button class="btn btn-primary">Subscribe</button>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title">Other ways to follow</div>
+      <div class="resource-grid" style="grid-template-columns:1fr 1fr;">
+        <div class="res-card"><div class="res-icon">🐙</div><div class="res-name">GitHub Releases</div><div class="res-desc">Watch the repo for automatic notifications on every tag</div></div>
+        <div class="res-card"><div class="res-icon">💬</div><div class="res-name">Slack Channel</div><div class="res-desc">Join #design-system for real-time announcements</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WHAT'S NEW: New Design System ─── -->
+  <div class="page" id="wn-newds">
+    <div class="pg-eyebrow">Activities and announcements</div>
+    <h1 class="pg-title">New design system</h1>
+    <p class="pg-desc">Introducing the first version of Deepak's personal design system — a single source of truth for building consistent, high-quality products.</p>
+    <div class="sub">
+      <div class="sub-title">Why we built this</div>
+      <p style="font-size:14px;color:var(--t2);line-height:1.8;max-width:620px;margin-bottom:16px">Every project I build deserves the same quality bar. Instead of reinventing colors, fonts, and components each time, this system codifies every decision once — so future work starts from a strong foundation, not a blank page.</p>
+      <p style="font-size:14px;color:var(--t2);line-height:1.8;max-width:620px">The system is dark-mode first, inspired by Vercel's visual language: clean surfaces, tight typography, and intentional use of color as signal, not decoration.</p>
+    </div>
+    <div class="sub">
+      <div class="sub-title">Principles</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+        <div class="res-card"><div class="res-icon">⬜</div><div class="res-name">Consistent</div><div class="res-desc">Every element follows the same rules, always</div></div>
+        <div class="res-card"><div class="res-icon">⚡</div><div class="res-name">Fast</div><div class="res-desc">Decisions made once, reused everywhere</div></div>
+        <div class="res-card"><div class="res-icon">◎</div><div class="res-name">Intentional</div><div class="res-desc">Nothing is arbitrary — every token has a reason</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WHAT'S NEW: Articles ─── -->
+  <div class="page" id="wn-articles">
+    <div class="pg-eyebrow">Activities and announcements</div>
+    <h1 class="pg-title">Articles</h1>
+    <p class="pg-desc">Writing about design systems, tokens, and the decisions behind the components.</p>
+    <div class="article-grid">
+      <div class="article-card"><div class="article-tag">Design tokens</div><div class="article-title">Why design tokens are the most important part of a design system</div><div class="article-meta">5 min read · April 2026</div></div>
+      <div class="article-card"><div class="article-tag">Process</div><div class="article-title">How to run a design handoff that developers actually love</div><div class="article-meta">4 min read · March 2026</div></div>
+      <div class="article-card"><div class="article-tag">Figma</div><div class="article-title">Organising a Figma library for a solo design system</div><div class="article-meta">6 min read · February 2026</div></div>
+      <div class="article-card"><div class="article-tag">Typography</div><div class="article-title">Choosing Inter: what makes a great UI typeface</div><div class="article-meta">3 min read · January 2026</div></div>
+    </div>
+  </div>
+
+  <!-- ─── GETTING STARTED: Overview ─── -->
+  <div class="page" id="gs-overview">
+    <div class="hero">
+      <div class="hero-kicker"><div class="live-dot"></div>Design System v1.0</div>
+      <h1 class="hero-title">Build with<br><em>consistency.</em></h1>
+      <p class="hero-desc">A living collection of design decisions, tokens, and components. Pick your path below to get started.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="navigate('getting-started','gs-des-setup')">For designers</button>
+        <button class="btn btn-secondary" onclick="navigate('getting-started','gs-dev-setup')">For developers</button>
+      </div>
+    </div>
+    <div class="path-grid">
+      <div class="path-card" onclick="navigate('getting-started','gs-des-setup')">
+        <div class="path-card-icon">✦</div>
+        <div class="path-card-title">Designers</div>
+        <div class="path-card-desc">Learn how to install, enable and use the Figma library alongside this documentation.</div>
+      </div>
+      <div class="path-card" onclick="navigate('getting-started','gs-dev-setup')">
+        <div class="path-card-icon">&lt;&gt;</div>
+        <div class="path-card-title">Developers</div>
+        <div class="path-card-desc">Set up your environment and get up to speed with prerequisites, tutorials, and usage examples.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── GETTING STARTED: Dev — Setup Guide ─── -->
+  <div class="page" id="gs-dev-setup">
+    <div class="pg-eyebrow">For developers</div>
+    <h1 class="pg-title">Setup guide</h1>
+    <p class="pg-desc">Everything you need to start using design system tokens and components in your project.</p>
+    <div class="sub">
+      <div class="sub-title">Quick start</div>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><div class="step-title">Install the package</div><div class="code-block"><span class="kw">npm</span> install @deepak/design-system</div></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><div class="step-title">Import the tokens</div><div class="code-block"><span class="kw">import</span> <span class="str">'@deepak/design-system/tokens.css'</span>;</div></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><div class="step-title">Use a component</div><div class="code-block"><span class="kw">import</span> { Button } <span class="kw">from</span> <span class="str">'@deepak/design-system'</span>;<br><br><span class="fn">&lt;Button</span> variant=<span class="str">"primary"</span><span class="fn">&gt;</span>Save changes<span class="fn">&lt;/Button&gt;</span></div></div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title">Requirements</div>
+      <div class="table-wrap">
+        <table><thead><tr><th>Dependency</th><th>Min version</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Node.js</td><td>18+</td><td>LTS recommended</td></tr>
+          <tr><td>React</td><td>18+</td><td>Hooks required</td></tr>
+          <tr><td>CSS Custom Properties</td><td>—</td><td>Modern browsers only</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Dev: What you need ─── -->
+  <div class="page" id="gs-dev-need">
+    <div class="pg-eyebrow">Setup guide</div>
+    <h1 class="pg-title">What you need</h1>
+    <p class="pg-desc">Prerequisites before setting up the design system in your project.</p>
+    <div class="sub">
+      <div class="sub-title">Environment</div>
+      <ul style="list-style:none;padding:0">
+        <li style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--b1);font-size:13px;color:var(--t2)"><span style="color:var(--green)">✓</span> Node.js 18 or higher</li>
+        <li style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--b1);font-size:13px;color:var(--t2)"><span style="color:var(--green)">✓</span> npm 9+ or yarn 1.22+</li>
+        <li style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--b1);font-size:13px;color:var(--t2)"><span style="color:var(--green)">✓</span> A modern browser (Chrome, Firefox, Safari, Edge)</li>
+        <li style="display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:13px;color:var(--t2)"><span style="color:var(--green)">✓</span> Git (for version control and updates)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ─── Dev: Using components ─── -->
+  <div class="page" id="gs-dev-comp">
+    <div class="pg-eyebrow">Setup guide</div>
+    <h1 class="pg-title">Using components</h1>
+    <p class="pg-desc">How to import and use components from the design system in your codebase.</p>
+    <div class="sub">
+      <div class="sub-title">Named imports</div>
+      <div class="code-block"><span class="kw">import</span> { Button, Badge, Card } <span class="kw">from</span> <span class="str">'@deepak/design-system'</span>;<br><br><span class="cm">// Use directly in JSX</span><br><span class="fn">&lt;Button</span> variant=<span class="str">"secondary"</span> size=<span class="str">"sm"</span><span class="fn">&gt;</span>Cancel<span class="fn">&lt;/Button&gt;</span><br><span class="fn">&lt;Badge</span> variant=<span class="str">"green"</span><span class="fn">&gt;</span>Active<span class="fn">&lt;/Badge&gt;</span></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title">CSS-only usage</div>
+      <p style="font-size:13px;color:var(--t2);margin-bottom:10px">If you're not using React, every component is also available as pure CSS classes. See the Components section for class names.</p>
+    </div>
+  </div>
+
+  <!-- ─── Dev: Using design tokens ─── -->
+  <div class="page" id="gs-dev-tokens">
+    <div class="pg-eyebrow">Setup guide</div>
+    <h1 class="pg-title">Using design tokens</h1>
+    <p class="pg-desc">Tokens are the single source of truth for all visual decisions. Use them in CSS, JS, or Figma.</p>
+    <div class="sub">
+      <div class="sub-title">In CSS</div>
+      <div class="code-block"><span class="cm">/* Import once at root */</span><br><span class="kw">@import</span> <span class="str">'@deepak/design-system/tokens.css'</span>;<br><br><span class="cm">/* Use anywhere */</span><br>.my-button {<br>  background: <span class="fn">var</span>(--t1);<br>  color: <span class="fn">var</span>(--bg);<br>  border-radius: <span class="fn">var</span>(--r-sm);<br>}</div>
+    </div>
+    <div class="sub">
+      <div class="sub-title">In JavaScript</div>
+      <div class="code-block"><span class="kw">import</span> tokens <span class="kw">from</span> <span class="str">'@deepak/design-system/tokens.json'</span>;<br><br>console.log(tokens.color.blue); <span class="cm">// "#0070f3"</span></div>
+    </div>
+  </div>
+
+  <!-- ─── Dev: Introduction to versioning ─── -->
+  <div class="page" id="gs-dev-versioning">
+    <div class="pg-eyebrow">For developers</div>
+    <h1 class="pg-title">Introduction to versioning</h1>
+    <p class="pg-desc">This design system follows semantic versioning (SemVer). Understanding the version format helps you safely adopt updates.</p>
+    <div class="sub">
+      <div class="sub-title">Version format</div>
+      <div style="display:flex;gap:0;margin-bottom:20px">
+        <div style="flex:1;padding:20px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px 0 0 8px;text-align:center"><div style="font-size:28px;font-weight:700;font-family:var(--mono)">1</div><div style="font-size:11px;color:var(--red);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-top:6px">Major</div><div style="font-size:12px;color:var(--t3);margin-top:4px">Breaking changes</div></div>
+        <div style="flex:1;padding:20px;background:var(--bg2);border:1px solid var(--b1);border-left:none;border-right:none;text-align:center"><div style="font-size:28px;font-weight:700;font-family:var(--mono)">0</div><div style="font-size:11px;color:var(--orange);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-top:6px">Minor</div><div style="font-size:12px;color:var(--t3);margin-top:4px">New features</div></div>
+        <div style="flex:1;padding:20px;background:var(--bg2);border:1px solid var(--b1);border-radius:0 8px 8px 0;text-align:center"><div style="font-size:28px;font-weight:700;font-family:var(--mono)">0</div><div style="font-size:11px;color:var(--green);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-top:6px">Patch</div><div style="font-size:12px;color:var(--t3);margin-top:4px">Bug fixes only</div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title">Upgrade policy</div>
+      <ul class="tl-list" style="padding-left:0">
+        <li style="padding:6px 0 6px 14px;font-size:13px;color:var(--t2)">Patch updates are always safe to take</li>
+        <li style="padding:6px 0 6px 14px;font-size:13px;color:var(--t2)">Minor updates add new components or tokens — check release notes</li>
+        <li style="padding:6px 0 6px 14px;font-size:13px;color:var(--t2)">Major updates may require migration — a guide is always provided</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ─── Dev: Deprecation explained ─── -->
+  <div class="page" id="gs-dev-deprecation">
+    <div class="pg-eyebrow">For developers</div>
+    <h1 class="pg-title">Deprecation explained</h1>
+    <p class="pg-desc">When a component or token is removed, we follow a 3-stage deprecation process to give you time to migrate.</p>
+    <div class="sub">
+      <div class="sub-title">Process</div>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><div class="step-title">Deprecated (minor release)</div><div class="step-desc">The component is marked deprecated in docs and code. A console warning is shown. It still works.</div></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><div class="step-title">Migration guide published</div><div class="step-desc">A replacement component or approach is documented. At least 2 minor versions before removal.</div></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><div class="step-title">Removed (next major release)</div><div class="step-desc">The deprecated item is removed in the next major version bump.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Designer: Setup Guide ─── -->
+  <div class="page" id="gs-des-setup">
+    <div class="pg-eyebrow">For designers</div>
+    <h1 class="pg-title">Setup guide</h1>
+    <p class="pg-desc">Connect the Figma library to your project to access all components, styles, and variables.</p>
+    <div class="sub">
+      <div class="sub-title">Steps</div>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><div class="step-title">Open the design system Figma file</div><div class="step-desc">Access the shared Figma library link. Duplicate it to your workspace if you need an editable copy.</div></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><div class="step-title">Enable the library in your project</div><div class="step-desc">In Figma, go to Assets → Libraries → find the design system → toggle it on.</div></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><div class="step-title">Use components from the panel</div><div class="step-desc">Open Assets (Cmd+Option+O), search for any component, and drag it onto your canvas.</div></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><div class="step-title">Swap to use variables</div><div class="step-desc">Apply color and text variables from the Variable panel so your designs stay in sync with token updates.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Designer: Handoff Checklist ─── -->
+  <div class="page" id="gs-des-handoff">
+    <div class="pg-eyebrow">For designers</div>
+    <h1 class="pg-title">Design handoff checklist</h1>
+    <p class="pg-desc">Before handing off a design to a developer, run through this checklist to ensure nothing is missed.</p>
+    <div class="sub">
+      <div class="sub-title">Foundations</div>
+      <div style="border:1px solid var(--b1);border-radius:8px;overflow:hidden">
+        <ul class="checklist" id="checklist-1">
+          <li onclick="toggleCheck(this)"><div class="check-box"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.5 6L8 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="check-label">All colors use design system tokens, not hardcoded values</div></li>
+          <li onclick="toggleCheck(this)"><div class="check-box"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.5 6L8 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="check-label">Typography uses text styles from the library</div></li>
+          <li onclick="toggleCheck(this)"><div class="check-box"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.5 6L8 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="check-label">Spacing follows the 4px grid</div></li>
+          <li onclick="toggleCheck(this)"><div class="check-box"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.5 6L8 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="check-label">All icons are from the approved icon set</div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title">Components and states</div>
+      <div style="border:1px solid var(--b1);border-radius:8px;overflow:hidden">
+        <ul class="checklist">
+          <li onclick="toggleCheck(this)"><div class="check-box"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.5 6L8 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="check-label">Default, hover, active, focus, and disabled states designed for interactive elements</div></li>
+          <li onclick="toggleCheck(this)"><div class="check-box"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.5 6L8 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="check-label">Error and empty states included for forms</div></li>
+          <li onclick="toggleCheck(this)"><div class="check-box"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.5 6L8 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="check-label">Mobile and desktop breakpoints covered</div></li>
+          <li onclick="toggleCheck(this)"><div class="check-box"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5L3.5 6L8 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="check-label">Annotations added for spacing, interactions, and edge cases</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Designer: Figma Make with VDS ─── -->
+  <div class="page" id="gs-des-figma">
+    <div class="pg-eyebrow">For designers</div>
+    <h1 class="pg-title">Figma Make with VDS</h1>
+    <p class="pg-desc">How to use the design system's Figma library to build new features quickly and consistently.</p>
+    <div class="sub">
+      <div class="sub-title">Key principles</div>
+      <div style="display:grid;gap:8px">
+        <div class="alert al-info">Always use library components over creating new ones — detach only when absolutely necessary.</div>
+        <div class="alert al-warning">Never hardcode colors. Use variables so designs stay in sync when tokens update.</div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title">Workflow</div>
+      <div class="steps">
+        <div class="step"><div class="step-num"></div><div class="step-body"><div class="step-title">Start from a frame template</div><div class="step-desc">Use pre-built page templates from the Figma library to get consistent layouts instantly.</div></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><div class="step-title">Compose with components</div><div class="step-desc">Drag components from Assets and configure via the right panel properties. Override text and icons as needed.</div></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><div class="step-title">Apply variables, not styles</div><div class="step-desc">Use Variable mode (not style picker) for colors so that dark/light mode switching works automatically.</div></div></div>
+        <div class="step"><div class="step-num"></div><div class="step-body"><div class="step-title">Review against the docs</div><div class="step-desc">Cross-reference this site to make sure every component is used as intended — variant, size, and state.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Getting Started: Resources ─── -->
+  <div class="page" id="gs-resources">
+    <div class="pg-eyebrow">Getting started</div>
+    <h1 class="pg-title">Resources</h1>
+    <p class="pg-desc">Everything in one place — tools, files, and links to help you work with the design system.</p>
+    <div class="sub">
+      <div class="sub-title">Design resources</div>
+      <div class="resource-grid">
+        <div class="res-card"><div class="res-icon">✦</div><div class="res-name">Figma Library</div><div class="res-desc">Main component and token library file</div></div>
+        <div class="res-card"><div class="res-icon">📐</div><div class="res-name">Icon Set</div><div class="res-desc">Full icon library in Figma</div></div>
+        <div class="res-card"><div class="res-icon">🎨</div><div class="res-name">Color Palette</div><div class="res-desc">Token export for all color values</div></div>
+      </div>
+    </div>
+    <div class="sub">
+      <div class="sub-title">Development resources</div>
+      <div class="resource-grid">
+        <div class="res-card"><div class="res-icon">🐙</div><div class="res-name">GitHub Repo</div><div class="res-desc">Source code and issue tracking</div></div>
+        <div class="res-card"><div class="res-icon">📦</div><div class="res-name">npm Package</div><div class="res-desc">Installable component library</div></div>
+        <div class="res-card"><div class="res-icon">📖</div><div class="res-name">Storybook</div><div class="res-desc">Interactive component playground</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FUNDAMENTALS: Colors ─── -->
+  <div class="page" id="fund-colors">
+    <div class="pg-eyebrow">Fundamentals</div>
+    <h1 class="pg-title">Colors</h1>
+    <p class="pg-desc">A dark-first palette with semantic tokens for backgrounds, text, borders, and accents. Click any swatch to copy the hex.</p>
+    <div class="sub"><div class="sub-title">Background</div>
+      <div class="color-grid">
+        <div class="color-card" onclick="copyHex('#000000',this)"><div class="swatch" style="background:#000"></div><div class="color-info"><div class="color-name">Primary</div><div class="color-hex">#000000</div></div></div>
+        <div class="color-card" onclick="copyHex('#0a0a0a',this)"><div class="swatch" style="background:#0a0a0a"></div><div class="color-info"><div class="color-name">Secondary</div><div class="color-hex">#0a0a0a</div></div></div>
+        <div class="color-card" onclick="copyHex('#111111',this)"><div class="swatch" style="background:#111"></div><div class="color-info"><div class="color-name">Tertiary</div><div class="color-hex">#111111</div></div></div>
+        <div class="color-card" onclick="copyHex('#1a1a1a',this)"><div class="swatch" style="background:#1a1a1a"></div><div class="color-info"><div class="color-name">Elevated</div><div class="color-hex">#1a1a1a</div></div></div>
+      </div>
+    </div>
+    <div class="sub"><div class="sub-title">Text</div>
+      <div class="color-grid">
+        <div class="color-card" onclick="copyHex('#ededed',this)"><div class="swatch" style="background:#ededed"></div><div class="color-info"><div class="color-name">Primary</div><div class="color-hex">#ededed</div></div></div>
+        <div class="color-card" onclick="copyHex('#888888',this)"><div class="swatch" style="background:#888"></div><div class="color-info"><div class="color-name">Secondary</div><div class="color-hex">#888888</div></div></div>
+        <div class="color-card" onclick="copyHex('#444444',this)"><div class="swatch" style="background:#444"></div><div class="color-info"><div class="color-name">Tertiary</div><div class="color-hex">#444444</div></div></div>
+      </div>
+    </div>
+    <div class="sub"><div class="sub-title">Border</div>
+      <div class="color-grid">
+        <div class="color-card" onclick="copyHex('#1f1f1f',this)"><div class="swatch" style="background:#1f1f1f;border:1px solid #333"></div><div class="color-info"><div class="color-name">Subtle</div><div class="color-hex">#1f1f1f</div></div></div>
+        <div class="color-card" onclick="copyHex('#2d2d2d',this)"><div class="swatch" style="background:#2d2d2d;border:1px solid #333"></div><div class="color-info"><div class="color-name">Default</div><div class="color-hex">#2d2d2d</div></div></div>
+      </div>
+    </div>
+    <div class="sub"><div class="sub-title">Accent</div>
+      <div class="color-grid">
+        <div class="color-card" onclick="copyHex('#0070f3',this)"><div class="swatch" style="background:#0070f3"></div><div class="color-info"><div class="color-name">Blue</div><div class="color-hex">#0070f3</div></div></div>
+        <div class="color-card" onclick="copyHex('#00d26a',this)"><div class="swatch" style="background:#00d26a"></div><div class="color-info"><div class="color-name">Green</div><div class="color-hex">#00d26a</div></div></div>
+        <div class="color-card" onclick="copyHex('#f44336',this)"><div class="swatch" style="background:#f44336"></div><div class="color-info"><div class="color-name">Red</div><div class="color-hex">#f44336</div></div></div>
+        <div class="color-card" onclick="copyHex('#f97316',this)"><div class="swatch" style="background:#f97316"></div><div class="color-info"><div class="color-name">Orange</div><div class="color-hex">#f97316</div></div></div>
+        <div class="color-card" onclick="copyHex('#8b5cf6',this)"><div class="swatch" style="background:#8b5cf6"></div><div class="color-info"><div class="color-name">Purple</div><div class="color-hex">#8b5cf6</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FUNDAMENTALS: Typography ─── -->
+  <div class="page" id="fund-typography">
+    <div class="pg-eyebrow">Fundamentals</div>
+    <h1 class="pg-title">Typography</h1>
+    <p class="pg-desc">Inter for UI, JetBrains Mono for code. A deliberate scale maintains clear hierarchy across all surfaces.</p>
+    <div class="sub"><div class="sub-title">Scale</div>
+      <div class="type-row"><div class="type-meta">52px · 700</div><div style="font-size:52px;font-weight:700;letter-spacing:-.045em;line-height:1">Display</div></div>
+      <div class="type-row"><div class="type-meta">36px · 700</div><div style="font-size:36px;font-weight:700;letter-spacing:-.035em">Heading 1</div></div>
+      <div class="type-row"><div class="type-meta">26px · 600</div><div style="font-size:26px;font-weight:600;letter-spacing:-.025em">Heading 2</div></div>
+      <div class="type-row"><div class="type-meta">20px · 600</div><div style="font-size:20px;font-weight:600;letter-spacing:-.02em">Heading 3</div></div>
+      <div class="type-row"><div class="type-meta">16px · 400</div><div style="font-size:16px;color:var(--t2);line-height:1.7">Body Large — The quick brown fox jumps over the lazy dog.</div></div>
+      <div class="type-row"><div class="type-meta">14px · 400</div><div style="font-size:14px;color:var(--t2);line-height:1.7">Body — The quick brown fox jumps over the lazy dog.</div></div>
+      <div class="type-row"><div class="type-meta">12px · 400</div><div style="font-size:12px;color:var(--t3);line-height:1.6">Small — The quick brown fox jumps over the lazy dog.</div></div>
+      <div class="type-row"><div class="type-meta">10px · 600</div><div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--t3)">LABEL / CAPTION</div></div>
+    </div>
+    <div class="sub"><div class="sub-title">Typefaces</div>
+      <div class="preview col" style="gap:20px">
+        <div><div style="font-size:10px;color:var(--t3);font-family:var(--mono);margin-bottom:6px">Sans — Inter</div><div style="font-size:22px;font-weight:500">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div><div style="font-size:22px;color:var(--t2)">abcdefghijklmnopqrstuvwxyz 0–9</div></div>
+        <div><div style="font-size:10px;color:var(--t3);font-family:var(--mono);margin-bottom:6px">Mono — JetBrains Mono</div><div style="font-size:15px;font-family:var(--mono);color:var(--t2)">const system = "Design System v1.0";</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FUNDAMENTALS: Spacing ─── -->
+  <div class="page" id="fund-spacing">
+    <div class="pg-eyebrow">Fundamentals</div>
+    <h1 class="pg-title">Spacing</h1>
+    <p class="pg-desc">A 4px base grid. All spacing values are multiples of 4px for consistent rhythm.</p>
+    <div class="sub"><div class="sub-title">Scale</div>
+      <div class="sp-row"><div class="sp-bar" style="width:4px"></div><div class="sp-name">space-1</div><div class="sp-val">4px</div></div>
+      <div class="sp-row"><div class="sp-bar" style="width:8px"></div><div class="sp-name">space-2</div><div class="sp-val">8px</div></div>
+      <div class="sp-row"><div class="sp-bar" style="width:12px"></div><div class="sp-name">space-3</div><div class="sp-val">12px</div></div>
+      <div class="sp-row"><div class="sp-bar" style="width:16px"></div><div class="sp-name">space-4</div><div class="sp-val">16px</div></div>
+      <div class="sp-row"><div class="sp-bar" style="width:20px"></div><div class="sp-name">space-5</div><div class="sp-val">20px</div></div>
+      <div class="sp-row"><div class="sp-bar" style="width:24px"></div><div class="sp-name">space-6</div><div class="sp-val">24px</div></div>
+      <div class="sp-row"><div class="sp-bar" style="width:32px"></div><div class="sp-name">space-8</div><div class="sp-val">32px</div></div>
+      <div class="sp-row"><div class="sp-bar" style="width:40px"></div><div class="sp-name">space-10</div><div class="sp-val">40px</div></div>
+      <div class="sp-row"><div class="sp-bar" style="width:48px"></div><div class="sp-name">space-12</div><div class="sp-val">48px</div></div>
+      <div class="sp-row"><div class="sp-bar" style="width:64px"></div><div class="sp-name">space-16</div><div class="sp-val">64px</div></div>
+    </div>
+    <div class="sub"><div class="sub-title">Border radius</div>
+      <div class="preview" style="gap:28px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:48px;height:48px;background:var(--bg4);border:1px solid var(--b2);border-radius:4px"></div><span style="font-size:10px;color:var(--t3);font-family:var(--mono)">sm / 4px</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:48px;height:48px;background:var(--bg4);border:1px solid var(--b2);border-radius:8px"></div><span style="font-size:10px;color:var(--t3);font-family:var(--mono)">md / 8px</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:48px;height:48px;background:var(--bg4);border:1px solid var(--b2);border-radius:12px"></div><span style="font-size:10px;color:var(--t3);font-family:var(--mono)">lg / 12px</span></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:48px;height:48px;background:var(--bg4);border:1px solid var(--b2);border-radius:9999px"></div><span style="font-size:10px;color:var(--t3);font-family:var(--mono)">full</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── COMPONENTS: Buttons ─── -->
+  <div class="page" id="comp-buttons">
+    <div class="pg-eyebrow">Components</div>
+    <h1 class="pg-title">Buttons</h1>
+    <p class="pg-desc">Use the right variant to signal importance. Primary for the main action, secondary for alternatives, ghost for tertiary.</p>
+    <div class="sub"><div class="sub-title">Variants</div><div class="preview"><button class="btn btn-primary">Primary</button><button class="btn btn-secondary">Secondary</button><button class="btn btn-ghost">Ghost</button><button class="btn btn-danger">Danger</button></div></div>
+    <div class="sub"><div class="sub-title">Sizes</div><div class="preview" style="align-items:center"><button class="btn btn-secondary btn-sm">Small</button><button class="btn btn-secondary">Default</button><button class="btn btn-secondary btn-lg">Large</button></div></div>
+    <div class="sub"><div class="sub-title">States</div><div class="preview"><button class="btn btn-primary" disabled style="opacity:.35;cursor:not-allowed">Disabled</button><button class="btn btn-secondary" style="opacity:.6;cursor:wait">Loading…</button></div></div>
+  </div>
+
+  <!-- ─── COMPONENTS: Badges ─── -->
+  <div class="page" id="comp-badges">
+    <div class="pg-eyebrow">Components</div>
+    <h1 class="pg-title">Badges</h1>
+    <p class="pg-desc">Compact labels for status, categories, and metadata. Use color to convey meaning, not decoration.</p>
+    <div class="sub"><div class="sub-title">Variants</div><div class="preview"><span class="badge bd-default">Default</span><span class="badge bd-blue">Info</span><span class="badge bd-green">Success</span><span class="badge bd-red">Error</span><span class="badge bd-orange">Warning</span><span class="badge bd-purple">New</span></div></div>
+  </div>
+
+  <!-- ─── COMPONENTS: Inputs ─── -->
+  <div class="page" id="comp-inputs">
+    <div class="pg-eyebrow">Components</div>
+    <h1 class="pg-title">Inputs</h1>
+    <p class="pg-desc">Form fields for capturing user input. Always pair with a label and hint text where needed.</p>
+    <div class="sub"><div class="sub-title">States</div>
+      <div class="preview col" style="gap:24px">
+        <div class="inp-group"><label class="inp-label">Email address</label><input class="inp" type="email" placeholder="you@example.com"><span class="inp-hint">We'll never share your email.</span></div>
+        <div class="inp-group"><label class="inp-label">Username</label><input class="inp inp-err" type="text" value="taken_name"><span class="inp-err-msg">This username is already taken.</span></div>
+        <div class="inp-group"><label class="inp-label" style="color:var(--t3)">Disabled</label><input class="inp" type="text" placeholder="Not editable" disabled style="opacity:.4;cursor:not-allowed"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── COMPONENTS: Cards ─── -->
+  <div class="page" id="comp-cards">
+    <div class="pg-eyebrow">Components</div>
+    <h1 class="pg-title">Cards</h1>
+    <p class="pg-desc">Surface containers that group related content with a consistent header / body / footer structure.</p>
+    <div class="sub"><div class="sub-title">Default</div>
+      <div style="max-width:360px">
+        <div class="card"><div class="card-head"><div class="card-title-text">Project settings</div><span class="badge bd-green">Active</span></div><div class="card-body-text">Configure your project's environment variables, domain, and build settings.</div><div class="card-foot"><button class="btn btn-ghost btn-sm">Cancel</button><button class="btn btn-primary btn-sm">Save changes</button></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── COMPONENTS: Alerts ─── -->
+  <div class="page" id="comp-alerts">
+    <div class="pg-eyebrow">Components</div>
+    <h1 class="pg-title">Alerts</h1>
+    <p class="pg-desc">Contextual feedback messages for user actions or system state. Four semantic variants.</p>
+    <div class="sub"><div class="sub-title">Variants</div>
+      <div class="alert al-info"><span>ℹ</span> Your deployment is being processed. This may take a few seconds.</div>
+      <div class="alert al-success"><span>✓</span> Changes saved successfully. Your project is now live.</div>
+      <div class="alert al-warning"><span>⚠</span> Your plan is approaching its usage limit this billing period.</div>
+      <div class="alert al-error"><span>✕</span> Build failed. Check your environment variables and try again.</div>
+    </div>
+  </div>
+
+  <!-- ─── COMPONENTS: Tables ─── -->
+  <div class="page" id="comp-tables">
+    <div class="pg-eyebrow">Components</div>
+    <h1 class="pg-title">Tables</h1>
+    <p class="pg-desc">Structured data with hover states and clear typographic hierarchy.</p>
+    <div class="sub"><div class="sub-title">Default</div>
+      <div class="table-wrap">
+        <table><thead><tr><th>Name</th><th>Status</th><th>Updated</th><th></th></tr></thead>
+        <tbody>
+          <tr><td style="color:var(--t1);font-weight:500">FitTrack</td><td><span class="badge bd-green">Live</span></td><td>2 hours ago</td><td><button class="btn btn-ghost btn-sm">View</button></td></tr>
+          <tr><td style="color:var(--t1);font-weight:500">Design System</td><td><span class="badge bd-blue">Building</span></td><td>Just now</td><td><button class="btn btn-ghost btn-sm">View</button></td></tr>
+          <tr><td style="color:var(--t1);font-weight:500">Portfolio</td><td><span class="badge bd-default">Draft</span></td><td>3 days ago</td><td><button class="btn btn-ghost btn-sm">View</button></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── CONTENT: Writing Guidelines ─── -->
+  <div class="page" id="cnt-writing">
+    <div class="pg-eyebrow">Content</div>
+    <h1 class="pg-title">Writing guidelines</h1>
+    <p class="pg-desc">Rules for writing UI copy — labels, buttons, error messages, and empty states — that feel consistent and human.</p>
+    <div class="sub"><div class="sub-title">Buttons and actions</div>
+      <div class="dd-grid">
+        <div class="dd-card dd-do"><div class="dd-label">Do</div>Save changes<br>Delete account<br>Get started</div>
+        <div class="dd-card dd-dont"><div class="dd-label">Don't</div>Click here to save<br>Are you sure?<br>Submit</div>
+      </div>
+    </div>
+    <div class="sub"><div class="sub-title">Error messages</div>
+      <div class="dd-grid">
+        <div class="dd-card dd-do"><div class="dd-label">Do</div>Email address is required.<br>Password must be at least 8 characters.</div>
+        <div class="dd-card dd-dont"><div class="dd-label">Don't</div>Invalid input.<br>Error: field validation failed.</div>
+      </div>
+    </div>
+    <div class="sub"><div class="sub-title">General rules</div>
+      <ul class="tl-list" style="padding-left:0">
+        <li style="padding:6px 0 6px 14px;font-size:13px;color:var(--t2)">Use sentence case, not Title Case, for labels</li>
+        <li style="padding:6px 0 6px 14px;font-size:13px;color:var(--t2)">Keep microcopy under 8 words where possible</li>
+        <li style="padding:6px 0 6px 14px;font-size:13px;color:var(--t2)">Use active voice — "Save changes" not "Changes will be saved"</li>
+        <li style="padding:6px 0 6px 14px;font-size:13px;color:var(--t2)">Avoid technical jargon in error messages</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ─── CONTENT: Voice & Tone ─── -->
+  <div class="page" id="cnt-voice">
+    <div class="pg-eyebrow">Content</div>
+    <h1 class="pg-title">Voice &amp; tone</h1>
+    <p class="pg-desc">The design system's voice is consistent — our tone adapts to context. Here's how to get both right.</p>
+    <div class="sub"><div class="sub-title">Voice principles</div>
+      <div style="display:grid;gap:10px">
+        <div class="res-card"><div class="res-name">Clear, not clever</div><div class="res-desc" style="margin-top:4px">Say exactly what you mean. Avoid puns, jargon, or clever wordplay that might confuse.</div></div>
+        <div class="res-card"><div class="res-name">Confident, not arrogant</div><div class="res-desc" style="margin-top:4px">Be direct without being bossy. Guide the user without talking down to them.</div></div>
+        <div class="res-card"><div class="res-name">Human, not robotic</div><div class="res-desc" style="margin-top:4px">Write like a person. Use contractions. Sound natural, not formal.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── CONTENT: Terminology ─── -->
+  <div class="page" id="cnt-terms">
+    <div class="pg-eyebrow">Content</div>
+    <h1 class="pg-title">Terminology</h1>
+    <p class="pg-desc">Consistent vocabulary used across the design system and in product copy.</p>
+    <div class="sub"><div class="sub-title">Glossary</div>
+      <div class="table-wrap">
+        <table><thead><tr><th>Term</th><th>Definition</th><th>Use instead of</th></tr></thead>
+        <tbody>
+          <tr><td style="color:var(--t1);font-weight:500">Design token</td><td>A named variable storing a visual decision (color, size, etc.)</td><td>Variable, style, value</td></tr>
+          <tr><td style="color:var(--t1);font-weight:500">Component</td><td>A reusable UI building block</td><td>Element, widget, module</td></tr>
+          <tr><td style="color:var(--t1);font-weight:500">Variant</td><td>A visual or behavioural variation of a component</td><td>Version, type, mode</td></tr>
+          <tr><td style="color:var(--t1);font-weight:500">Deprecated</td><td>Marked for removal in a future major release</td><td>Old, legacy, obsolete</td></tr>
+          <tr><td style="color:var(--t1);font-weight:500">Handoff</td><td>The process of transferring designs to engineering</td><td>Delivery, export, share</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SUPPORT: FAQ ─── -->
+  <div class="page" id="sup-faq">
+    <div class="pg-eyebrow">Support</div>
+    <h1 class="pg-title">FAQ</h1>
+    <p class="pg-desc">Common questions about using and contributing to the design system.</p>
+    <div style="border:1px solid var(--b1);border-radius:8px;overflow:hidden;margin-top:8px">
+      <div class="faq-item open">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I request a new component?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Open a GitHub issue using the "Component request" template. Describe the use case, the problem it solves, and link any reference examples. Requests with clear use cases are prioritised first.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I use components outside of this system?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Yes — tokens and components are framework-agnostic. The CSS classes work anywhere. If you're using a different framework, import the tokens JSON and implement the components yourself.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How do I report a visual bug?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Use the Report an Issue page in this Support section, or file a GitHub issue directly. Include a screenshot, the component name, your browser/OS, and steps to reproduce.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How often is the design system updated?<svg class="faq-chevron" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="faq-a">Patch releases happen as needed for bug fixes. Minor releases (new components or tokens) are roughly monthly. Major releases are infrequent and always come with a migration guide.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SUPPORT: Contact ─── -->
+  <div class="page" id="sup-contact">
+    <div class="pg-eyebrow">Support</div>
+    <h1 class="pg-title">Contact</h1>
+    <p class="pg-desc">Ways to get in touch with questions, feedback, or collaboration requests.</p>
+    <div class="resource-grid" style="grid-template-columns:1fr 1fr">
+      <div class="res-card"><div class="res-icon">💬</div><div class="res-name">Slack</div><div class="res-desc">#design-system — fastest response for day-to-day questions</div></div>
+      <div class="res-card"><div class="res-icon">✉️</div><div class="res-name">Email</div><div class="res-desc">For longer discussions or formal feedback</div></div>
+      <div class="res-card"><div class="res-icon">🐙</div><div class="res-name">GitHub Discussions</div><div class="res-desc">Public Q&amp;A and community conversation</div></div>
+      <div class="res-card"><div class="res-icon">📅</div><div class="res-name">Office hours</div><div class="res-desc">Monthly video call — open to anyone using the system</div></div>
+    </div>
+  </div>
+
+  <!-- ─── SUPPORT: Report an Issue ─── -->
+  <div class="page" id="sup-report">
+    <div class="pg-eyebrow">Support</div>
+    <h1 class="pg-title">Report an issue</h1>
+    <p class="pg-desc">Found a bug, visual inconsistency, or accessibility problem? Let us know.</p>
+    <div class="sub"><div class="sub-title">Before you report</div>
+      <div class="alert al-info" style="margin-bottom:16px"><span>ℹ</span> Check the release history first — the issue may already be fixed in a newer version.</div>
+    </div>
+    <div class="sub"><div class="sub-title">Issue details</div>
+      <div class="preview col" style="gap:16px;max-width:480px">
+        <div class="inp-group" style="width:100%"><label class="inp-label">Component</label><input class="inp" type="text" placeholder="e.g. Button, Badge, Input…"></div>
+        <div class="inp-group" style="width:100%"><label class="inp-label">Description</label><textarea class="inp" style="height:80px;resize:vertical;padding-top:8px" placeholder="What did you expect? What happened instead?"></textarea></div>
+        <div class="inp-group" style="width:100%"><label class="inp-label">Browser / OS</label><input class="inp" type="text" placeholder="e.g. Chrome 124 on macOS 15"></div>
+        <button class="btn btn-primary">Submit issue</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<script>
+// ── State ──
+let activeTab  = 'whats-new';
+let activePage = 'wn-release';
+
+// ── Default pages per tab ──
+const tabDefaults = {
+  'whats-new':       'wn-release',
+  'getting-started': 'gs-overview',
+  'fundamentals':    'fund-colors',
+  'components':      'comp-buttons',
+  'content':         'cnt-writing',
+  'support':         'sup-faq'
+};
+
+// ── Navigate to tab + page ──
+function navigate(tab, page) {
+  // Top tabs
+  document.querySelectorAll('.top-tab').forEach(t =>
+    t.classList.toggle('active', t.dataset.tab === tab));
+
+  // Sidebar panels
+  document.querySelectorAll('.sidebar-panel').forEach(p =>
+    p.classList.toggle('active', p.dataset.sidebar === tab));
+
+  // Pages
+  document.querySelectorAll('.page').forEach(p =>
+    p.classList.toggle('active', p.id === page));
+
+  // Nav links
+  document.querySelectorAll('.nav-link').forEach(l =>
+    l.classList.toggle('active', l.dataset.page === page));
+
+  // Auto-open parent group if sub-item is active
+  const activeLink = document.querySelector(`.nav-link[data-page="${page}"]`);
+  if (activeLink) {
+    const group = activeLink.closest('.nav-group');
+    if (group) group.classList.add('open');
+  }
+
+  // Scroll content to top
+  document.querySelector('.main').scrollTop = 0;
+
+  activeTab  = tab;
+  activePage = page;
+}
+
+// ── Top tab clicks ──
+document.querySelectorAll('.top-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    navigate(tab.dataset.tab, tabDefaults[tab.dataset.tab]);
+  });
+});
+
+// ── Sidebar nav link clicks ──
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const page = link.dataset.page;
+    if (!page) return;
+
+    // If expandable, toggle group
+    if (link.classList.contains('nav-expandable')) {
+      const groupId = link.dataset.group;
+      if (groupId) document.getElementById(groupId).classList.toggle('open');
+    }
+
+    // Find which tab this link belongs to
+    const panel = link.closest('.sidebar-panel');
+    const tab   = panel ? panel.dataset.sidebar : activeTab;
+    navigate(tab, page);
+  });
+});
+
+// ── Toggle collapsible group (used by expandable nav-link) ──
+function toggleGroup(groupId) {
+  const el = document.getElementById(groupId);
+  if (el) el.classList.toggle('open');
+}
+
+// ── Inner tabs (What's New release history) ──
+document.querySelectorAll('.inner-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const container = tab.closest('.page') || document;
+    container.querySelectorAll('.inner-tab').forEach(t => t.classList.remove('active'));
+    container.querySelectorAll('.inner-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    const target = container.querySelector('#' + tab.dataset.inner);
+    if (target) target.classList.add('active');
+  });
+});
+
+// ── FAQ accordion ──
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  item.classList.toggle('open');
+}
+
+// ── Checklist ──
+function toggleCheck(li) {
+  li.classList.toggle('checked');
+}
+
+// ── Copy hex ──
+function copyHex(hex, el) {
+  navigator.clipboard.writeText(hex).then(() => {
+    const nm = el.querySelector('.color-name');
+    const orig = nm.textContent;
+    nm.textContent = 'Copied!';
+    setTimeout(() => nm.textContent = orig, 1200);
+  });
+}
+</script>
+</body>
+</html>
