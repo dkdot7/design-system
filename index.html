@@ -1053,7 +1053,8 @@ tbody tr:hover{background:var(--bg3)}
     <!-- Color inner tabs -->
     <div class="inner-tabs" style="margin-bottom:32px">
       <button class="inner-tab active" data-inner="clr-overview">Overview</button>
-      <button class="inner-tab" data-inner="clr-surface">Surface element</button>
+      <button class="inner-tab" data-inner="clr-surface">Surface</button>
+      <button class="inner-tab" data-inner="clr-element">Element</button>
       <button class="inner-tab" data-inner="clr-feedback">Feedback</button>
       <button class="inner-tab" data-inner="clr-avatar">Avatar token</button>
       <button class="inner-tab" data-inner="clr-access">Accessibility</button>
@@ -1898,77 +1899,186 @@ tbody tr:hover{background:var(--bg3)}
         <!-- ── Tile colors on light surfaces ── -->
         <div class="anc" id="se-tile-light" data-anchor="se-tile-light" style="margin-top:32px">
           <h3 class="anc-sub">On light surfaces</h3>
-          <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">Use Light Primary & Light Secondary when nesting tiles on a light background to create visual depth through subtle elevation.</p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
-            <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
-              <div style="background:#F5F5F5;padding:12px">
-                <div style="background:#FFFFFF;border:1px solid #e5e5e5;border-radius:5px;padding:10px">
-                  <div style="font-size:10px;color:#999;margin-bottom:4px">Tile · Light Primary</div>
-                  <div style="font-size:12px;font-weight:600;color:#111">White tile</div>
-                </div>
+          <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:20px">These tile surfaces can be used on a light page. Numbers indicate preference order — use lower-numbered options first. Only use higher-numbered options when lower ones don't serve the content need.</p>
+
+          <!-- 4-row preference matrix -->
+          <div style="border:1px solid #e5e5e5;border-radius:10px;overflow:hidden;margin-bottom:24px">
+            <!-- Row 1 -->
+            <div style="display:grid;grid-template-columns:32px 1fr;border-bottom:1px solid #e5e5e5">
+              <div style="display:flex;align-items:center;justify-content:center;background:#f5f5f5;border-right:1px solid #e5e5e5">
+                <div style="width:20px;height:20px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:600">1</div>
               </div>
-              <div style="padding:8px 12px;background:#f9f9f9;border-top:1px solid #e5e5e5">
-                <div style="font-size:11px;font-weight:600;color:#111">Light Primary & Light Secondary</div>
-                <div style="font-size:10px;color:#666">Use when nesting on light backgrounds</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
+                <div style="border-right:1px solid #e5e5e5">
+                  <div style="height:56px;background:#000000"></div>
+                  <div style="padding:6px 10px;background:#f9f9f9">
+                    <div style="font-size:10px;font-weight:600;color:#111">Dark Primary</div>
+                    <div style="font-size:9px;font-family:var(--mono);color:#888">#000000</div>
+                  </div>
+                </div>
+                <div style="border-right:1px solid #e5e5e5">
+                  <div style="height:56px;background:#111111"></div>
+                  <div style="padding:6px 10px;background:#f9f9f9">
+                    <div style="font-size:10px;font-weight:600;color:#111">Dark Secondary</div>
+                    <div style="font-size:9px;font-family:var(--mono);color:#888">#111111</div>
+                  </div>
+                </div>
+                <div>
+                  <div style="height:56px;background:#1a1a1a"></div>
+                  <div style="padding:6px 10px;background:#f9f9f9">
+                    <div style="font-size:10px;font-weight:600;color:#111">Dark Tertiary</div>
+                    <div style="font-size:9px;font-family:var(--mono);color:#888">#1A1A1A</div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
-              <div style="background:#FFFFFF;padding:12px">
-                <div style="background:#000;border-radius:5px;padding:10px">
-                  <div style="font-size:10px;color:#555;margin-bottom:4px">Tile · Dark Primary</div>
-                  <div style="font-size:12px;font-weight:600;color:#ededed">Dark tile</div>
-                </div>
+            <!-- Row 2 -->
+            <div style="display:grid;grid-template-columns:32px 1fr;border-bottom:1px solid #e5e5e5">
+              <div style="display:flex;align-items:center;justify-content:center;background:#f5f5f5;border-right:1px solid #e5e5e5">
+                <div style="width:20px;height:20px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:600">2</div>
               </div>
-              <div style="padding:8px 12px;background:#f9f9f9;border-top:1px solid #e5e5e5">
-                <div style="font-size:11px;font-weight:600;color:#111">Dark Primary & Dark Secondary</div>
-                <div style="font-size:10px;color:#666">High-contrast tile on light page</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
+                <div style="border-right:1px solid #e5e5e5">
+                  <div style="height:56px;background:#0070F3"></div>
+                  <div style="padding:6px 10px;background:#f9f9f9">
+                    <div style="font-size:10px;font-weight:600;color:#111">Dark Brand Highlight</div>
+                    <div style="font-size:9px;font-family:var(--mono);color:#888">#0070F3</div>
+                  </div>
+                </div>
+                <div style="border-right:1px solid #e5e5e5">
+                  <div style="height:56px;background:#005FCC"></div>
+                  <div style="padding:6px 10px;background:#f9f9f9">
+                    <div style="font-size:10px;font-weight:600;color:#111">Brand Highlight 2</div>
+                    <div style="font-size:9px;font-family:var(--mono);color:#888">#005FCC</div>
+                  </div>
+                </div>
+                <div>
+                  <div style="height:56px;background:#004EAA"></div>
+                  <div style="padding:6px 10px;background:#f9f9f9">
+                    <div style="font-size:10px;font-weight:600;color:#111">Brand Highlight 3</div>
+                    <div style="font-size:9px;font-family:var(--mono);color:#888">#004EAA</div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
-              <div style="background:#FFFFFF;padding:12px">
-                <div style="background:#0070f3;border-radius:5px;padding:10px">
-                  <div style="font-size:10px;color:rgba(255,255,255,.7);margin-bottom:4px">Tile · Brand Highlight</div>
-                  <div style="font-size:12px;font-weight:600;color:#fff">Brand tile</div>
+            <!-- Row 3 -->
+            <div style="display:grid;grid-template-columns:32px 1fr;border-bottom:1px solid #e5e5e5">
+              <div style="display:flex;align-items:center;justify-content:center;background:#f5f5f5;border-right:1px solid #e5e5e5">
+                <div style="width:20px;height:20px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:600">3</div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
+                <div style="border-right:1px solid #e5e5e5">
+                  <div style="height:56px;background:#F0EDE8"></div>
+                  <div style="padding:6px 10px;background:#f9f9f9">
+                    <div style="font-size:10px;font-weight:600;color:#111">Light Brand Neutral</div>
+                    <div style="font-size:9px;font-family:var(--mono);color:#888">#F0EDE8</div>
+                  </div>
+                </div>
+                <div style="border-right:1px solid #e5e5e5">
+                  <div style="height:56px;background:#EAE6E0"></div>
+                  <div style="padding:6px 10px;background:#f9f9f9">
+                    <div style="font-size:10px;font-weight:600;color:#111">Light Brand Neutral 2</div>
+                    <div style="font-size:9px;font-family:var(--mono);color:#888">#EAE6E0</div>
+                  </div>
+                </div>
+                <div>
+                  <div style="height:56px;background:#F5F5F5"></div>
+                  <div style="padding:6px 10px;background:#f9f9f9">
+                    <div style="font-size:10px;font-weight:600;color:#111">Light Secondary</div>
+                    <div style="font-size:9px;font-family:var(--mono);color:#888">#F5F5F5</div>
+                  </div>
                 </div>
               </div>
-              <div style="padding:8px 12px;background:#f9f9f9;border-top:1px solid #e5e5e5">
-                <div style="font-size:11px;font-weight:600;color:#111">Dark Brand Highlight</div>
-                <div style="font-size:10px;color:#666">Emphasis tile using brand colour</div>
+            </div>
+            <!-- Row 4 -->
+            <div style="display:grid;grid-template-columns:32px 1fr">
+              <div style="display:flex;align-items:center;justify-content:center;background:#f5f5f5;border-right:1px solid #e5e5e5">
+                <div style="width:20px;height:20px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:600">4</div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
+                <div style="border-right:1px solid #e5e5e5">
+                  <div style="height:56px;background:#FFFFFF;border-bottom:1px solid #eee"></div>
+                  <div style="padding:6px 10px;background:#f9f9f9">
+                    <div style="font-size:10px;font-weight:600;color:#111">Light Primary</div>
+                    <div style="font-size:9px;font-family:var(--mono);color:#888">#FFFFFF</div>
+                  </div>
+                </div>
+                <div style="border-right:1px solid #e5e5e5">
+                  <div style="height:56px;background:#FAFAFA;border-bottom:1px solid #eee"></div>
+                  <div style="padding:6px 10px;background:#f9f9f9">
+                    <div style="font-size:10px;font-weight:600;color:#111">Light Primary 2</div>
+                    <div style="font-size:9px;font-family:var(--mono);color:#888">#FAFAFA</div>
+                  </div>
+                </div>
+                <div>
+                  <div style="height:56px;background:#f5f5f5;border-bottom:1px solid #eee"></div>
+                  <div style="padding:6px 10px;background:#f9f9f9">
+                    <div style="font-size:10px;color:#bbb;font-style:italic">Not recommended</div>
+                    <div style="font-size:9px;color:#ddd">Same as parent ✕</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
+          <!-- Guidance text -->
+          <ol style="font-size:13px;color:var(--t2);line-height:2;padding-left:20px;margin:0 0 20px">
+            <li><strong style="color:var(--t1)">Light Primary & Light Secondary</strong> — use these pairings as your default when tiles sit on a light background.</li>
+            <li><strong style="color:var(--t1)">Light Secondary & Light Brand Neutral</strong> — use when the section calls for a warmer, more neutral tone.</li>
+            <li><strong style="color:var(--t1)">Light Secondary & Light Brand Neutral</strong> — combine for additional visual distinction within grouped tile sets.</li>
+            <li><strong style="color:var(--t1)">Dark Brand Highlight</strong> — use sparingly for emphasis, promotions, or primary CTA tiles.</li>
+            <li><strong style="color:var(--t1)">Dark Primary</strong> — use for high-contrast tiles to draw maximum attention.</li>
+          </ol>
+
+          <!-- Do / Don't -->
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
             <div>
               <div style="font-size:11px;font-weight:700;color:#00d26a;letter-spacing:.06em;margin-bottom:8px">DO</div>
-              <div style="background:#F5F5F5;border:1px solid #e5e5e5;border-radius:8px;padding:16px">
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-                  <div style="background:#fff;border:1px solid #e5e5e5;border-radius:4px;padding:8px">
-                    <div style="font-size:10px;color:#999">Tile A</div>
-                    <div style="font-size:12px;font-weight:600;color:#111">White</div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                <div style="background:#F5F5F5;padding:16px">
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px">
+                    <div style="background:#fff;border:1px solid #e5e5e5;border-radius:5px;padding:10px">
+                      <div style="font-size:9px;color:#999;margin-bottom:3px">Plan</div>
+                      <div style="font-size:12px;font-weight:700;color:#111">Pro</div>
+                      <div style="font-size:9px;color:#888">$49/mo</div>
+                    </div>
+                    <div style="background:#0070f3;border-radius:5px;padding:10px">
+                      <div style="font-size:9px;color:rgba(255,255,255,.7);margin-bottom:3px">Plan</div>
+                      <div style="font-size:12px;font-weight:700;color:#fff">Business</div>
+                      <div style="font-size:9px;color:rgba(255,255,255,.7)">$99/mo</div>
+                    </div>
                   </div>
-                  <div style="background:#000;border-radius:4px;padding:8px">
-                    <div style="font-size:10px;color:#555">Tile B</div>
-                    <div style="font-size:12px;font-weight:600;color:#ededed">Black</div>
+                  <div style="background:#000;border-radius:5px;padding:8px">
+                    <div style="font-size:9px;color:#555">Featured tile · Dark Primary</div>
+                    <div style="font-size:11px;font-weight:600;color:#ededed">Most popular</div>
                   </div>
                 </div>
-                <div style="font-size:10px;color:#999;margin-top:8px">Do use elevated surfaces for tiles</div>
+                <div style="padding:8px 12px;background:#f0f0f0;border-top:1px solid #e5e5e5;font-size:11px;color:#666">Do use elevated, contrasting tile surfaces on light pages</div>
               </div>
             </div>
             <div>
               <div style="font-size:11px;font-weight:700;color:#f44336;letter-spacing:.06em;margin-bottom:8px">DON'T</div>
-              <div style="background:#F5F5F5;border:1px solid #e5e5e5;border-radius:8px;padding:16px;position:relative">
-                <div style="position:absolute;top:8px;right:8px;width:18px;height:18px;background:#f44336;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff">✕</div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-                  <div style="background:#F5F5F5;border:1px solid #e5e5e5;border-radius:4px;padding:8px">
-                    <div style="font-size:10px;color:#bbb">Tile A</div>
-                    <div style="font-size:12px;font-weight:600;color:#ccc">Same surface ✕</div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid #e5e5e5">
+                <div style="background:#F5F5F5;padding:16px;position:relative">
+                  <div style="position:absolute;top:8px;right:8px;width:20px;height:20px;background:#f44336;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff">✕</div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px">
+                    <div style="background:#F5F5F5;border:1px solid #ddd;border-radius:5px;padding:10px">
+                      <div style="font-size:9px;color:#ccc;margin-bottom:3px">Plan</div>
+                      <div style="font-size:12px;font-weight:700;color:#ccc">Pro</div>
+                      <div style="font-size:9px;color:#ddd">$49/mo</div>
+                    </div>
+                    <div style="background:#F5F5F5;border:1px solid #ddd;border-radius:5px;padding:10px">
+                      <div style="font-size:9px;color:#ccc;margin-bottom:3px">Plan</div>
+                      <div style="font-size:12px;font-weight:700;color:#ccc">Business</div>
+                      <div style="font-size:9px;color:#ddd">$99/mo</div>
+                    </div>
                   </div>
-                  <div style="background:#F5F5F5;border:1px solid #e5e5e5;border-radius:4px;padding:8px">
-                    <div style="font-size:10px;color:#bbb">Tile B</div>
-                    <div style="font-size:12px;font-weight:600;color:#ccc">Same surface ✕</div>
+                  <div style="background:#F5F5F5;border:1px solid #ddd;border-radius:5px;padding:8px">
+                    <div style="font-size:9px;color:#ddd">Same surface as page ✕</div>
+                    <div style="font-size:11px;font-weight:600;color:#ddd">Invisible tile</div>
                   </div>
                 </div>
-                <div style="font-size:10px;color:#999;margin-top:8px">Don't use same surface for tiles as background</div>
+                <div style="padding:8px 12px;background:#f0f0f0;border-top:1px solid #e5e5e5;font-size:11px;color:#666">Don't use the same surface for tiles as the page background</div>
               </div>
             </div>
           </div>
@@ -2053,6 +2163,104 @@ tbody tr:hover{background:var(--bg3)}
                 <div style="font-size:10px;color:#555;margin-top:4px">Don't use the same colour for tiles and background</div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- ── Tile colors on Dark Brand Highlight surface ── -->
+        <div class="anc" id="se-tile-brand" data-anchor="se-tile-brand" style="margin-top:40px">
+          <h3 class="anc-sub">On dark Brand Highlight surface</h3>
+          <p style="font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:16px">Use combinations of these tile surfaces on the Dark Brand Highlight surface that maintain readability while allowing content to stand out. The Brand Highlight surface is a strong colour — keep tile options limited and restrained.</p>
+
+          <!-- Surface + tiles preview -->
+          <div style="background:#0070F3;border-radius:10px;padding:24px;margin-bottom:20px">
+            <div style="font-size:10px;color:rgba(255,255,255,.6);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px">Dark Brand Highlight surface · #0070F3</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:360px">
+              <div>
+                <div style="background:#FFFFFF;border-radius:7px;padding:14px 16px;margin-bottom:6px">
+                  <div style="font-size:10px;color:#888;margin-bottom:4px">Tile · Light Primary</div>
+                  <div style="font-size:13px;font-weight:700;color:#111">Choose a plan</div>
+                  <div style="font-size:10px;color:#888;margin-top:2px">Starting at $49/mo</div>
+                </div>
+                <div style="font-size:10px;font-weight:600;color:rgba(255,255,255,.9);text-align:center">① Light Primary</div>
+              </div>
+              <div>
+                <div style="background:#F0EDE8;border-radius:7px;padding:14px 16px;margin-bottom:6px">
+                  <div style="font-size:10px;color:#888;margin-bottom:4px">Tile · Light Brand Neutral</div>
+                  <div style="font-size:13px;font-weight:700;color:#333">Accessories</div>
+                  <div style="font-size:10px;color:#888;margin-top:2px">Explore the range</div>
+                </div>
+                <div style="font-size:10px;font-weight:600;color:rgba(255,255,255,.9);text-align:center">② Light Brand Neutral</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Valid surfaces list -->
+          <div style="margin-bottom:20px">
+            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:12px">Valid tile surfaces on Brand Highlight</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px">
+                <div style="width:36px;height:36px;border-radius:5px;background:#FFFFFF;border:1px solid #e5e5e5;flex-shrink:0"></div>
+                <div>
+                  <div style="font-size:12px;font-weight:600;color:var(--t1)">Light Primary</div>
+                  <div style="font-size:10px;font-family:var(--mono);color:var(--t2)">#FFFFFF</div>
+                  <div style="font-size:10px;color:var(--t2);margin-top:2px">Highest contrast on brand surface</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px">
+                <div style="width:36px;height:36px;border-radius:5px;background:#F0EDE8;border:1px solid #e5e5e5;flex-shrink:0"></div>
+                <div>
+                  <div style="font-size:12px;font-weight:600;color:var(--t1)">Light Brand Neutral</div>
+                  <div style="font-size:10px;font-family:var(--mono);color:var(--t2)">#F0EDE8</div>
+                  <div style="font-size:10px;color:var(--t2);margin-top:2px">Softer alternative — warm tone</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Do / Don't -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#00d26a;letter-spacing:.06em;margin-bottom:8px">DO</div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                <div style="background:#0070f3;padding:16px">
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                    <div style="background:#fff;border-radius:5px;padding:10px">
+                      <div style="font-size:9px;color:#999">Service</div>
+                      <div style="font-size:11px;font-weight:700;color:#111">Basic</div>
+                      <div style="font-size:9px;color:#888">$29/mo</div>
+                    </div>
+                    <div style="background:#F0EDE8;border-radius:5px;padding:10px">
+                      <div style="font-size:9px;color:#888">Service</div>
+                      <div style="font-size:11px;font-weight:700;color:#333">Pro</div>
+                      <div style="font-size:9px;color:#888">$49/mo</div>
+                    </div>
+                  </div>
+                </div>
+                <div style="padding:8px 12px;background:#0a0a0a;border-top:1px solid var(--b2);font-size:11px;color:var(--t2)">Do use Light Primary or Light Brand Neutral tiles on Brand Highlight</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#f44336;letter-spacing:.06em;margin-bottom:8px">DON'T</div>
+              <div style="border-radius:8px;overflow:hidden;border:1px solid var(--b2)">
+                <div style="background:#0070f3;padding:16px;position:relative">
+                  <div style="position:absolute;top:8px;right:8px;width:20px;height:20px;background:#f44336;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff">✕</div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                    <div style="background:#000;border-radius:5px;padding:10px">
+                      <div style="font-size:9px;color:#555">Dark tile ✕</div>
+                      <div style="font-size:11px;font-weight:700;color:#333">Invisible</div>
+                    </div>
+                    <div style="background:#005fcc;border-radius:5px;padding:10px;opacity:.6">
+                      <div style="font-size:9px;color:rgba(255,255,255,.5)">Same family ✕</div>
+                      <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.5)">Low contrast</div>
+                    </div>
+                  </div>
+                </div>
+                <div style="padding:8px 12px;background:#0a0a0a;border-top:1px solid var(--b2);font-size:11px;color:var(--t2)">Don't use dark or similar-hue tiles on a Brand Highlight surface</div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:16px;padding:10px 14px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);border-radius:6px;font-size:12px;color:#fb923c">
+            ⚠ Caution: Use custom surfaces or primitive colors for tile backgrounds only when an existing token doesn't meet your needs. This surface is high-impact — keep tiles simple and high contrast.
           </div>
         </div>
 
@@ -2243,11 +2451,231 @@ tbody tr:hover{background:var(--bg3)}
         <a href="#se-tile-colors">Tile colors</a>
         <a href="#se-tile-light" class="sub">On light surfaces</a>
         <a href="#se-tile-dark" class="sub">On dark surfaces</a>
+        <a href="#se-tile-brand" class="sub">On dark Brand Highlight</a>
         <a href="#se-tile-custom" class="sub">Custom tiles</a>
         <a href="#se-page-examples">Page examples</a>
       </aside>
       </div><!-- /page-cols -->
     </div><!-- /clr-surface -->
+
+    <!-- ── Element panel ── -->
+    <div class="inner-panel" id="clr-element">
+      <div class="page-cols">
+      <div>
+
+        <!-- Text elements -->
+        <div class="anc" id="el-text" data-anchor="el-text">
+          <h2 class="anc-title">Text elements</h2>
+          <p class="anc-desc">Text element tokens define how text appears across all surfaces. They carry semantic meaning — primary for headings and labels, secondary for supporting copy, tertiary for disabled or decorative text only.</p>
+          <table class="token-table" style="margin-bottom:20px">
+            <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tok-swatch" style="background:#EDEDED"></span><span class="tok-name">--t1</span></td><td><span class="tok-hex">#EDEDED</span></td><td>Primary text — headings, labels, nav items</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#888888"></span><span class="tok-name">--t2</span></td><td><span class="tok-hex">#888888</span></td><td>Secondary text — descriptions, captions</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#444444"></span><span class="tok-name">--t3</span></td><td><span class="tok-hex">#444444</span></td><td>Tertiary — disabled, placeholder, decorative only</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#0070F3"></span><span class="tok-name">--t-link</span></td><td><span class="tok-hex">#0070F3</span></td><td>Interactive link / anchor text</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#3B9EFF"></span><span class="tok-name">--t-link-hover</span></td><td><span class="tok-hex">#3B9EFF</span></td><td>Link hover state</td></tr>
+            </tbody>
+          </table>
+          <!-- Text preview -->
+          <div style="padding:24px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px;margin-bottom:24px">
+            <div style="font-size:11px;color:var(--t2);margin-bottom:16px;letter-spacing:.06em;text-transform:uppercase">Text hierarchy preview</div>
+            <div style="font-size:22px;font-weight:700;color:var(--t1);margin-bottom:6px;letter-spacing:-.02em">Primary heading (--t1)</div>
+            <div style="font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:6px">Secondary supporting copy — used for descriptions, subtitles and contextual information across surfaces. (--t2)</div>
+            <div style="font-size:12px;color:var(--t3);margin-bottom:12px">Tertiary / placeholder / disabled text — never use for meaningful content (--t3)</div>
+            <a href="#" style="font-size:13px;color:#0070f3;text-decoration:none" onclick="return false">Interactive link text (--t-link) →</a>
+          </div>
+          <!-- Do / Don't -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#00d26a;letter-spacing:.06em;margin-bottom:8px">DO</div>
+              <div style="padding:16px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px">
+                <div style="font-size:14px;font-weight:600;color:var(--t1);margin-bottom:4px">Account overview</div>
+                <div style="font-size:12px;color:var(--t2);margin-bottom:8px">Manage your plan and billing details.</div>
+                <div style="font-size:11px;color:var(--t3)">Last updated 2 days ago</div>
+              </div>
+              <div style="font-size:11px;color:var(--t2);margin-top:6px">Do use t1 → t2 → t3 hierarchy in that order</div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#f44336;letter-spacing:.06em;margin-bottom:8px">DON'T</div>
+              <div style="padding:16px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px;position:relative">
+                <div style="position:absolute;top:8px;right:8px;width:18px;height:18px;background:#f44336;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff">✕</div>
+                <div style="font-size:14px;font-weight:600;color:var(--t3);margin-bottom:4px">Account overview ✕</div>
+                <div style="font-size:12px;color:var(--t3);margin-bottom:8px">All text at t3 — unreadable ✕</div>
+                <div style="font-size:11px;color:var(--t3)">No hierarchy established ✕</div>
+              </div>
+              <div style="font-size:11px;color:var(--t2);margin-top:6px">Don't use --t3 for primary or secondary text</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Icon elements -->
+        <div class="anc" id="el-icon" data-anchor="el-icon" style="margin-top:48px">
+          <h2 class="anc-title">Icon elements</h2>
+          <p class="anc-desc">Icons inherit the text color of their context by default. Use these tokens explicitly only when an icon needs to deviate from its parent text color — for example, a status indicator or interactive icon.</p>
+          <table class="token-table" style="margin-bottom:20px">
+            <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tok-swatch" style="background:#EDEDED"></span><span class="tok-name">--icon-primary</span></td><td><span class="tok-hex">#EDEDED</span></td><td>Default icon on dark surfaces</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#888888"></span><span class="tok-name">--icon-secondary</span></td><td><span class="tok-hex">#888888</span></td><td>Muted / supporting icons</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#0070F3"></span><span class="tok-name">--icon-accent</span></td><td><span class="tok-hex">#0070F3</span></td><td>Interactive or highlighted icon</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#00D26A"></span><span class="tok-name">--icon-success</span></td><td><span class="tok-hex">#00D26A</span></td><td>Success / confirmed state icon</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#F97316"></span><span class="tok-name">--icon-warning</span></td><td><span class="tok-hex">#F97316</span></td><td>Warning state icon</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#F44336"></span><span class="tok-name">--icon-error</span></td><td><span class="tok-hex">#F44336</span></td><td>Error / destructive action icon</td></tr>
+            </tbody>
+          </table>
+          <!-- Icon preview -->
+          <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px;padding:20px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px">
+            <div style="text-align:center">
+              <div style="font-size:22px;color:#EDEDED;margin-bottom:6px">⊙</div>
+              <div style="font-size:10px;color:var(--t2)">Primary</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:22px;color:#888888;margin-bottom:6px">⊙</div>
+              <div style="font-size:10px;color:var(--t2)">Secondary</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:22px;color:#0070F3;margin-bottom:6px">⊙</div>
+              <div style="font-size:10px;color:var(--t2)">Accent</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:22px;color:#00D26A;margin-bottom:6px">⊙</div>
+              <div style="font-size:10px;color:var(--t2)">Success</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:22px;color:#F97316;margin-bottom:6px">⊙</div>
+              <div style="font-size:10px;color:var(--t2)">Warning</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:22px;color:#F44336;margin-bottom:6px">⊙</div>
+              <div style="font-size:10px;color:var(--t2)">Error</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Border elements -->
+        <div class="anc" id="el-border" data-anchor="el-border" style="margin-top:48px">
+          <h2 class="anc-title">Border elements</h2>
+          <p class="anc-desc">Border tokens create subtle separation between surfaces without adding visual weight. They escalate from subtle to strong, matching the elevation of the surface they appear on.</p>
+          <table class="token-table" style="margin-bottom:20px">
+            <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tok-swatch" style="background:#1F1F1F;border-color:var(--b2)"></span><span class="tok-name">--b1</span></td><td><span class="tok-hex">#1F1F1F</span></td><td>Subtle border — card outlines, dividers</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#2D2D2D;border-color:var(--b2)"></span><span class="tok-name">--b2</span></td><td><span class="tok-hex">#2D2D2D</span></td><td>Default border — inputs, interactive elements</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#404040;border-color:var(--b2)"></span><span class="tok-name">--b3</span></td><td><span class="tok-hex">#404040</span></td><td>Strong border — focus rings, active states</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#0070F3"></span><span class="tok-name">--b-accent</span></td><td><span class="tok-hex">#0070F3</span></td><td>Accent border — focused input, selected item</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#F44336"></span><span class="tok-name">--b-error</span></td><td><span class="tok-hex">#F44336</span></td><td>Error border — invalid input field</td></tr>
+            </tbody>
+          </table>
+          <!-- Border preview -->
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px">
+            <div style="padding:12px 14px;border-radius:6px;border:1px solid #1F1F1F;background:var(--bg2)">
+              <div style="font-size:10px;color:var(--t2);margin-bottom:2px">--b1 · Subtle</div>
+              <div style="font-size:12px;color:var(--t1)">Card outline</div>
+            </div>
+            <div style="padding:12px 14px;border-radius:6px;border:1px solid #2D2D2D;background:var(--bg2)">
+              <div style="font-size:10px;color:var(--t2);margin-bottom:2px">--b2 · Default</div>
+              <div style="font-size:12px;color:var(--t1)">Input border</div>
+            </div>
+            <div style="padding:12px 14px;border-radius:6px;border:2px solid #0070F3;background:var(--bg2)">
+              <div style="font-size:10px;color:#3b9eff;margin-bottom:2px">--b-accent · Focus</div>
+              <div style="font-size:12px;color:var(--t1)">Active field</div>
+            </div>
+          </div>
+          <!-- Do / Don't -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#00d26a;letter-spacing:.06em;margin-bottom:8px">DO</div>
+              <div style="padding:16px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px">
+                <div style="margin-bottom:8px">
+                  <div style="font-size:10px;color:var(--t2);margin-bottom:4px">Email address</div>
+                  <div style="padding:8px 10px;border:1px solid var(--b2);border-radius:5px;font-size:12px;color:var(--t2)">alex@example.com</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;color:var(--t2);margin-bottom:4px">Password (focused)</div>
+                  <div style="padding:8px 10px;border:2px solid #0070f3;border-radius:5px;font-size:12px;color:var(--t1)">••••••••</div>
+                </div>
+              </div>
+              <div style="font-size:11px;color:var(--t2);margin-top:6px">Do escalate borders: default → accent on focus</div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#f44336;letter-spacing:.06em;margin-bottom:8px">DON'T</div>
+              <div style="padding:16px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px;position:relative">
+                <div style="position:absolute;top:8px;right:8px;width:18px;height:18px;background:#f44336;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff">✕</div>
+                <div style="margin-bottom:8px">
+                  <div style="font-size:10px;color:var(--t2);margin-bottom:4px">Email address</div>
+                  <div style="padding:8px 10px;border:3px solid #f44336;border-radius:5px;font-size:12px;color:var(--t2)">alex@example.com ✕</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;color:var(--t2);margin-bottom:4px">Password (no focus state)</div>
+                  <div style="padding:8px 10px;border:1px solid var(--b1);border-radius:5px;font-size:12px;color:var(--t1)">•••••••• ✕</div>
+                </div>
+              </div>
+              <div style="font-size:11px;color:var(--t2);margin-top:6px">Don't use error borders on valid fields or skip focus rings</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive elements -->
+        <div class="anc" id="el-interactive" data-anchor="el-interactive" style="margin-top:48px">
+          <h2 class="anc-title">Interactive elements</h2>
+          <p class="anc-desc">Interactive element tokens define the color of actions, links, and selected states. They are always tied to the brand accent and should be used consistently to signal clickability.</p>
+          <table class="token-table" style="margin-bottom:20px">
+            <thead><tr><th>Token</th><th>Value</th><th>State</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tok-swatch" style="background:#0070F3"></span><span class="tok-name">--accent</span></td><td><span class="tok-hex">#0070F3</span></td><td>Default / resting interactive color</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#3B9EFF"></span><span class="tok-name">--accent-hover</span></td><td><span class="tok-hex">#3B9EFF</span></td><td>Hover state</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#005FCC"></span><span class="tok-name">--accent-active</span></td><td><span class="tok-hex">#005FCC</span></td><td>Pressed / active state</td></tr>
+              <tr><td><span class="tok-swatch" style="background:#444444"></span><span class="tok-name">--accent-disabled</span></td><td><span class="tok-hex">#444444</span></td><td>Disabled interactive element</td></tr>
+              <tr><td><span class="tok-swatch" style="background:rgba(0,112,243,.15);border-color:var(--b2)"></span><span class="tok-name">--accent-bg</span></td><td><span class="tok-hex">rgba(0,112,243,.15)</span></td><td>Subtle accent background (selected rows, hover fills)</td></tr>
+            </tbody>
+          </table>
+          <!-- Interactive preview -->
+          <div style="display:flex;gap:10px;flex-wrap:wrap;padding:20px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px;margin-bottom:20px">
+            <button style="padding:8px 16px;background:#0070f3;color:#fff;border:none;border-radius:5px;font-size:12px;font-weight:600;cursor:pointer">Default</button>
+            <button style="padding:8px 16px;background:#3B9EFF;color:#fff;border:none;border-radius:5px;font-size:12px;font-weight:600;cursor:pointer">Hover</button>
+            <button style="padding:8px 16px;background:#005FCC;color:#fff;border:none;border-radius:5px;font-size:12px;font-weight:600;cursor:pointer">Active</button>
+            <button style="padding:8px 16px;background:#444;color:#888;border:none;border-radius:5px;font-size:12px;font-weight:600;cursor:not-allowed">Disabled</button>
+            <button style="padding:8px 16px;background:rgba(0,112,243,.15);color:#3b9eff;border:1px solid rgba(0,112,243,.3);border-radius:5px;font-size:12px;font-weight:600;cursor:pointer">Selected</button>
+          </div>
+          <!-- Do / Don't -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#00d26a;letter-spacing:.06em;margin-bottom:8px">DO</div>
+              <div style="padding:16px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px">
+                <div style="font-size:12px;color:var(--t2);margin-bottom:10px">Use the accent color consistently for all actions:</div>
+                <div style="display:flex;gap:8px">
+                  <div style="padding:7px 12px;background:#0070f3;color:#fff;border-radius:5px;font-size:11px;font-weight:600">Save changes</div>
+                  <div style="padding:7px 12px;background:transparent;color:#0070f3;border:1px solid #0070f3;border-radius:5px;font-size:11px;font-weight:600">Cancel</div>
+                </div>
+              </div>
+              <div style="font-size:11px;color:var(--t2);margin-top:6px">Do use --accent for primary actions and --accent ghost for secondary</div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;color:#f44336;letter-spacing:.06em;margin-bottom:8px">DON'T</div>
+              <div style="padding:16px;background:var(--bg2);border:1px solid var(--b1);border-radius:8px;position:relative">
+                <div style="position:absolute;top:8px;right:8px;width:18px;height:18px;background:#f44336;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff">✕</div>
+                <div style="font-size:12px;color:var(--t2);margin-bottom:10px">Multiple accent colors for actions ✕</div>
+                <div style="display:flex;gap:8px">
+                  <div style="padding:7px 12px;background:#8B5CF6;color:#fff;border-radius:5px;font-size:11px;font-weight:600">Save ✕</div>
+                  <div style="padding:7px 12px;background:#F97316;color:#fff;border-radius:5px;font-size:11px;font-weight:600">Cancel ✕</div>
+                </div>
+              </div>
+              <div style="font-size:11px;color:var(--t2);margin-top:6px">Don't use supplemental colors for primary interactive elements</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /left col -->
+      <aside class="right-nav">
+        <div class="right-nav-label">On this page</div>
+        <a href="#el-text">Text elements</a>
+        <a href="#el-icon">Icon elements</a>
+        <a href="#el-border">Border elements</a>
+        <a href="#el-interactive">Interactive elements</a>
+      </aside>
+      </div><!-- /page-cols -->
+    </div><!-- /clr-element -->
 
     <!-- ── Feedback panel ── -->
     <div class="inner-panel" id="clr-feedback">
